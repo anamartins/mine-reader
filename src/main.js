@@ -9,9 +9,9 @@ import Home from './views/home/home.vue'
 import './assets/style.css'
 
 const routes = [
-  { path: '/signup', name: 'SignUp', component: Signup },
-  { path: '/home', name: 'Home', component: Home },
-  { path: '/', name: 'SignIn', component: Signin },
+  { path: '/signup', name: 'signUp', component: Signup },
+  { path: '/home', name: 'home', component: Home },
+  { path: '/', name: 'signIn', component: Signin },
   { path: '/feed/:feed', name: 'feed', component: Home }
 ]
 
