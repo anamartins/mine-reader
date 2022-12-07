@@ -20,7 +20,6 @@ const API_BASE_URL =
 // })
 
 export const usePostsStore = defineStore('posts', () => {
-  // const post = usePostsStore()
   const token = localStorage.getItem('mineToken')
 
   async function getPosts(feedId) {
@@ -39,7 +38,7 @@ export const usePostsStore = defineStore('posts', () => {
 
     let arg = ''
     if (feedId) {
-      arg = `?feedId = ${feedId}`
+      arg = `?feedId=${feedId}`
     }
 
     const returnAPI = await axios.get(`${API_BASE_URL}/stream${arg}`, {
