@@ -1,9 +1,4 @@
-<script setup>
-// import HelloWorld from './components/HelloWorld.vue'
-// import TheWelcome from './components/TheWelcome.vue'
-import signupVue from './views/signup.vue';
-
-</script>
+<script setup></script>
 
 <template>
   <main>
@@ -12,18 +7,13 @@ import signupVue from './views/signup.vue';
 </template>
 
 <style scoped>
-
 .logo {
   display: block;
   margin: 0 auto 2rem;
 }
 
-main{
+main {
   width: 100vw;
   height: 100vh;
-  /* background-color: orange; */
 }
-
-
-
 </style>

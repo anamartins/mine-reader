@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useUsersStore } from '../stores/users'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import Logo from '../components/logo.vue'
 
 let email = ref('willian87@gmail.com')
@@ -9,7 +9,6 @@ let password = ref('12345')
 let usersStore = useUsersStore()
 
 const router = useRouter()
-const route = useRoute()
 
 async function onButtonClick(event) {
   await usersStore.login(email.value, password.value)
@@ -26,7 +25,6 @@ async function onButtonClick(event) {
 <template>
   <div class="signin">
     <Logo />
-
     <label for="email">Email:</label>
     <input type="text" v-model="email" required />
     <label for="password">Password:</label>
@@ -47,6 +45,5 @@ button {
 
 .fail {
   color: red;
-  /* visibility: hidden; */
 }
 </style>

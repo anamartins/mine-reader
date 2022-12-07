@@ -5,7 +5,7 @@ import { usePostsStore } from '../../stores/posts'
 import Post from './post.vue'
 
 let postsStore = usePostsStore()
-postsStore.getPosts()
+// postsStore.getPosts()
 let posts = computed(() => postsStore.posts)
 
 onMounted(() => {})

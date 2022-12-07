@@ -1,16 +1,11 @@
 <script setup>
-import {onMounted} from 'vue'
+import { onMounted } from 'vue'
 
 onMounted(() => {
-    console.log('hey');
+  console.log('hey')
 })
-   
-
-
-
 </script>
 
 <template>
-    <h1> MINE</h1>
-    <router-link to="/">TEST</router-link>
+  <h1>MINE</h1>
 </template>

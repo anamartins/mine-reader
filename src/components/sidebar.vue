@@ -18,7 +18,14 @@ let readLater = computed(() => feedsStore.readLater)
       <h2>all feeds ({{ totalFeeds }})</h2>
       <ul class="allfeeds-list">
         <li v-for="feed in feeds" class="feed" v-bind:key="feed.id">
-          {{ feed.title }} ({{ feed.unread }})
+          <router-link
+            :to="{
+              name: 'feed',
+              params: { feed: feed.feedId }
+            }"
+          >
+            {{ feed.title }} ({{ feed.unread }})
+          </router-link>
         </li>
       </ul>
     </section>
