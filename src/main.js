@@ -5,6 +5,7 @@ import App from './App.vue'
 import Signup from './views/signup.vue'
 import Signin from './views/signin.vue'
 import Home from './views/home/home.vue'
+import Followfeed from './views/followFeed.vue'
 
 import './assets/style.css'
 
@@ -12,7 +13,8 @@ const routes = [
   { path: '/signup', name: 'signUp', component: Signup },
   { path: '/home', name: 'home', component: Home },
   { path: '/', name: 'signIn', component: Signin },
-  { path: '/feed/:feed', name: 'feed', component: Home }
+  { path: '/feed/:feed', name: 'feed', component: Home },
+  { path: '/feed/add', name: 'addFeed', component: Followfeed }
 ]
 
 const router = createRouter({

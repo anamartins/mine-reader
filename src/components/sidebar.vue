@@ -5,7 +5,7 @@ import { useFeedsStore } from '../stores/feeds'
 
 let feedsStore = useFeedsStore()
 feedsStore.getFeeds()
-// feedsStore.followNewFeed('https://www.repeteroupa.com/blog-feed.xml')
+
 let feeds = computed(() => feedsStore.feeds)
 let totalFeeds = computed(() => feedsStore.total)
 let readLater = computed(() => feedsStore.readLater)
@@ -13,9 +13,14 @@ let readLater = computed(() => feedsStore.readLater)
 
 <template>
   <div class="sidebar">
-    <Logo />
+    <Logo link="home" />
     <section class="side-sub">
-      <h2>all feeds ({{ totalFeeds }})</h2>
+      <h2>
+        <router-link :to="{ name: 'home' }"
+          >all feeds ({{ totalFeeds }})</router-link
+        >
+      </h2>
+      <p><router-link to="/feed/add">add a new feed</router-link></p>
       <ul class="allfeeds-list">
         <li v-for="feed in feeds" class="feed" v-bind:key="feed.id">
           <router-link

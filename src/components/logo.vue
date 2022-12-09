@@ -1,12 +1,16 @@
 <script setup>
 import { onMounted } from 'vue'
 
+const props = defineProps({
+  link: String
+})
+
 onMounted(() => {})
 </script>
 
 <template>
   <div class="logo">
-    <h1><router-link :to="{ name: 'home' }">mine</router-link></h1>
+    <h1><router-link :to="{ name: props.link }">mine</router-link></h1>
   </div>
 </template>
 
