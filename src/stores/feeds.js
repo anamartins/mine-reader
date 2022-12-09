@@ -47,5 +47,21 @@ export const useFeedsStore = defineStore('feeds', () => {
     // readLater = returnAPI.data.readLater
   }
 
-  return { getFeeds, followNewFeed }
+  async function removeFeed(name) {
+    const element = this.feeds.find((element) => element.title === name.value)
+    const url = element.url
+
+    const returnAPI = await axios.post(
+      `${API_BASE_URL}/feed/unfollow`,
+      { url: url },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        withCredentials: true
+      }
+    )
+  }
+
+  return { getFeeds, followNewFeed, removeFeed }
 })
