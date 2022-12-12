@@ -23,19 +23,6 @@ export const usePostsStore = defineStore('posts', () => {
   const token = localStorage.getItem('mineToken')
 
   async function getPosts(feedId) {
-    //   const returnAPI = await axios.get(
-    //     `${API_BASE_URL}/stream?feedId=Y7TumbMa9YQdMXBJTP2k`,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`
-    //       },
-    //       withCredentials: true
-    //     }
-    //   )
-    //   this.posts = returnAPI.data.items
-    //   this.total = returnAPI.data.total
-    // }
-
     let arg = ''
     if (feedId) {
       arg = `?feedId=${feedId}`
@@ -49,7 +36,20 @@ export const usePostsStore = defineStore('posts', () => {
     })
     this.posts = returnAPI.data.items
     this.total = returnAPI.data.total
+    this.next = returnAPI.data.next
   }
 
-  return { getPosts }
+  async function getMorePosts() {
+    const returnAPI = await axios.get(this.next, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      withCredentials: true
+    })
+    this.posts = returnAPI.data.items
+    this.total = returnAPI.data.total
+    this.next = returnAPI.data.next
+  }
+
+  return { getPosts, getMorePosts }
 })

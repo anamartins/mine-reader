@@ -8,11 +8,17 @@ let postsStore = usePostsStore()
 // postsStore.getPosts()
 let posts = computed(() => postsStore.posts)
 
+function onButtonClick() {
+  postsStore.getMorePosts()
+  console.log('hoy')
+}
+
 onMounted(() => {})
 </script>
 <template>
   <div class="stream">
     <Post v-for="post in posts" :post="post" :key="post.id" />
+    <button type="button" @click="onButtonClick">NEXT</button>
   </div>
 </template>
 
