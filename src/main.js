@@ -10,11 +10,12 @@ import Followfeed from './views/followFeed.vue'
 import './assets/style.css'
 
 const routes = [
+  { path: '/', name: 'signIn', component: Signin },
   { path: '/signup', name: 'signUp', component: Signup },
   { path: '/home', name: 'home', component: Home },
-  { path: '/', name: 'signIn', component: Signin },
   { path: '/feed/:feed', name: 'feed', component: Home },
-  { path: '/feed/add', name: 'addFeed', component: Followfeed }
+  { path: '/feed/add', name: 'addFeed', component: Followfeed },
+  { path: '/read-later', name: 'readLater', component: Home }
 ]
 
 const router = createRouter({

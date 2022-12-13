@@ -30,7 +30,7 @@ async function onButtonClick(event) {
     <label for="password">Password:</label>
     <input type="password" v-model="password" required />
     <button type="button" @click="onButtonClick">Go!</button>
-    <span class="fail" v-show="usersStore.token">Login failed</span>
+    <span class="fail" v-if="usersStore.token">Login failed</span>
   </div>
 </template>
 

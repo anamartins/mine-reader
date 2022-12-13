@@ -1,9 +1,31 @@
 <script setup>
-import { onMounted, computed, defineProps } from 'vue'
+import { onMounted, computed, defineProps, onUpdated, ref } from 'vue'
+import { usePostsStore } from '../../stores/posts'
 
 const props = defineProps({
   post: { type: Object, required: true }
 })
+
+const markedAsRead = ref(false)
+const readLater = ref(false)
+
+let postsStore = usePostsStore()
+
+onMounted(() => {
+  // console.log('post', props.post.isRead)
+})
+
+onUpdated(() => {})
+
+async function onMarkAsReadChange() {
+  await postsStore.markPostAsRead(props.post.id)
+  postsStore.getPosts()
+}
+
+async function onReadLaterChange() {
+  await postsStore.readPostLater(props.post.id)
+  postsStore.getPosts()
+}
 </script>
 
 <template>
@@ -14,6 +36,22 @@ const props = defineProps({
     </div>
     <div class="post-source">{{ post.feed.title }}</div>
     <div class="post-date">{{ post.pubDate }}</div>
+    <input
+      type="checkbox"
+      id="read"
+      value="isRead"
+      v-model="markedAsRead"
+      @change="onMarkAsReadChange"
+    /><label for="read">Mark as read</label>
+
+    <input
+      type="checkbox"
+      id="readLater"
+      value="isreadLater"
+      v-model="readLater"
+      @change="onReadLaterChange"
+    /><label for="read">Read Later</label>
+
     <div class="post-content" v-html="post.content"></div>
   </div>
 </template>

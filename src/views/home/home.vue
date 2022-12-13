@@ -7,9 +7,13 @@ import { usePostsStore } from '../../stores/posts'
 
 onMounted(() => {
   const route = useRoute()
-  const feedId = route.params.feed
   let postsStore = usePostsStore()
-  postsStore.getPosts(feedId)
+  if (route.name !== 'readLater') {
+    const feedId = route.params.feed
+    postsStore.getPosts(feedId)
+  } else {
+    postsStore.getReadLaterPosts()
+  }
 })
 </script>
 

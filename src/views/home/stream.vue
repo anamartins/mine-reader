@@ -1,5 +1,12 @@
 <script setup>
-import { onMounted, onUnmounted, computed, ref, defineProps } from 'vue'
+import {
+  onMounted,
+  onUnmounted,
+  onUpdated,
+  computed,
+  ref,
+  defineProps
+} from 'vue'
 import { usePostsStore } from '../../stores/posts'
 
 import Post from './post.vue'
@@ -12,14 +19,16 @@ onMounted(() => {
   observer.observe(target)
 })
 
+// onUpdated(() => {
+//   console.log('hello from stream')
+// })
+
 let postsStore = usePostsStore()
 let posts = computed(() => postsStore.posts)
 let isReady = computed(() => postsStore.isReady)
+const hasNext = computed(() => postsStore.hasNext)
 
-function onButtonClick() {
-  postsStore.getMorePosts()
-  console.log('hoy')
-}
+// let unreadPosts = posts.value.filter((element) => element.isRead === false)
 
 function onObserverChanges(entries) {
   let isIntersecting = entries[0].isIntersecting
@@ -30,8 +39,7 @@ function onObserverChanges(entries) {
   <div class="stream">
     <div class="start" ref="start"></div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
-    <!-- <button type="button" @click="onButtonClick">NEXT</button> -->
-    <div class="box" ref="box"></div>
+    <div class="box" ref="box" v-show="hasNext"></div>
   </div>
 </template>
 

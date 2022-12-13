@@ -30,6 +30,22 @@ export const useFeedsStore = defineStore('feeds', () => {
     )
   }
 
+  async function removeFeed(name) {
+    const element = this.feeds.find((element) => element.title === name.value)
+    const url = element.url
+
+    const returnAPI = await axios.post(
+      `${API_BASE_URL}/feed/unfollow`,
+      { url: url },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        withCredentials: true
+      }
+    )
+  }
+
   async function getFeeds() {
     const returnAPI = await axios.get(`${API_BASE_URL}/user/feeds`, {
       headers: {
@@ -45,22 +61,6 @@ export const useFeedsStore = defineStore('feeds', () => {
     // feeds = returnAPI.data.feeds
     // total = returnAPI.data.total
     // readLater = returnAPI.data.readLater
-  }
-
-  async function removeFeed(name) {
-    const element = this.feeds.find((element) => element.title === name.value)
-    const url = element.url
-
-    const returnAPI = await axios.post(
-      `${API_BASE_URL}/feed/unfollow`,
-      { url: url },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        withCredentials: true
-      }
-    )
   }
 
   return { getFeeds, followNewFeed, removeFeed }
