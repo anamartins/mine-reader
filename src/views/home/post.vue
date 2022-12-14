@@ -24,7 +24,7 @@ async function onMarkAsReadChange() {
 
 async function onReadLaterChange() {
   await postsStore.readPostLater(props.post.id)
-  postsStore.getPosts()
+  // postsStore.getPosts()
 }
 </script>
 
