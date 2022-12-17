@@ -1,8 +1,7 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import Logo from './logo.vue'
 import { useFeedsStore } from '../stores/feeds'
-// import { usePostsStore } from '../stores/posts'
 
 let feedsStore = useFeedsStore()
 feedsStore.getFeeds()
@@ -10,13 +9,6 @@ feedsStore.getFeeds()
 let feeds = computed(() => feedsStore.feeds)
 let totalFeeds = computed(() => feedsStore.total)
 let readLater = computed(() => feedsStore.readLater)
-
-// let postsStore = usePostsStore()
-// postsStore.getPosts()
-
-// let readLaterPosts = postsStore.posts
-
-onMounted(() => {})
 </script>
 
 <template>

@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
 import { ref, computed } from 'vue'
 import { useApi } from '../composables/api'
 
@@ -7,7 +6,6 @@ const API_BASE_URL =
   'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
 
 export const usePostsStore = defineStore('posts', () => {
-  const token = localStorage.getItem('mineToken')
   const posts = ref([])
   const total = ref(0)
   const next = ref('')
@@ -47,7 +45,10 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   async function markPostAsRead(id) {
-    const returnAPI = await postApi(`${API_BASE_URL}/stream/${id}/is-read`)
+    const returnAPI = await postApi(
+      `${API_BASE_URL}/stream/${id}/is-read`,
+      null
+    )
     total.value -= 1
     next.value = returnAPI.data.next
     isReady.value = true
@@ -55,7 +56,7 @@ export const usePostsStore = defineStore('posts', () => {
 
   async function readPostLater(id) {
     isReady.value = false
-    await postApi(`${API_BASE_URL}/stream/${id}/read-later`)
+    await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
   }
 
   return {

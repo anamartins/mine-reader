@@ -1,8 +1,5 @@
 import axios from 'axios'
-import { ref, computed } from 'vue'
 export function useApi() {
-  const API_BASE_URL =
-    'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
   const token = localStorage.getItem('mineToken')
 
   async function getApi(url) {
@@ -13,9 +10,8 @@ export function useApi() {
       withCredentials: true
     })
   }
-
-  async function postApi(url) {
-    return axios.post(url, null, {
+  async function postApi(arg1, arg2) {
+    return axios.post(arg1, arg2, {
       headers: {
         Authorization: `Bearer ${token}`
       },

@@ -1,14 +1,6 @@
 <script setup>
-import {
-  onMounted,
-  onUnmounted,
-  onUpdated,
-  computed,
-  ref,
-  defineProps
-} from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import { usePostsStore } from '../../stores/posts'
-
 import Post from './post.vue'
 
 const box = ref(null)
@@ -19,16 +11,10 @@ onMounted(() => {
   observer.observe(target)
 })
 
-// onUpdated(() => {
-//   console.log('hello from stream')
-// })
-
 let postsStore = usePostsStore()
 let posts = computed(() => postsStore.posts)
 let isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
-
-// let unreadPosts = posts.value.filter((element) => element.isRead === false)
 
 function onObserverChanges(entries) {
   let isIntersecting = entries[0].isIntersecting
