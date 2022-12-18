@@ -60,6 +60,7 @@ export const usePostsStore = defineStore('posts', () => {
   async function readPostLater(id) {
     isReady.value = false
     await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
+    feedsStore.readLater++
   }
 
   return {
