@@ -11,8 +11,15 @@ export const useFeedsStore = defineStore('feeds', () => {
   const readLater = ref(0)
   const { getApi, postApi } = useApi()
 
+  async function getFeedById(id) {
+    return feeds.value.find((e, index) => {
+      return e.feedId === id
+    })
+  }
+
   async function followNewFeed(url) {
     await postApi(`${API_BASE_URL}/feed/follow`, { url: url })
+    getFeeds()
   }
 
   async function removeFeed(name) {
@@ -31,6 +38,7 @@ export const useFeedsStore = defineStore('feeds', () => {
   return {
     //actions
     getFeeds,
+    getFeedById,
     followNewFeed,
     removeFeed,
     //ref

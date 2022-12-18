@@ -4,7 +4,7 @@ import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import Logo from '../components/logo.vue'
 
-let email = ref('willian87@gmail.com')
+let email = ref('anacarolcm@gmail.com')
 let password = ref('12345')
 let usersStore = useUsersStore()
 

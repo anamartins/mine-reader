@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApi } from '../composables/api'
+import { useFeedsStore } from '../stores/feeds'
 
 const API_BASE_URL =
   'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
@@ -13,6 +14,8 @@ export const usePostsStore = defineStore('posts', () => {
 
   const hasNext = computed(() => !!next.value)
   const { getApi, postApi } = useApi()
+
+  const feedsStore = useFeedsStore()
 
   async function fetchPosts(url) {
     const returnAPI = await getApi(url)
@@ -44,14 +47,14 @@ export const usePostsStore = defineStore('posts', () => {
     isReady.value = true
   }
 
-  async function markPostAsRead(id) {
+  async function markPostAsRead(id, feedId) {
     const returnAPI = await postApi(
       `${API_BASE_URL}/stream/${id}/is-read`,
       null
     )
-    total.value -= 1
-    next.value = returnAPI.data.next
-    isReady.value = true
+    const feed = await feedsStore.getFeedById(feedId)
+    feed.unread--
+    feedsStore.total--
   }
 
   async function readPostLater(id) {

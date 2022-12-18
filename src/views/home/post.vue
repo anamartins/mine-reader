@@ -16,8 +16,7 @@ onMounted(() => {})
 onUpdated(() => {})
 
 async function onMarkAsReadChange() {
-  await postsStore.markPostAsRead(props.post.id)
-  postsStore.getPosts()
+  await postsStore.markPostAsRead(props.post.id, props.post.feedId)
 }
 
 async function onReadLaterChange() {
