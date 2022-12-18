@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, defineProps, onUpdated, ref } from 'vue'
+import { onMounted, onUpdated, ref } from 'vue'
 import { usePostsStore } from '../../stores/posts'
 
 const props = defineProps({

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUpdated, computed } from 'vue'
+import { onMounted } from 'vue'
 import Sidebar from '../../components/sidebar.vue'
 import Stream from './stream.vue'
 import { useRoute } from 'vue-router'
