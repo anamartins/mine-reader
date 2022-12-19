@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from 'vue'
-import Logo from './logo.vue'
-import { useFeedsStore } from '../stores/feeds'
+import Logo from '../logo.vue'
+import ProfileCard from './profileCard.vue'
+import { useFeedsStore } from '../../stores/feeds'
 
 let feedsStore = useFeedsStore()
 feedsStore.getFeeds()
@@ -61,6 +62,7 @@ let readLater = computed(() => feedsStore.readLater)
         <li>two</li>
       </ul>
     </section>
+    <ProfileCard />
   </div>
 </template>
 
