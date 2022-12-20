@@ -14,7 +14,7 @@ async function onButtonClick(event) {
   await usersStore.login(email.value, password.value)
 
   if (usersStore.token) {
-    router.push(`/home`)
+    router.push('/home')
   } else {
     email.value = ''
     password.value = ''
