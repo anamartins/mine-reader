@@ -16,11 +16,16 @@ onMounted(() => {})
 onUpdated(() => {})
 
 async function onMarkAsReadChange() {
-  await postsStore.markPostAsRead(props.post.id, props.post.feedId)
+  await postsStore.markPostAsRead(
+    props.post.id,
+    props.post.feedId,
+    markedAsRead.value
+  )
 }
 
 async function onReadLaterChange() {
-  await postsStore.readPostLater(props.post.id)
+  await postsStore.readPostLater(props.post.id, readLater.value)
+  console.log('readLAter', readLater.value)
 }
 </script>
 

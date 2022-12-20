@@ -6,7 +6,7 @@ const router = useRouter()
 const usersStore = useUsersStore()
 usersStore.getUser()
 const user = usersStore.user
-const token = localStorage.getItem('mineToken')
+// const token = localStorage.getItem('mineToken')
 
 function onSignOut(e) {
   localStorage.removeItem('mineToken')

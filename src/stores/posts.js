@@ -47,20 +47,34 @@ export const usePostsStore = defineStore('posts', () => {
     isReady.value = true
   }
 
-  async function markPostAsRead(id, feedId) {
+  async function markPostAsRead(id, feedId, isRead) {
+    console.log('isRead?', isRead)
     const returnAPI = await postApi(
       `${API_BASE_URL}/stream/${id}/is-read`,
       null
     )
     const feed = await feedsStore.getFeedById(feedId)
-    feed.unread--
-    feedsStore.total--
+    if (isRead) {
+      feed.unread--
+      feedsStore.total--
+      console.log('menos um', isRead)
+    } else {
+      feed.unread++
+      feedsStore.total++
+      console.log('mais um', isRead)
+    }
   }
 
-  async function readPostLater(id) {
+  async function readPostLater(id, isReadLater) {
     isReady.value = false
     await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
-    feedsStore.readLater++
+    if (isReadLater) {
+      feedsStore.readLater++
+      console.log('mais um', isReadLater)
+    } else {
+      feedsStore.readLater--
+      console.log('menos um', isReadLater)
+    }
   }
 
   return {

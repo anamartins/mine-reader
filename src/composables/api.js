@@ -11,6 +11,7 @@ export function useApi() {
     })
   }
   async function postApi(arg1, arg2) {
+    console.log('postAPI', arg1, arg2)
     return axios.post(arg1, arg2, {
       headers: {
         Authorization: `Bearer ${token}`
