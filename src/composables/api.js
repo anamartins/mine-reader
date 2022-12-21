@@ -11,7 +11,6 @@ export function useApi() {
     })
   }
   async function postApi(arg1, arg2) {
-    console.log('postAPI', arg1, arg2)
     return axios.post(arg1, arg2, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -20,5 +19,14 @@ export function useApi() {
     })
   }
 
-  return { getApi, postApi }
+  async function deleteApi(url) {
+    return axios.delete(url, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      withCredentials: true
+    })
+  }
+
+  return { getApi, postApi, deleteApi }
 }

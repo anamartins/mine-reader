@@ -13,7 +13,7 @@ export const usePostsStore = defineStore('posts', () => {
   const isReady = ref(false)
 
   const hasNext = computed(() => !!next.value)
-  const { getApi, postApi } = useApi()
+  const { getApi, postApi, deleteApi } = useApi()
 
   const feedsStore = useFeedsStore()
 
@@ -48,32 +48,26 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   async function markPostAsRead(id, feedId, isRead) {
-    console.log('isRead?', isRead)
-    const returnAPI = await postApi(
-      `${API_BASE_URL}/stream/${id}/is-read`,
-      null
-    )
     const feed = await feedsStore.getFeedById(feedId)
     if (isRead) {
+      await postApi(`${API_BASE_URL}/stream/${id}/is-read`, null)
       feed.unread--
       feedsStore.total--
-      console.log('menos um', isRead)
     } else {
+      await deleteApi(`${API_BASE_URL}/stream/${id}/is-read`)
       feed.unread++
       feedsStore.total++
-      console.log('mais um', isRead)
     }
   }
 
   async function readPostLater(id, isReadLater) {
     isReady.value = false
-    await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
     if (isReadLater) {
+      await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
       feedsStore.readLater++
-      console.log('mais um', isReadLater)
     } else {
+      await deleteApi(`${API_BASE_URL}/stream/${id}/read-later`)
       feedsStore.readLater--
-      console.log('menos um', isReadLater)
     }
   }
 
