@@ -1,9 +1,20 @@
 <script setup>
+import { useRoute } from 'vue-router'
 import { onMounted, computed, ref } from 'vue'
 import { usePostsStore } from '../../stores/posts'
 import Post from './post.vue'
 
 const box = ref(null)
+const seeUnread = ref(false)
+
+const isUnreadLocalStorage = localStorage.getItem('seeUnread')
+console.log('local', localStorage.getItem('seeUnread'))
+console.log(isUnreadLocalStorage)
+
+seeUnread.value = isUnreadLocalStorage
+
+const route = useRoute()
+const path = computed(() => route.path)
 
 onMounted(() => {
   let observer = new IntersectionObserver(onObserverChanges)
@@ -20,10 +31,28 @@ function onObserverChanges(entries) {
   let isIntersecting = entries[0].isIntersecting
   if (isReady.value && isIntersecting) postsStore.getMorePosts()
 }
+
+function onSeeReadPostsChange(e) {
+  console.log('is unread?', isUnreadLocalStorage)
+  localStorage.setItem('seeUnread', seeUnread.value)
+  let feedId = path.value.split('/')[2]
+  if (!!e.target.checked) {
+    postsStore.getOnlyUnreadPosts(feedId)
+  } else {
+    postsStore.getPosts(feedId)
+  }
+}
 </script>
 <template>
   <div class="stream">
-    <div class="filter-bar">FILTER BAR</div>
+    <div class="filter-bar">
+      <input
+        class="check"
+        type="checkbox"
+        @change="onSeeReadPostsChange"
+        v-model="seeUnread"
+      />only unread posts
+    </div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="box" v-show="hasNext"></div>
   </div>
@@ -36,9 +65,9 @@ function onObserverChanges(entries) {
 }
 
 .filter-bar {
-  background-color: deeppink;
   width: 100%;
-  height: 20%;
+  height: auto;
+  padding: 10px 5px 5px 5px;
 }
 
 .box {

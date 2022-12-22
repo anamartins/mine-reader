@@ -29,11 +29,10 @@ function onSignOut(e) {
   width: calc(100% - 5%);
   padding: 5%;
   border: 1px solid #000;
-  border-radius: 5px;
 }
 
 .user-data {
-  font-size: 20px;
+  font-size: 15px;
   margin: 1% 0;
 }
 
