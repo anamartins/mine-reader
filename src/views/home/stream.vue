@@ -23,7 +23,7 @@ function onObserverChanges(entries) {
 </script>
 <template>
   <div class="stream">
-    <div class="start" ref="start"></div>
+    <div class="filter-bar">FILTER BAR</div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="box" v-show="hasNext"></div>
   </div>
@@ -33,6 +33,12 @@ function onObserverChanges(entries) {
 .stream {
   position: relative;
   width: 70%;
+}
+
+.filter-bar {
+  background-color: deeppink;
+  width: 100%;
+  height: 20%;
 }
 
 .box {

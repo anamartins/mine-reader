@@ -11,12 +11,11 @@ let feeds = computed(() => feedsStore.feeds)
 
 async function onAddButtonClick() {
   await feedsStore.followNewFeed(feed.value)
-  feedsStore.getFeeds()
+  feed.value = ''
 }
 
 function onRemoveButtonClick() {
   feedsStore.removeFeed(selected)
-  feedsStore.getFeeds()
 }
 </script>
 

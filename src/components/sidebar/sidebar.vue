@@ -4,6 +4,8 @@ import Logo from '../logo.vue'
 import ProfileCard from './profileCard.vue'
 import { useFeedsStore } from '../../stores/feeds'
 
+const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
+
 let feedsStore = useFeedsStore()
 feedsStore.getFeeds()
 
@@ -24,7 +26,9 @@ let readLater = computed(() => feedsStore.readLater)
       <p><router-link to="/feed/add">add a new feed</router-link></p>
       <ul class="allfeeds-list">
         <li v-for="feed in feeds" class="feed" v-bind:key="feed.id">
+          <img class="feed-icon" :src="IMG_BASE_URL + feed.icon" />
           <router-link
+            class="feed-name"
             :to="{
               name: 'feed',
               params: { feed: feed.feedId }
@@ -69,8 +73,9 @@ let readLater = computed(() => feedsStore.readLater)
 <style scoped>
 .sidebar {
   width: 20%;
-  /* height: 100vh; */
+  position: -webkit-sticky;
   position: sticky;
+  top: 0;
   padding: 0 1%;
   margin: 0 1% 0 0;
 }
@@ -79,9 +84,20 @@ h2 {
   font-weight: 700;
 }
 ul {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   list-style-type: none;
+}
+.feed {
+  margin: 2% 0 2% 0;
+  display: flex;
+  align-items: center;
+}
+
+.feed-icon {
+  position: relative;
+  width: 5%;
+  margin: 0% 3% 0% 0;
 }
 .side-sub {
   margin: 5% 5% 5% 0;
