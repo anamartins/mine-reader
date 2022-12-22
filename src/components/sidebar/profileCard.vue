@@ -15,14 +15,37 @@ function onSignOut(e) {
 </script>
 
 <template>
-  <div class="profile-card">{{ user.email }}</div>
-  <router-link :to="{ name: 'profile' }">edit your profile</router-link>
-  <button type="button" @click="onSignOut">Sign out</button>
+  <div class="profile-card">
+    <div class="user-data">
+      <router-link :to="{ name: 'profile' }">{{ user.email }}</router-link>
+    </div>
+
+    <button type="button" @click="onSignOut">Sign out</button>
+  </div>
 </template>
 
 <style scoped>
 .profile-card {
-  background-color: deeppink;
-  width: 100%;
+  width: calc(100% - 5%);
+  padding: 5%;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
+
+.user-data {
+  font-size: 20px;
+  margin: 1% 0;
+}
+
+button {
+  display: block;
+  margin: 5% 0px 0px 0px;
+  padding: 5px 10px;
+}
+
+/* button {
+  position: absolute;
+  bottom: 75px;
+  left: 230px;
+} */
 </style>

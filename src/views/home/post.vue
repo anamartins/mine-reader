@@ -54,6 +54,7 @@ async function onReadLaterChange() {
   margin: 1% 0;
   padding: 1%;
   width: calc(100% - 4px - 2%);
+  border-radius: 5px;
 }
 .read {
   /* background-color: deeppink; */
