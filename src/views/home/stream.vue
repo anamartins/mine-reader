@@ -7,11 +7,6 @@ import Post from './post.vue'
 const isUnreadLocalStorage = localStorage.getItem('seeUnread')
 const box = ref(null)
 const seeUnread = ref(isUnreadLocalStorage)
-console.log(
-  'isUnreadLocalStorage and seeUnread',
-  isUnreadLocalStorage,
-  seeUnread.value
-)
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -37,7 +32,6 @@ function onSeeUnreadPostsChange() {
   const isOnlyUnread = seeUnread.value
   localStorage.setItem('seeUnread', isOnlyUnread)
   let feedId = path.value.split('/')[2]
-  console.log('click', feedId, isReadLater, isOnlyUnread, seeUnread)
   postsStore.getPosts({ feedId, isReadLater, isOnlyUnread })
 
   // if (seeUnread.value) {

@@ -26,7 +26,6 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   function getPosts({ feedId, isReadLater, isOnlyUnread }) {
-    console.log('getPosts', feedId, isReadLater, isOnlyUnread)
     let arg = '?'
     if (feedId) {
       arg += `feedId=${feedId}`
@@ -38,7 +37,6 @@ export const usePostsStore = defineStore('posts', () => {
 
     arg += `&isReadLater=${isReadLater}`
     isReady.value = false
-    console.log('arg', arg)
     fetchPosts(`${API_BASE_URL}/stream${arg}`)
   }
 
@@ -51,7 +49,6 @@ export const usePostsStore = defineStore('posts', () => {
   //   if (feedId) {
   //     arg = `feedId=${feedId}`
   //   }
-  //   console.log('fetch', arg)
   //   fetchPosts(`${API_BASE_URL}/stream?${arg}&isRead=false`)
   // }
 
