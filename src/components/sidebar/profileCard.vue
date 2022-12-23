@@ -6,7 +6,6 @@ const router = useRouter()
 const usersStore = useUsersStore()
 usersStore.getUser()
 const user = usersStore.user
-// const token = localStorage.getItem('mineToken')
 
 function onSignOut(e) {
   localStorage.removeItem('mineToken')
@@ -41,10 +40,4 @@ button {
   margin: 5% 0px 0px 0px;
   padding: 5px 10px;
 }
-
-/* button {
-  position: absolute;
-  bottom: 75px;
-  left: 230px;
-} */
 </style>

@@ -28,22 +28,24 @@ async function onReadLaterChange() {
     </div>
     <div class="post-source">{{ post.feed.title }}</div>
     <div class="post-date">{{ post.pubDate }}</div>
-    <input
-      class="check"
-      type="checkbox"
-      id="read"
-      value="isRead"
-      v-model="post.isRead"
-      @change="onMarkAsReadChange"
-    /><label class="check-label" for="read">Mark as read</label>
-    <input
-      class="check"
-      type="checkbox"
-      id="readLater"
-      value="isreadLater"
-      v-model="post.isReadLater"
-      @change="onReadLaterChange"
-    /><label class="check-label" for="read">Read Later</label>
+    <label class="check-label">
+      <input
+        class="check"
+        type="checkbox"
+        value="isRead"
+        v-model="post.isRead"
+        @change="onMarkAsReadChange"
+      />Mark as read
+    </label>
+    <label class="check-label">
+      <input
+        class="check"
+        type="checkbox"
+        value="isreadLater"
+        v-model="post.isReadLater"
+        @change="onReadLaterChange"
+      />Read Later
+    </label>
     <div class="post-content" v-html="post.content"></div>
   </div>
 </template>

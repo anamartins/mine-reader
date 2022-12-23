@@ -23,9 +23,9 @@ let readLater = computed(() => feedsStore.readLater)
           >all feeds ({{ totalFeeds }})</router-link
         >
       </h2>
-      <p><router-link to="/feed/add">add a new feed</router-link></p>
+      <p><router-link :to="{ name: 'addFeed' }">add a new feed</router-link></p>
       <ul class="allfeeds-list">
-        <li v-for="feed in feeds" class="feed" v-bind:key="feed.id">
+        <li v-for="feed in feeds" class="feed" :key="feed.id">
           <img class="feed-icon" :src="IMG_BASE_URL + feed.icon" />
           <router-link
             class="feed-name"
@@ -40,9 +40,9 @@ let readLater = computed(() => feedsStore.readLater)
       </ul>
     </section>
     <section class="read-later">
-      <router-link :to="{ name: 'readLater' }"
-        ><h2>Read Later ({{ readLater }})</h2></router-link
-      >
+      <router-link :to="{ name: 'readLater' }">
+        <h2>Read Later ({{ readLater }})</h2>
+      </router-link>
     </section>
     <section class="side-sub">
       <h2>tags</h2>
@@ -73,7 +73,6 @@ let readLater = computed(() => feedsStore.readLater)
 <style scoped>
 .sidebar {
   width: 20%;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   padding: 0 1%;

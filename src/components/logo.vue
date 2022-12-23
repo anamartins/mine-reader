@@ -1,11 +1,7 @@
 <script setup>
-import { onMounted } from 'vue'
-
 const props = defineProps({
   link: String
 })
-
-onMounted(() => {})
 </script>
 
 <template>

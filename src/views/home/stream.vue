@@ -1,20 +1,23 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, onUnmounted, computed, ref } from 'vue'
 import { usePostsStore } from '../../stores/posts'
 import Post from './post.vue'
 
 const isUnreadLocalStorage = localStorage.getItem('seeUnread')
-const box = ref(null)
+const showMoreElement = ref(null)
 const seeUnread = ref(isUnreadLocalStorage)
 
 const route = useRoute()
 const path = computed(() => route.path)
+let observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {
-  let observer = new IntersectionObserver(onObserverChanges)
-  let target = box.value
-  observer.observe(target)
+  observer.observe(showMoreElement.value)
+})
+
+onUnmounted(() => {
+  observer.unobserve(showMoreElement.value)
 })
 
 let postsStore = usePostsStore()
@@ -52,7 +55,7 @@ function onSeeUnreadPostsChange() {
       />only unread posts
     </div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
-    <div class="box" ref="box" v-show="hasNext"></div>
+    <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>
 </template>
 
