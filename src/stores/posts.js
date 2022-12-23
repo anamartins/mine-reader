@@ -25,27 +25,35 @@ export const usePostsStore = defineStore('posts', () => {
     isReady.value = true
   }
 
-  function getPosts(feedId) {
-    let arg = ''
+  function getPosts({ feedId, isReadLater, isOnlyUnread }) {
+    console.log('getPosts', feedId, isReadLater, isOnlyUnread)
+    let arg = '?'
     if (feedId) {
-      arg = `?feedId=${feedId}`
+      arg += `feedId=${feedId}`
     }
+
+    if (isOnlyUnread) {
+      arg += `&isRead=false`
+    }
+
+    arg += `&isReadLater=${isReadLater}`
     isReady.value = false
+    console.log('arg', arg)
     fetchPosts(`${API_BASE_URL}/stream${arg}`)
   }
 
-  function getReadLaterPosts() {
-    fetchPosts(`${API_BASE_URL}/stream?isReadLater=true`)
-  }
+  // function getReadLaterPosts() {
+  //   fetchPosts(`${API_BASE_URL}/stream?isReadLater=true`)
+  // }
 
-  function getOnlyUnreadPosts(feedId) {
-    let arg = ''
-    if (feedId) {
-      arg = `feedId=${feedId}`
-    }
-    console.log('fetch', arg)
-    fetchPosts(`${API_BASE_URL}/stream?${arg}&isRead=false`)
-  }
+  // function getOnlyUnreadPosts(feedId) {
+  //   let arg = ''
+  //   if (feedId) {
+  //     arg = `feedId=${feedId}`
+  //   }
+  //   console.log('fetch', arg)
+  //   fetchPosts(`${API_BASE_URL}/stream?${arg}&isRead=false`)
+  // }
 
   async function getMorePosts() {
     isReady.value = false
@@ -86,8 +94,8 @@ export const usePostsStore = defineStore('posts', () => {
     getMorePosts,
     markPostAsRead,
     readPostLater,
-    getReadLaterPosts,
-    getOnlyUnreadPosts,
+    // getReadLaterPosts,
+    // getOnlyUnreadPosts,
     //state (ref)
     posts,
     total,

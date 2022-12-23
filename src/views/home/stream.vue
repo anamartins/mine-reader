@@ -4,14 +4,14 @@ import { onMounted, computed, ref } from 'vue'
 import { usePostsStore } from '../../stores/posts'
 import Post from './post.vue'
 
-const box = ref(null)
-const seeUnread = ref(false)
-
 const isUnreadLocalStorage = localStorage.getItem('seeUnread')
-console.log('local', localStorage.getItem('seeUnread'))
-console.log(isUnreadLocalStorage)
-
-seeUnread.value = isUnreadLocalStorage
+const box = ref(null)
+const seeUnread = ref(isUnreadLocalStorage)
+console.log(
+  'isUnreadLocalStorage and seeUnread',
+  isUnreadLocalStorage,
+  seeUnread.value
+)
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -32,15 +32,19 @@ function onObserverChanges(entries) {
   if (isReady.value && isIntersecting) postsStore.getMorePosts()
 }
 
-function onSeeReadPostsChange(e) {
-  console.log('is unread?', isUnreadLocalStorage)
-  localStorage.setItem('seeUnread', seeUnread.value)
+function onSeeUnreadPostsChange() {
+  const isReadLater = route.name === 'readLater'
+  const isOnlyUnread = seeUnread.value
+  localStorage.setItem('seeUnread', isOnlyUnread)
   let feedId = path.value.split('/')[2]
-  if (!!e.target.checked) {
-    postsStore.getOnlyUnreadPosts(feedId)
-  } else {
-    postsStore.getPosts(feedId)
-  }
+  console.log('click', feedId, isReadLater, isOnlyUnread, seeUnread)
+  postsStore.getPosts({ feedId, isReadLater, isOnlyUnread })
+
+  // if (seeUnread.value) {
+  //   // postsStore.getOnlyUnreadPosts(feedId)
+  // } else {
+  //   postsStore.getPosts(feedId)
+  // }
 }
 </script>
 <template>
@@ -49,7 +53,7 @@ function onSeeReadPostsChange(e) {
       <input
         class="check"
         type="checkbox"
-        @change="onSeeReadPostsChange"
+        @change="onSeeUnreadPostsChange"
         v-model="seeUnread"
       />only unread posts
     </div>
