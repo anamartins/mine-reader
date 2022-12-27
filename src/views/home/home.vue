@@ -6,7 +6,6 @@ import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 
 const isUnreadLocalStorage = !!localStorage.getItem('seeUnread')
-// const seeUnread = ref(isUnreadLocalStorage)
 
 onMounted(() => {
   const route = useRoute()

@@ -1,8 +1,7 @@
 import axios from 'axios'
 export function useApi() {
-  const token = localStorage.getItem('mineToken')
-
   async function getApi(url) {
+    const token = localStorage.getItem('mineToken')
     return axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -10,8 +9,9 @@ export function useApi() {
       withCredentials: true
     })
   }
-  async function postApi(arg1, arg2) {
-    return axios.post(arg1, arg2, {
+  async function postApi(url, data) {
+    const token = localStorage.getItem('mineToken')
+    return axios.post(url, data, {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -20,6 +20,7 @@ export function useApi() {
   }
 
   async function deleteApi(url) {
+    const token = localStorage.getItem('mineToken')
     return axios.delete(url, {
       headers: {
         Authorization: `Bearer ${token}`

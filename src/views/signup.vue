@@ -11,12 +11,12 @@ const usersStore = useUsersStore()
 const router = useRouter()
 
 async function onButtonClick(event) {
-  await usersStore.newUser()
+  await usersStore.newUser(email.value, password.value)
+  console.log(email.value, password.value)
+  router.push('/')
 }
 
-onMounted(() => {
-  console.log('hey', email, password)
-})
+onMounted(() => {})
 </script>
 
 <template>
@@ -27,7 +27,6 @@ onMounted(() => {
     <label for="password">Password:</label>
     <input type="password" v-model="password" required />
     <button type="button" @click="onButtonClick">Yay</button>
-    <span class="fail" v-if="usersStore.token">Login failed</span>
   </div>
 </template>
 

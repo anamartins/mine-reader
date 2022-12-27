@@ -40,18 +40,6 @@ export const usePostsStore = defineStore('posts', () => {
     fetchPosts(`${API_BASE_URL}/stream${arg}`)
   }
 
-  // function getReadLaterPosts() {
-  //   fetchPosts(`${API_BASE_URL}/stream?isReadLater=true`)
-  // }
-
-  // function getOnlyUnreadPosts(feedId) {
-  //   let arg = ''
-  //   if (feedId) {
-  //     arg = `feedId=${feedId}`
-  //   }
-  //   fetchPosts(`${API_BASE_URL}/stream?${arg}&isRead=false`)
-  // }
-
   async function getMorePosts() {
     isReady.value = false
     const returnAPI = await getApi(next.value)
@@ -91,8 +79,6 @@ export const usePostsStore = defineStore('posts', () => {
     getMorePosts,
     markPostAsRead,
     readPostLater,
-    // getReadLaterPosts,
-    // getOnlyUnreadPosts,
     //state (ref)
     posts,
     total,

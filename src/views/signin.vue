@@ -10,7 +10,7 @@ const usersStore = useUsersStore()
 
 const router = useRouter()
 
-async function onButtonClick(event) {
+async function onButtonClick() {
   await usersStore.login(email.value, password.value)
 
   if (usersStore.token) {
@@ -31,6 +31,9 @@ async function onButtonClick(event) {
     <input type="password" v-model="password" required />
     <button type="button" @click="onButtonClick">Go!</button>
     <span class="fail" v-if="usersStore.token">Login failed</span>
+    <router-link :to="{ name: 'signUp' }">
+      new user? create an account
+    </router-link>
   </div>
 </template>
 

@@ -26,9 +26,12 @@ export const useUsersStore = defineStore('users', () => {
     user.value.email = returnAPI.data.email
   }
 
-  async function newUser() {
-    // const returnAPI = await postApi()
-    console.log('singup')
+  async function newUser(email, password) {
+    const returnAPI = await postApi(`${API_BASE_URL}/auth/sign-up`, {
+      email: email,
+      password: password
+    })
+    console.log(returnAPI.data)
   }
 
   return {
