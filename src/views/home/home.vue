@@ -5,12 +5,10 @@ import Stream from './stream.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 
-const isUnreadLocalStorage = !!localStorage.getItem('seeUnread')
-
 onMounted(() => {
   const route = useRoute()
   const feedId = route.params.feed
-  const isOnlyUnread = localStorage.getItem('seeUnread')
+  const isOnlyUnread = localStorage.getItem('seeUnread') === 'true'
   const isReadLater = route.name === 'readLater'
 
   let postsStore = usePostsStore()

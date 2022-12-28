@@ -30,10 +30,10 @@ async function onReadLaterChange() {
 </script>
 
 <template>
-  <div class="post" :class="{ read: post.isRead }" @click="onPostClick">
+  <div class="post" :class="{ read: post.isRead }">
     <base target="_blank" />
     <div class="post-title">
-      <a :href="post.link">{{ post.title }}</a>
+      <a :href="post.link" @click="onPostClick">{{ post.title }}</a>
     </div>
     <div class="post-source">{{ post.feed.title }}</div>
     <div class="post-date">{{ post.pubDate }}</div>

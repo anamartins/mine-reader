@@ -1,12 +1,16 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onUnmounted, computed, ref } from 'vue'
+import { onMounted, onUnmounted, computed, ref, watch } from 'vue'
 import { usePostsStore } from '../../stores/posts'
 import Post from './post.vue'
 
 const isUnreadLocalStorage = localStorage.getItem('seeUnread')
 const showMoreElement = ref(null)
 const seeUnread = ref(isUnreadLocalStorage)
+
+// watch(seeUnread, (newValue) => {
+//   console.log('newValue', newValue)
+// })
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -37,12 +41,6 @@ function onSeeUnreadPostsChange() {
   localStorage.setItem('seeUnread', isOnlyUnread)
   let feedId = path.value.split('/')[2]
   postsStore.getPosts({ feedId, isReadLater, isOnlyUnread })
-
-  // if (seeUnread.value) {
-  //   // postsStore.getOnlyUnreadPosts(feedId)
-  // } else {
-  //   postsStore.getPosts(feedId)
-  // }
 }
 </script>
 <template>
