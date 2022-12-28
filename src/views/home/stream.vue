@@ -14,11 +14,10 @@ let observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {
   observer.observe(showMoreElement.value)
-  console.log(showMoreElement.value)
 })
 
 onUnmounted(() => {
-  console.log(showMoreElement)
+  // console.log(showMoreElement)
   // observer.unobserve(showMoreElement.value)
 })
 
@@ -38,7 +37,6 @@ function onSeeUnreadPostsChange() {
   localStorage.setItem('seeUnread', isOnlyUnread)
   let feedId = path.value.split('/')[2]
   postsStore.getPosts({ feedId, isReadLater, isOnlyUnread })
-  console.log('onSeeUnreadPostsChange', { feedId, isReadLater, isOnlyUnread })
 
   // if (seeUnread.value) {
   //   // postsStore.getOnlyUnreadPosts(feedId)

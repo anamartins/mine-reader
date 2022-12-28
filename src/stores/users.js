@@ -31,7 +31,6 @@ export const useUsersStore = defineStore('users', () => {
       email: email,
       password: password
     })
-    console.log(returnAPI.data)
   }
 
   return {

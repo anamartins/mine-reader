@@ -12,7 +12,6 @@ const router = useRouter()
 
 async function onButtonClick(event) {
   await usersStore.newUser(email.value, password.value)
-  console.log(email.value, password.value)
   router.push('/')
 }
 

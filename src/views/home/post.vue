@@ -7,7 +7,16 @@ const props = defineProps({
 
 let postsStore = usePostsStore()
 
-async function onMarkAsReadChange(e) {
+async function onPostClick() {
+  await postsStore.markPostAsRead(
+    props.post.id,
+    props.post.feedId,
+    props.post.isRead
+  )
+  props.post.isRead = true
+}
+
+async function onMarkAsReadChange() {
   await postsStore.markPostAsRead(
     props.post.id,
     props.post.feedId,
@@ -21,7 +30,7 @@ async function onReadLaterChange() {
 </script>
 
 <template>
-  <div class="post" :class="{ read: post.isRead }">
+  <div class="post" :class="{ read: post.isRead }" @click="onPostClick">
     <base target="_blank" />
     <div class="post-title">
       <a :href="post.link">{{ post.title }}</a>
@@ -57,6 +66,10 @@ async function onReadLaterChange() {
   padding: 1%;
   width: calc(100% - 4px - 2%);
   border-radius: 5px;
+  cursor: pointer;
+}
+.post:hover {
+  background-color: #ddd;
 }
 .read {
   /* background-color: deeppink; */
