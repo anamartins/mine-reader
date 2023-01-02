@@ -1,5 +1,5 @@
 <script setup>
-import { usePostsStore } from '../../stores/posts'
+import { usePostsStore } from '../../../../stores/posts'
 
 const props = defineProps({
   post: { type: Object, required: true }

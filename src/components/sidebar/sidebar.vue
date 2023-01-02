@@ -73,10 +73,13 @@ let readLater = computed(() => feedsStore.readLater)
 <style scoped>
 .sidebar {
   width: 20%;
+  height: 100%;
   position: sticky;
   top: 0;
   padding: 0 1%;
   margin: 0 1% 0 0;
+  display: flex;
+  flex-direction: column;
 }
 h2 {
   font-size: 30px;
@@ -86,6 +89,11 @@ ul {
   font-size: 15px;
   font-weight: 400;
   list-style-type: none;
+}
+.allfeeds-list {
+  height: 20vh;
+  overflow-y: scroll;
+  /* flex: 1; */
 }
 .feed {
   margin: 2% 0 2% 0;
