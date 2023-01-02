@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { ref, watch } from 'vue'
 export function useUserPreferences() {
   const seeUnreadPosts = ref(localStorage.getItem('seeUnread') === 'true')

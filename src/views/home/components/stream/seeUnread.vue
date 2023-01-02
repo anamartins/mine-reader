@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import { ref, computed, watch } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useUserPreferences } from '../../../../composables/userPreferences'
+import CheckBox from '../../../../components/checkbox.vue'
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -16,18 +17,17 @@ function onSeeUnreadPostsChange() {
   postsStore.getPosts({
     feedId,
     isReadLater,
-    isOnlyUnread: userPreferences.seeUnreadPosts
+    isOnlyUnread: userPreferences.seeUnreadPosts.value
   })
 }
 </script>
 <template>
   <div class="seeUnread">
-    <input
-      class="check"
-      type="checkbox"
-      @change="onSeeUnreadPostsChange"
-      v-model="userPreferences.seeUnreadPosts"
-    />only unread posts
+    <CheckBox
+      label="see only unread posts"
+      v-model="userPreferences.seeUnreadPosts.value"
+      @update:modelValue="onSeeUnreadPostsChange"
+    />
   </div>
 </template>
 <style scoped></style>
