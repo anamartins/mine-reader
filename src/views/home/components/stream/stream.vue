@@ -1,14 +1,13 @@
 <script setup>
-import { useRoute } from 'vue-router'
-import { onMounted, onBeforeUnmount, computed, ref, watch } from 'vue'
+// import { useRoute } from 'vue-router'
+import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import Post from './post.vue'
 import SeeUnread from './seeUnread.vue'
 
 const showMoreElement = ref(null)
-// const seeUnread = ref(isUnreadLocalStorage)
 
-const route = useRoute()
+// const route = useRoute()
 let observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {

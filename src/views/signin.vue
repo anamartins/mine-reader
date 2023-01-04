@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import Logo from '../components/logo.vue'
+import InputText from '../components/inputText.vue'
 
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
@@ -25,15 +26,15 @@ async function onButtonClick() {
 <template>
   <div class="signin">
     <Logo />
-    <label for="email">Email:</label>
-    <input type="text" v-model="email" required />
-    <label for="password">Password:</label>
-    <input type="password" v-model="password" required />
-    <button type="button" @click="onButtonClick">Go!</button>
-    <span class="fail" v-if="usersStore.token">Login failed</span>
-    <router-link :to="{ name: 'signUp' }">
-      new user? create an account
-    </router-link>
+    <form>
+      <InputText :is-required="true" label="Email" v-model="email" />
+      <InputText :is-required="true" label="Password" v-model="password" />
+      <button type="button" @click="onButtonClick">Go!</button>
+      <span class="fail" v-if="usersStore.token">Login failed</span>
+      <router-link :to="{ name: 'signUp' }">
+        new user? create an account
+      </router-link>
+    </form>
   </div>
 </template>
 
