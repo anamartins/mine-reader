@@ -22,10 +22,14 @@ export const usePostsStore = defineStore('posts', () => {
     isReady.value = true
   }
 
-  function getPosts({ feedId, isReadLater, isOnlyUnread }) {
+  function getPosts({ feedId, tag, isReadLater, isOnlyUnread }) {
     let arg = '?'
     if (feedId) {
       arg += `feedId=${feedId}`
+    }
+
+    if (tag) {
+      arg += `tag=${tag}`
     }
 
     if (isOnlyUnread) {

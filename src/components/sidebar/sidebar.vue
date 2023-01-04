@@ -54,7 +54,7 @@ let tags = computed(() => tagsStore.tags)
       <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
       <ul class="alltags list">
         <li v-for="tag in tags" :key="tag.id">
-          <router-link :to="{ name: 'tag', params: { tag: tag.id } }">{{
+          <router-link :to="{ name: 'tag', params: { tag: tag.text } }">{{
             tag.text
           }}</router-link>
         </li>
