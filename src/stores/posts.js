@@ -14,18 +14,13 @@ export const usePostsStore = defineStore('posts', () => {
 
   const feedsStore = useFeedsStore()
 
-  async function fetchPosts(url, params) {
-    const returnAPI = await getApi(url, params)
+  async function getPosts(params) {
+    isReady.value = false
+    const returnAPI = await getApi('stream', params)
     posts.value = returnAPI.data.items
     total.value = returnAPI.data.total
     next.value = returnAPI.data.next
     isReady.value = true
-  }
-
-  function getPosts(params) {
-    // params = { feedId, tag, isReadLater, isRead: isOnlyUnread }
-    isReady.value = false
-    fetchPosts(`stream`, params)
   }
 
   async function getMorePosts() {
