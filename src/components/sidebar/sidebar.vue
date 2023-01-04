@@ -17,7 +17,6 @@ let readLater = computed(() => feedsStore.readLater)
 let tagsStore = useTagsStore()
 tagsStore.getTags()
 let tags = computed(() => tagsStore.tags)
-console.log('tags', tags)
 </script>
 
 <template>
@@ -54,7 +53,11 @@ console.log('tags', tags)
       <h2>tags</h2>
       <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
       <ul class="alltags list">
-        <li v-for="tag in tags" :key="tag.id">{{ tag.value }}</li>
+        <li v-for="tag in tags" :key="tag.id">
+          <router-link :to="{ name: 'tag', params: { tag: tag.id } }">{{
+            tag.text
+          }}</router-link>
+        </li>
       </ul>
     </section>
     <section class="side-sub">

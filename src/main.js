@@ -19,6 +19,7 @@ const routes = [
   { path: '/feed/:feed', name: 'feed', component: Home },
   { path: '/feed/add', name: 'addFeed', component: Followfeed },
   { path: '/tag/add', name: 'addTag', component: Addtag },
+  { path: '/tag/:tag', name: 'tag', component: Home },
   { path: '/read-later', name: 'readLater', component: Home }
 ]
 
