@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onUnmounted, computed, ref, watch } from 'vue'
+import { onMounted, onBeforeUnmount, computed, ref, watch } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import Post from './post.vue'
 import SeeUnread from './seeUnread.vue'
@@ -15,9 +15,8 @@ onMounted(() => {
   observer.observe(showMoreElement.value)
 })
 
-onUnmounted(() => {
-  // console.log(showMoreElement)
-  // observer.unobserve(showMoreElement.value)
+onBeforeUnmount(() => {
+  observer.unobserve(showMoreElement.value)
 })
 
 let postsStore = usePostsStore()

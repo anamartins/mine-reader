@@ -14,7 +14,7 @@ export function useApi() {
     }
 
     return axios.get(url, {
-      params: params,
+      params,
       headers: {
         Authorization: `Bearer ${token}`
       },

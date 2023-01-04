@@ -17,7 +17,7 @@ function onSeeUnreadPostsChange() {
   postsStore.getPosts({
     feedId,
     isReadLater,
-    isOnlyUnread: userPreferences.seeUnreadPosts.value
+    isRead: userPreferences.seeUnreadPosts.value
   })
 }
 </script>

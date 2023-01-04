@@ -22,22 +22,8 @@ export const usePostsStore = defineStore('posts', () => {
     isReady.value = true
   }
 
-  function getPosts({ feedId, tag, isReadLater, isOnlyUnread }) {
-    // let arg = '?'
-    // if (feedId) {
-    //   arg += `feedId=${feedId}`
-    // }
-
-    // if (tag) {
-    //   arg += `tag=${tag}`
-    // }
-
-    // if (isOnlyUnread) {
-    //   arg += `&isRead=false`
-    // }
-
-    const params = { feedId, tag, isReadLater, isRead: isOnlyUnread }
-    // arg += `&isReadLater=${isReadLater}`
+  function getPosts(params) {
+    // params = { feedId, tag, isReadLater, isRead: isOnlyUnread }
     isReady.value = false
     fetchPosts(`stream`, params)
   }
