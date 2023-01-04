@@ -14,8 +14,8 @@ export const usePostsStore = defineStore('posts', () => {
 
   const feedsStore = useFeedsStore()
 
-  async function fetchPosts(url) {
-    const returnAPI = await getApi(url)
+  async function fetchPosts(url, params) {
+    const returnAPI = await getApi(url, params)
     posts.value = returnAPI.data.items
     total.value = returnAPI.data.total
     next.value = returnAPI.data.next
@@ -23,22 +23,23 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   function getPosts({ feedId, tag, isReadLater, isOnlyUnread }) {
-    let arg = '?'
-    if (feedId) {
-      arg += `feedId=${feedId}`
-    }
+    // let arg = '?'
+    // if (feedId) {
+    //   arg += `feedId=${feedId}`
+    // }
 
-    if (tag) {
-      arg += `tag=${tag}`
-    }
+    // if (tag) {
+    //   arg += `tag=${tag}`
+    // }
 
-    if (isOnlyUnread) {
-      arg += `&isRead=false`
-    }
+    // if (isOnlyUnread) {
+    //   arg += `&isRead=false`
+    // }
 
-    arg += `&isReadLater=${isReadLater}`
+    const params = { feedId, tag, isReadLater, isRead: isOnlyUnread }
+    // arg += `&isReadLater=${isReadLater}`
     isReady.value = false
-    fetchPosts(`stream${arg}`)
+    fetchPosts(`stream`, params)
   }
 
   async function getMorePosts() {

@@ -14,13 +14,8 @@ let tagsStore = useTagsStore()
 let tags = computed(() => tagsStore.tags)
 
 async function onAddButtonClick() {
-  console.log('tag', tag.value)
-  console.log('selected', selected.value)
   let feed = feeds.value.find((element) => element.title === selected.value)
-  console.log('name', feed.feedId)
-
   await tagsStore.addTag(feed.feedId, tag.value)
-  console.log(getTags())
 }
 </script>
 <template>

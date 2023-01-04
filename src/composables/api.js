@@ -5,7 +5,7 @@ export function useApi() {
   // const API_BASE_URL =
   //   'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
 
-  async function getApi(url) {
+  async function getApi(url, params) {
     const token = localStorage.getItem('mineToken')
     const isUrlComplete = url.slice(0, 8) === 'https://'
 
@@ -14,6 +14,7 @@ export function useApi() {
     }
 
     return axios.get(url, {
+      params: params,
       headers: {
         Authorization: `Bearer ${token}`
       },
