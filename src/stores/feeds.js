@@ -2,9 +2,6 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useApi } from '../composables/api'
 
-const API_BASE_URL =
-  'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
-
 export const useFeedsStore = defineStore('feeds', () => {
   const feeds = ref([])
   const total = ref(0)
@@ -18,18 +15,18 @@ export const useFeedsStore = defineStore('feeds', () => {
   }
 
   async function followNewFeed(url) {
-    await postApi(`${API_BASE_URL}/feed/follow`, { url: url })
+    await postApi(`feed/follow`, { url: url })
     getFeeds()
   }
 
   async function removeFeed(name) {
-    const element = this.feeds.find((element) => element.title === name.value)
+    const element = feeds.value.find((element) => element.title === name.value)
     const url = element.url
-    await postApi(`${API_BASE_URL}/feed/unfollow`, { url: url })
+    await postApi(`feed/unfollow`, { url: url })
   }
 
   async function getFeeds() {
-    const returnAPI = await getApi(`${API_BASE_URL}/user/feeds`)
+    const returnAPI = await getApi(`user/feeds`)
     feeds.value = returnAPI.data.feeds
     total.value = returnAPI.data.total
     readLater.value = returnAPI.data.readLater

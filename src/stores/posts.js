@@ -3,9 +3,6 @@ import { ref, computed } from 'vue'
 import { useApi } from '../composables/api'
 import { useFeedsStore } from '../stores/feeds'
 
-const API_BASE_URL =
-  'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
-
 export const usePostsStore = defineStore('posts', () => {
   const posts = ref([])
   const total = ref(0)
@@ -37,7 +34,7 @@ export const usePostsStore = defineStore('posts', () => {
 
     arg += `&isReadLater=${isReadLater}`
     isReady.value = false
-    fetchPosts(`${API_BASE_URL}/stream${arg}`)
+    fetchPosts(`stream${arg}`)
   }
 
   async function getMorePosts() {
@@ -52,11 +49,11 @@ export const usePostsStore = defineStore('posts', () => {
   async function markPostAsRead(id, feedId, isRead) {
     const feed = await feedsStore.getFeedById(feedId)
     if (isRead) {
-      await postApi(`${API_BASE_URL}/stream/${id}/is-read`, null)
+      await postApi(`stream/${id}/is-read`, null)
       feed.unread--
       feedsStore.total--
     } else {
-      await deleteApi(`${API_BASE_URL}/stream/${id}/is-read`)
+      await deleteApi(`stream/${id}/is-read`)
       feed.unread++
       feedsStore.total++
     }
@@ -65,10 +62,10 @@ export const usePostsStore = defineStore('posts', () => {
   async function readPostLater(id, isReadLater) {
     isReady.value = false
     if (isReadLater) {
-      await postApi(`${API_BASE_URL}/stream/${id}/read-later`, null)
+      await postApi(`stream/${id}/read-later`, null)
       feedsStore.readLater++
     } else {
-      await deleteApi(`${API_BASE_URL}/stream/${id}/read-later`)
+      await deleteApi(`stream/${id}/read-later`)
       feedsStore.readLater--
     }
   }

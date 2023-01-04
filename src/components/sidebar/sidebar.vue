@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import Logo from '../logo.vue'
 import ProfileCard from './profileCard.vue'
 import { useFeedsStore } from '../../stores/feeds'
+import { useTagsStore } from '../../stores/tags'
 
 const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
 
@@ -12,6 +13,11 @@ feedsStore.getFeeds()
 let feeds = computed(() => feedsStore.feeds)
 let totalFeeds = computed(() => feedsStore.total)
 let readLater = computed(() => feedsStore.readLater)
+
+let tagsStore = useTagsStore()
+tagsStore.getTags()
+let tags = computed(() => tagsStore.tags)
+console.log('tags', tags)
 </script>
 
 <template>
@@ -24,7 +30,7 @@ let readLater = computed(() => feedsStore.readLater)
         >
       </h2>
       <p><router-link :to="{ name: 'addFeed' }">add a new feed</router-link></p>
-      <ul class="allfeeds-list">
+      <ul class="allfeeds list">
         <li v-for="feed in feeds" class="feed" :key="feed.id">
           <img class="feed-icon" :src="IMG_BASE_URL + feed.icon" />
           <router-link
@@ -46,9 +52,9 @@ let readLater = computed(() => feedsStore.readLater)
     </section>
     <section class="side-sub">
       <h2>tags</h2>
-      <ul>
-        <li>tag1</li>
-        <li>tag2</li>
+      <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
+      <ul class="alltags list">
+        <li v-for="tag in tags" :key="tag.id">{{ tag.value }}</li>
       </ul>
     </section>
     <section class="side-sub">
@@ -90,7 +96,7 @@ ul {
   font-weight: 400;
   list-style-type: none;
 }
-.allfeeds-list {
+.list {
   height: 20vh;
   overflow-y: scroll;
   /* flex: 1; */

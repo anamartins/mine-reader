@@ -22,7 +22,7 @@ function onRemoveButtonClick() {
 <template>
   <Sidebar />
   <div class="follow-feed">
-    <label for="feed">Feed URL:</label>
+    <label>Feed URL:</label>
     <input type="text" name="feed" v-model="feed" />
     <button type="button" @click="onAddButtonClick">+ add feed</button>
 
@@ -33,7 +33,7 @@ function onRemoveButtonClick() {
         {{ item.title }}
       </option></select
     >{{ selected }}
-    <button type="button" @click="onRemoveButtonClick">remove feed</button>
+    <button type="button" @click="onRemoveButtonClick()">remove feed</button>
   </div>
 </template>
 
