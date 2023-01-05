@@ -1,11 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue'
-import Sidebar from '../components/sidebar/sidebar.vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
+import Sidebar from '../components/sidebar/sidebar.vue'
+import Checkbox from '../components/checkbox.vue'
 
 const tag = ref('')
-const selected = ref('Please select one')
+const selected = ref([])
 
 let feedsStore = useFeedsStore()
 let feeds = computed(() => feedsStore.feeds)
@@ -13,9 +14,12 @@ let feeds = computed(() => feedsStore.feeds)
 let tagsStore = useTagsStore()
 let tags = computed(() => tagsStore.tags)
 
+function onCheckChange(feedId) {
+  selected.value.push(feedId)
+}
+
 async function onAddButtonClick() {
-  let feed = feeds.value.find((element) => element.title === selected.value)
-  await tagsStore.addTag(feed.feedId, tag.value)
+  await tagsStore.addTag(selected.value, tag.value)
 }
 </script>
 <template>
@@ -26,14 +30,23 @@ async function onAddButtonClick() {
       <input type="text" v-model="tag" />
     </label>
     at
-    <select v-model="selected">
-      <option disabled value="" selected>Please select one</option>
-      <option v-for="item in feeds" v-bind:key="item.id">
-        {{ item.title }}
-      </option>
-    </select>
+    <ul>
+      <li v-for="item in feeds" :key="item.id">
+        <Checkbox
+          :label="item.title"
+          @update:modelValue="onCheckChange(item.feedId)"
+        />
+      </li>
+    </ul>
 
     <button type="button" @click="onAddButtonClick">+ add tag</button>
+  </div>
+  <div class="remove-tag">
+    <ul class="alltags list">
+      <li v-for="tag in tags" :key="tag.id">
+        {{ tag.text }}
+      </li>
+    </ul>
   </div>
 </template>
 <style scoped></style>

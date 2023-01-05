@@ -15,8 +15,11 @@ export const useTagsStore = defineStore('tags', () => {
     total.value = returnAPI.data.total
   }
 
-  async function addTag(feedId, tag) {
-    await postApi(`user/feeds/${feedId}/tags`, { tag: tag })
+  async function addTag(selected, tag) {
+    let promises = selected.map((feedId) =>
+      postApi(`user/feeds/${feedId}/tags`, { tag: tag })
+    )
+    await Promise.all(promises)
     getTags()
   }
 
