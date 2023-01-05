@@ -14,8 +14,8 @@ async function onAddButtonClick() {
   feed.value = ''
 }
 
-function onRemoveButtonClick() {
-  feedsStore.removeFeed(selected)
+function onRemoveButtonClick(feedId) {
+  feedsStore.removeFeed(feedId)
 }
 </script>
 
@@ -27,13 +27,14 @@ function onRemoveButtonClick() {
     <button type="button" @click="onAddButtonClick">+ add feed</button>
 
     Unfollow:
-    <select v-model="selected">
-      <option disabled value="" selected>Please select one</option>
-      <option v-for="item in feeds" v-bind:key="item.id">
+    <ul>
+      <li v-for="item in feeds" :key="item.id">
         {{ item.title }}
-      </option></select
-    >{{ selected }}
-    <button type="button" @click="onRemoveButtonClick()">remove feed</button>
+        <button type="button" @click="onRemoveButtonClick(item.feedId)">
+          remove feed
+        </button>
+      </li>
+    </ul>
   </div>
 </template>
 

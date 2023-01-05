@@ -19,8 +19,8 @@ export const useFeedsStore = defineStore('feeds', () => {
     getFeeds()
   }
 
-  async function removeFeed(name) {
-    const element = feeds.value.find((element) => element.title === name.value)
+  async function removeFeed(id) {
+    const element = feeds.value.find((e) => e.feedId === id)
     const url = element.url
     await postApi(`feed/unfollow`, { url: url })
   }
