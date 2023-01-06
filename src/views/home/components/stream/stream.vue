@@ -3,7 +3,7 @@
 import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import Post from './post.vue'
-import SeeUnread from './seeUnread.vue'
+import FilterBar from './filterBar.vue'
 
 const showMoreElement = ref(null)
 
@@ -30,9 +30,7 @@ function onObserverChanges(entries) {
 </script>
 <template>
   <div class="stream">
-    <div class="filter-bar">
-      <SeeUnread />
-    </div>
+    <FilterBar />
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>

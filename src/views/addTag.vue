@@ -21,6 +21,8 @@ function onCheckChange(feedId) {
 async function onAddButtonClick() {
   await tagsStore.addTag(selected.value, tag.value)
 }
+
+async function onRemoveButtonClick() {}
 </script>
 <template>
   <Sidebar />
@@ -45,6 +47,9 @@ async function onAddButtonClick() {
     <ul class="alltags list">
       <li v-for="tag in tags" :key="tag.id">
         {{ tag.text }}
+        <button type="button" @click="onRemoveButtonClick(tag.id)">
+          remove tag
+        </button>
       </li>
     </ul>
   </div>

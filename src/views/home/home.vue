@@ -4,17 +4,24 @@ import Sidebar from '../../components/sidebar/sidebar.vue'
 import Stream from './components/stream/stream.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
+import { useUserPreferences } from '../../composables/userPreferences'
+
+const userPreferences = useUserPreferences()
 
 onMounted(() => {
   const route = useRoute()
   const feedId = route.params.feed
   const tag = route.params.tag
-  const isRead = localStorage.getItem('seeUnread') === 'true'
+  const isRead = userPreferences.seeUnreadPosts.value
   const isReadLater = route.name === 'readLater'
 
   let postsStore = usePostsStore()
 
-  postsStore.getPosts({ feedId, tag, isReadLater, isRead })
+  const params = { feedId, isReadLater }
+  if (!isRead) {
+    params.isRead = false
+  }
+  postsStore.getPosts(params)
 })
 </script>
 
