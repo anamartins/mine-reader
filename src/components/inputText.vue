@@ -1,8 +1,12 @@
 <script setup>
+import vFocus from '../directives/vFocus'
+
 const props = defineProps({
+  type: { type: String, default: 'text' },
   isRequired: Boolean,
   label: String,
-  modelValue: String
+  modelValue: String,
+  focus: { type: Boolean, default: false }
 })
 </script>
 <template>
@@ -10,10 +14,11 @@ const props = defineProps({
     <label>
       {{ label }}
       <input
-        type="text"
+        :type="type"
         :value="modelValue"
         :required="isRequired"
         @input="$emit('update:modelValue', $event.target.value)"
+        v-focus="focus"
       />
     </label>
   </div>

@@ -27,8 +27,18 @@ async function onButtonClick() {
   <div class="signin">
     <Logo />
     <form>
-      <InputText :is-required="true" label="Email" v-model="email" />
-      <InputText :is-required="true" label="Password" v-model="password" />
+      <InputText
+        :is-required="true"
+        label="Email"
+        v-model="email"
+        :focus="true"
+      />
+      <InputText
+        :is-required="true"
+        label="Password"
+        type="password"
+        v-model="password"
+      />
       <button type="button" @click="onButtonClick">Go!</button>
       <span class="fail" v-if="usersStore.token">Login failed</span>
       <router-link :to="{ name: 'signUp' }">
