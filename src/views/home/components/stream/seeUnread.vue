@@ -21,7 +21,7 @@ function onSeeUnreadPostsChange() {
   const isReadLater = route.name === 'readLater'
   let feedId = path.value.split('/')[2]
   const params = { feedId, isReadLater }
-  if (!userPreferences.seeUnreadPosts.value) {
+  if (userPreferences.seeUnreadPosts.value) {
     params.isRead = false
   }
 
