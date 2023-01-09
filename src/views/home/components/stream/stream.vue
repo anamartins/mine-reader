@@ -1,17 +1,28 @@
 <script setup>
-// import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
+import { useFeedsStore } from '../../../../stores/feeds'
 import Post from './post.vue'
 import FilterBar from './filterBar.vue'
 
 const showMoreElement = ref(null)
+const title = ref('')
 
-// const route = useRoute()
+const route = useRoute()
+let feedsStore = useFeedsStore()
+
 let observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {
   observer.observe(showMoreElement.value)
+  if (route.params.feed) {
+    let feed = feedsStore.getFeedById(route.params.feed)
+    debugger
+    title.value = feed.title
+  } else {
+    title.value = 'Home'
+  }
 })
 
 onBeforeUnmount(() => {
@@ -30,7 +41,7 @@ function onObserverChanges(entries) {
 </script>
 <template>
   <div class="stream">
-    <FilterBar />
+    <FilterBar :title="title" />
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>

@@ -8,8 +8,8 @@ export const useFeedsStore = defineStore('feeds', () => {
   const readLater = ref(0)
   const { getApi, postApi } = useApi()
 
-  async function getFeedById(id) {
-    return feeds.value.find((e, index) => {
+  function getFeedById(id) {
+    return feeds.value.find((e) => {
       return e.feedId === id
     })
   }
