@@ -11,13 +11,6 @@ const usersStore = useUsersStore()
 
 const router = useRouter()
 
-const vFocus = {
-  mounted: (e) => {
-    e.focus()
-    console.log(e)
-  }
-}
-
 async function onButtonClick(event) {
   await usersStore.newUser(email.value, password.value)
   router.push('/')
@@ -29,10 +22,18 @@ onMounted(() => {})
 <template>
   <div class="signup">
     <Logo />
-    <label for="email">Email:</label>
-    <input type="text" v-model="email" required v-focus />
-    <label for="password">Password:</label>
-    <input type="password" v-model="password" required />
+    <InputText
+      :is-required="true"
+      :focus="true"
+      label="Email"
+      v-model="email"
+    />
+    <InputText
+      :is-required="true"
+      label="Password"
+      type="password"
+      v-model="password"
+    />
     <button type="button" @click="onButtonClick">Yay</button>
   </div>
 </template>
