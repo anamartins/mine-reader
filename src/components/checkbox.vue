@@ -1,11 +1,34 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   label: String,
-  modelValue: Boolean
+  modelValue: [Boolean, Array],
+  value: String
 })
+const isChecked = computed(() => {
+  if (props.modelValue instanceof Array) {
+    return props.modelValue.includes(props.value)
+  }
+  return props.modelValue
+})
+
 const emit = defineEmits(['update:modelValue'])
+
 function onChange(event) {
-  emit('update:modelValue', event.target.checked)
+  let isElementChecked = event.target.checked
+
+  if (props.modelValue instanceof Array) {
+    let newValue = [...props.modelValue]
+    if (isElementChecked) {
+      newValue.push(props.value)
+    } else {
+      newValue.splice(newValue.indexOf(props.value), 1)
+    }
+    emit('update:modelValue', newValue)
+  } else {
+    emit('update:modelValue', isElementChecked)
+  }
 }
 </script>
 <template>
@@ -14,7 +37,7 @@ function onChange(event) {
       <input
         class="check"
         type="checkbox"
-        :checked="modelValue"
+        :checked="isChecked"
         @change="onChange"
       />
       {{ label }}

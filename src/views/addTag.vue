@@ -14,12 +14,10 @@ let feeds = computed(() => feedsStore.feeds)
 let tagsStore = useTagsStore()
 let tags = computed(() => tagsStore.tags)
 
-function onCheckChange(feedId) {
-  selected.value.push(feedId)
-}
-
 async function onAddButtonClick() {
   await tagsStore.addTag(selected.value, tag.value)
+  tag.value = ''
+  selected.value = []
 }
 
 async function onRemoveButtonClick() {}
@@ -34,10 +32,7 @@ async function onRemoveButtonClick() {}
     at
     <ul>
       <li v-for="item in feeds" :key="item.id">
-        <Checkbox
-          :label="item.title"
-          @update:modelValue="onCheckChange(item.feedId)"
-        />
+        <Checkbox :label="item.title" :value="item.feedId" v-model="selected" />
       </li>
     </ul>
 
