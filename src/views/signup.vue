@@ -21,7 +21,7 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <Logo />
+    <Logo linkName="signUp" />
     <InputText
       :is-required="true"
       :focus="true"

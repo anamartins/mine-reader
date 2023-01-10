@@ -25,7 +25,7 @@ async function onButtonClick() {
 
 <template>
   <div class="signin">
-    <Logo />
+    <Logo linkName="signIn" />
     <form>
       <InputText
         :is-required="true"
