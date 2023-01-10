@@ -11,28 +11,29 @@ const title = ref('')
 
 const route = useRoute()
 let feedsStore = useFeedsStore()
+let postsStore = usePostsStore()
+let posts = computed(() => postsStore.posts)
+let isReady = computed(() => postsStore.isReady)
+const hasNext = computed(() => postsStore.hasNext)
 
 let observer = new IntersectionObserver(onObserverChanges)
 
+let tags = []
+if (route.params.feed) {
+  let feed = feedsStore.getFeedById(route.params.feed)
+  tags = feed.tags
+  title.value = feed.title
+} else {
+  title.value = 'Home'
+}
+
 onMounted(() => {
   observer.observe(showMoreElement.value)
-  if (route.params.feed) {
-    let feed = feedsStore.getFeedById(route.params.feed)
-    debugger
-    title.value = feed.title
-  } else {
-    title.value = 'Home'
-  }
 })
 
 onBeforeUnmount(() => {
   observer.unobserve(showMoreElement.value)
 })
-
-let postsStore = usePostsStore()
-let posts = computed(() => postsStore.posts)
-let isReady = computed(() => postsStore.isReady)
-const hasNext = computed(() => postsStore.hasNext)
 
 function onObserverChanges(entries) {
   let isIntersecting = entries[0].isIntersecting
@@ -41,7 +42,7 @@ function onObserverChanges(entries) {
 </script>
 <template>
   <div class="stream">
-    <FilterBar :title="title" />
+    <FilterBar :title="title" :tags="tags" />
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>
