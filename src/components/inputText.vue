@@ -23,3 +23,20 @@ const props = defineProps({
     </label>
   </div>
 </template>
+<style scoped>
+input {
+  margin: 1% 0px 10% 0px;
+  padding: 3% 5%;
+  width: 100%;
+  height: 20px;
+  border: 0px;
+  border-radius: 65px 100px 50px 80px;
+  background-color: #eee;
+  font-family: 'Inter';
+  font-size: 1.2rem;
+}
+
+label {
+  font-size: 1rem;
+}
+</style>

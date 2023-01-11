@@ -1,12 +1,22 @@
+
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+
+}
+html{
+  font-family: 'Inter', sans-serif;
+  font-size: 20px; 
+
 }
 
 main{
-    display: flex;
     overflow-x: hidden;
+    display: flex;
+  /* flex-flow: row wrap; */
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
 }
 
 a {
@@ -16,4 +26,6 @@ a {
   a:hover {
     text-decoration: underline;
   }
+
+
 
