@@ -26,8 +26,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <Sidebar />
-  <Stream />
+  <Sidebar class="sidebar" />
+  <Stream class="stream" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.sidebar {
+  position: sticky;
+  align-self: flex-start;
+}
+</style>

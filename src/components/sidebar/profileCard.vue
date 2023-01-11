@@ -25,9 +25,9 @@ function onSignOut(e) {
 
 <style scoped>
 .profile-card {
-  width: calc(100% - 5%);
-  padding: 5%;
-  border: 1px solid #000;
+  width: 15%;
+  padding: 2%;
+  background-color: #ccc;
 }
 
 .user-data {

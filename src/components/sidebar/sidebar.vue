@@ -77,7 +77,7 @@ let tags = computed(() => tagsStore.tags)
         <li>two</li>
       </ul>
     </section>
-    <ProfileCard />
+    <ProfileCard class="profile-card" />
   </div>
 </template>
 
@@ -85,12 +85,12 @@ let tags = computed(() => tagsStore.tags)
 .sidebar {
   width: 20%;
   height: 100%;
-  position: sticky;
   top: 0;
   padding: 0 1%;
   margin: 0 1% 0 0;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid #ccc;
 }
 h2 {
   font-size: 30px;
@@ -119,5 +119,12 @@ ul {
 }
 .side-sub {
   margin: 5% 5% 5% 0;
+}
+
+.profile-card {
+  position: fixed;
+  bottom: 0;
+  /* left: 0; */
+  height: 5%;
 }
 </style>
