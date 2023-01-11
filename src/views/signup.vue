@@ -83,6 +83,11 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #aaa;
+  color: white;
+}
+
 .fail {
   color: red;
   position: relative;
