@@ -11,12 +11,6 @@ const userPreferences = useUserPreferences()
 
 let postsStore = usePostsStore()
 
-// params = {
-//   feedId,
-//   isReadLater,
-//   ...(!userPreferences.seeUnreadPosts.value && { isRead: false })
-// }
-
 function onSeeUnreadPostsChange() {
   const isReadLater = route.name === 'readLater'
   let feedId = path.value.split('/')[2]
@@ -26,7 +20,6 @@ function onSeeUnreadPostsChange() {
   }
 
   postsStore.getPosts(params)
-  console.log('isread', params)
 }
 </script>
 <template>

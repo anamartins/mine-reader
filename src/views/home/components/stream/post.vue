@@ -1,11 +1,13 @@
 <script setup>
 import { usePostsStore } from '../../../../stores/posts'
+import { formatDate } from '../../../../utils/date'
 
 const props = defineProps({
   post: { type: Object, required: true }
 })
 
-let postsStore = usePostsStore()
+const postsStore = usePostsStore()
+const date = formatDate(props.post.pubDate)
 
 async function onPostClick() {
   await postsStore.markPostAsRead(
@@ -36,7 +38,7 @@ async function onReadLaterChange() {
       <a :href="post.link" @click="onPostClick">{{ post.title }}</a>
     </div>
     <div class="post-source">{{ post.feed.title }}</div>
-    <div class="post-date">{{ post.pubDate }}</div>
+    <div class="post-date">{{ date }}</div>
     <label class="check-label">
       <input
         class="check"
@@ -61,7 +63,7 @@ async function onReadLaterChange() {
 
 <style scoped>
 .post {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   margin: 1% 0;
   padding: 1%;
   width: calc(100% - 4px - 2%);
@@ -73,7 +75,7 @@ async function onReadLaterChange() {
 }
 .read {
   /* background-color: deeppink; */
-  border: 1px solid #666;
+  /* border: 1px solid #666; */
   padding: calc(1% + 1px);
   color: #666;
 }
