@@ -9,6 +9,13 @@ const props = defineProps({
 const postsStore = usePostsStore()
 const date = formatDate(props.post.pubDate)
 
+const textLimit = 400
+let content = props.post.content.slice(0, textLimit)
+if (content.length === textLimit) {
+  content += '...'
+  console.log(content)
+}
+
 async function onPostClick() {
   await postsStore.markPostAsRead(
     props.post.id,
@@ -57,7 +64,7 @@ async function onReadLaterChange() {
         @change="onReadLaterChange"
       />Read Later
     </label>
-    <div class="post-content" v-html="post.content"></div>
+    <div class="post-content" v-html="content"></div>
   </div>
 </template>
 
