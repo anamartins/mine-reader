@@ -18,7 +18,7 @@ export function formatDate(date) {
 }
 
 function diffDate(date) {
-  const now = new Date()
+  const now = getNow()
   const diff = now - date
   let diffMinutes = diff / 1000 / 60
   diffMinutes = Math.trunc(diffMinutes)
@@ -41,8 +41,8 @@ function diffDate(date) {
     time = `published about ${diffMonths} ` + setPlural(diffMonths, 'month')
   }
 
-  if (diffDays > 365) {
-    diffYears = diffDays / 365
+  if (diffMonths >= 12) {
+    diffYears = Math.trunc(diffMonths / 12)
     time = `published ${diffYears} ` + setPlural(diffYears, 'year')
   }
 
@@ -55,4 +55,8 @@ function setPlural(number, unit) {
   } else {
     return `${unit}s ago`
   }
+}
+
+export function getNow() {
+  return new Date()
 }
