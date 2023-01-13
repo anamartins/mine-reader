@@ -9,15 +9,17 @@ import Button from '../components/button.vue'
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
 const usersStore = useUsersStore()
+const hasError = ref(false)
 
 const router = useRouter()
 
 async function onButtonClick() {
-  await usersStore.login(email.value, password.value)
-
-  if (usersStore.token) {
+  try {
+    await usersStore.login(email.value, password.value)
     router.push('/home')
-  } else {
+  } catch (error) {
+    console.log(error)
+    hasError.value = true
     email.value = ''
     password.value = ''
   }
@@ -42,7 +44,7 @@ async function onButtonClick() {
         type="password"
         v-model="password"
       />
-      <div class="fail" v-if="usersStore.token">Login failed</div>
+      <div class="fail" v-if="hasError">Login failed</div>
       <Button label="Go!" @click="onButtonClick" />
     </form>
     <div class="link">

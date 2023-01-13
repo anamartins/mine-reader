@@ -6,6 +6,8 @@ import { useApi } from '../composables/api'
 export const useUsersStore = defineStore('users', () => {
   const user = ref({ email: '' })
   const token = ref('')
+  // const status = ref(0)
+  // const hasError = ref(false)
 
   const { getApi, postApi } = useApi()
 
@@ -38,5 +40,7 @@ export const useUsersStore = defineStore('users', () => {
     //state
     user,
     token
+    // status,
+    // hasError
   }
 })

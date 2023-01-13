@@ -6,7 +6,7 @@ const props = defineProps({
 <template>
   <button type="button">{{ props.label }}</button>
 </template>
-<style>
+<style scoped>
 button {
   position: relative;
   width: 40%;
