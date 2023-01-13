@@ -4,6 +4,7 @@ import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import Logo from '../components/logo.vue'
 import InputText from '../components/inputText.vue'
+import Button from '../components/button.vue'
 
 const email = ref('')
 const password = ref('')
@@ -37,7 +38,7 @@ onMounted(() => {})
         type="password"
         v-model="password"
       />
-      <button type="button" @click="onButtonClick">Sign me up!</button>
+      <Button label="Sign me up!" @click="onButtonClick" />
     </form>
   </div>
 </template>
@@ -68,24 +69,6 @@ form {
 
 .input {
   width: 65%;
-}
-
-button {
-  /* width: auto ; */
-  position: relative;
-  justify-self: center;
-  padding: 5% 10%;
-  margin: 5% 0px;
-  border: 0px;
-  border-radius: 200px 250px 100px 150px;
-  background-color: #ccc;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #aaa;
-  color: white;
 }
 
 .fail {

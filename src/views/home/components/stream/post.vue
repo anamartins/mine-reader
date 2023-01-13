@@ -13,7 +13,6 @@ const textLimit = 400
 let content = props.post.content.slice(0, textLimit)
 if (content.length === textLimit) {
   content += '...'
-  console.log(content)
 }
 
 async function onPostClick() {

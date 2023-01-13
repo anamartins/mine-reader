@@ -4,6 +4,7 @@ import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import Logo from '../components/logo.vue'
 import InputText from '../components/inputText.vue'
+import Button from '../components/button.vue'
 
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
@@ -42,7 +43,7 @@ async function onButtonClick() {
         v-model="password"
       />
       <div class="fail" v-if="usersStore.token">Login failed</div>
-      <button type="button" @click="onButtonClick">Go!</button>
+      <Button label="Go!" @click="onButtonClick" />
     </form>
     <div class="link">
       <router-link :to="{ name: 'signUp' }">
@@ -77,24 +78,6 @@ form {
 
 .input {
   width: 65%;
-}
-
-button {
-  width: 40%;
-  position: relative;
-  justify-self: center;
-  padding: 5%;
-  margin: 5% 0px;
-  border: 0px;
-  border-radius: 200px 250px 100px 150px;
-  background-color: #ccc;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #aaa;
-  color: white;
 }
 
 .fail {
