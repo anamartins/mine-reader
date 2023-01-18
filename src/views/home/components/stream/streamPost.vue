@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
-import { formatDate } from '../../../../utils/Date'
+import { formatDate } from '../../../../utils/date'
 
 const props = defineProps({
   post: { type: Object, required: true }
