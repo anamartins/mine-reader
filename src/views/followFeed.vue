@@ -22,7 +22,7 @@ function onRemoveButtonClick(feedId) {
   <div class="follow-feed">
     <label>Feed URL:</label>
     <input type="text" name="feed" v-model="feed" />
-    <button type="button" @click="onAddButtonClick">+ add feed</button>
+    <button type="button" @click="onAddButtonClick">+ add feed!</button>
 
     Unfollow:
     <ul>
