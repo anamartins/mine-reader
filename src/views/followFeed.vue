@@ -1,13 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
-import Sidebar from '../components/sidebar/sidebar.vue'
+import Sidebar from '../components/sidebar/TheSidebar.vue'
 import { useFeedsStore } from '../stores/feeds'
 
 const feed = ref('')
-const selected = ref('Please select one')
-
-let feedsStore = useFeedsStore()
-let feeds = computed(() => feedsStore.feeds)
+const feedsStore = useFeedsStore()
+const feeds = computed(() => feedsStore.feeds)
 
 async function onAddButtonClick() {
   await feedsStore.followNewFeed(feed.value)

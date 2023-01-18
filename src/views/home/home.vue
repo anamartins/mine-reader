@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
-import Sidebar from '../../components/sidebar/sidebar.vue'
-import Stream from './components/stream/stream.vue'
+import Sidebar from '../../components/sidebar/TheSidebar.vue'
+import Stream from './components/stream/TheStream.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 import { useUserPreferences } from '../../composables/userPreferences'
@@ -15,7 +15,7 @@ onMounted(() => {
   const isRead = userPreferences.seeUnreadPosts.value
   const isReadLater = route.name === 'readLater'
 
-  let postsStore = usePostsStore()
+  const postsStore = usePostsStore()
 
   const params = { feedId, isReadLater }
   if (isRead) {

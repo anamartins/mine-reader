@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, computed, watch } from 'vue'
+import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useUserPreferences } from '../../../../composables/userPreferences'
 import CheckBox from '../../../../components/checkbox.vue'
@@ -9,7 +9,7 @@ const route = useRoute()
 const path = computed(() => route.path)
 const userPreferences = useUserPreferences()
 
-let postsStore = usePostsStore()
+const postsStore = usePostsStore()
 
 function onSeeUnreadPostsChange() {
   const isReadLater = route.name === 'readLater'

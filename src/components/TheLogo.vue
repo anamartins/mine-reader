@@ -6,7 +6,11 @@ const props = defineProps({
 
 <template>
   <div class="logo">
-    <h1><router-link :to="{ name: props.linkName }">mine</router-link></h1>
+    <h1>
+      <router-link class="logo-link" :to="{ name: props.linkName }"
+        >mine</router-link
+      >
+    </h1>
   </div>
 </template>
 
@@ -22,7 +26,8 @@ h1 {
   margin: 0;
   padding: 0;
 }
-a:hover {
+.logo-link,
+.logo-link:hover {
   text-decoration: none;
 }
 </style>

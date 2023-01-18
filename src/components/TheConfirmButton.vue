@@ -1,13 +1,13 @@
 <script setup>
 const props = defineProps({
-  label: String
+  label: { type: String }
 })
 </script>
 <template>
-  <button type="button">{{ props.label }}</button>
+  <button class="confirmation-button" type="button">{{ props.label }}</button>
 </template>
 <style scoped>
-button {
+.confirmation-button {
   position: relative;
   width: 40%;
   justify-self: center;
@@ -20,7 +20,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.confirmation-button:hover {
   background-color: #aaa;
   color: white;
 }

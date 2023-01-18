@@ -2,9 +2,9 @@
 import { onMounted, ref } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
-import Logo from '../components/logo.vue'
+import TheLogo from '../components/TheLogo.vue'
 import InputText from '../components/inputText.vue'
-import Button from '../components/button.vue'
+import ConfirmButton from '../components/TheConfirmButton.vue'
 
 const email = ref('')
 const password = ref('')
@@ -22,8 +22,8 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <Logo linkName="signUp" />
-    <form>
+    <TheLogo linkName="signUp" />
+    <form class="signup-form">
       <InputText
         class="input"
         :is-required="true"
@@ -38,7 +38,7 @@ onMounted(() => {})
         type="password"
         v-model="password"
       />
-      <Button label="Sign me up!" @click="onButtonClick" />
+      <ConfirmButton label="Sign me up!" @click="onButtonClick" />
     </form>
   </div>
 </template>
@@ -60,7 +60,7 @@ onMounted(() => {})
   align-content: center;
 }
 
-form {
+.signup-form {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

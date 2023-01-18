@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-  label: String,
-  modelValue: [Boolean, Array],
-  value: String
+  label: { type: String },
+  modelValue: { type: [Boolean, Array] },
+  value: { type: String }
 })
 const isChecked = computed(() => {
   if (props.modelValue instanceof Array) {
@@ -16,7 +16,7 @@ const isChecked = computed(() => {
 const emit = defineEmits(['update:modelValue'])
 
 function onChange(event) {
-  let isElementChecked = event.target.checked
+  const isElementChecked = event.target.checked
 
   if (props.modelValue instanceof Array) {
     let newValue = [...props.modelValue]
@@ -44,3 +44,5 @@ function onChange(event) {
     </label>
   </div>
 </template>
+
+<style scoped></style>

@@ -2,9 +2,6 @@ import axios from 'axios'
 export function useApi() {
   const API_BASE_URL = 'https://api-mqf5kfu3ba-ez.a.run.app'
 
-  // const API_BASE_URL =
-  //   'https://us-central1-rss-reader-365617.cloudfunctions.net/api'
-
   async function getApi(url, params) {
     const token = localStorage.getItem('mineToken')
     const isUrlComplete = url.slice(0, 8) === 'https://'

@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
-import Logo from '../components/logo.vue'
+import TheLogo from '../components/TheLogo.vue'
 import InputText from '../components/inputText.vue'
-import Button from '../components/button.vue'
+import ConfirmButton from '../components/TheConfirmButton.vue'
 
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
@@ -28,8 +28,8 @@ async function onButtonClick() {
 
 <template>
   <div class="signin">
-    <Logo linkName="signIn" />
-    <form>
+    <TheLogo linkName="signIn" />
+    <form class="signin-form">
       <InputText
         class="input"
         :is-required="true"
@@ -45,7 +45,7 @@ async function onButtonClick() {
         v-model="password"
       />
       <div class="fail" v-if="hasError">Login failed</div>
-      <Button label="Go!" @click="onButtonClick" />
+      <ConfirmButton label="Go!" @click="onButtonClick" />
     </form>
     <div class="link">
       <router-link :to="{ name: 'signUp' }">
@@ -71,7 +71,7 @@ async function onButtonClick() {
   justify-content: center;
   align-content: center;
 }
-form {
+.signin-form {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

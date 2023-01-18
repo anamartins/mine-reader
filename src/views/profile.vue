@@ -1,5 +1,5 @@
 <script setup>
-import Sidebar from '../components/sidebar/sidebar.vue'
+import Sidebar from '../components/sidebar/TheSidebar.vue'
 import { useUsersStore } from '../stores/users'
 
 const usersStore = useUsersStore()

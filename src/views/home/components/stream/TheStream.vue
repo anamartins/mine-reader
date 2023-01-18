@@ -3,24 +3,24 @@ import { useRoute } from 'vue-router'
 import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
-import Post from './post.vue'
-import FilterBar from './filterBar.vue'
+import Post from './streamPost.vue'
+import TheFilterBar from './streamTheFilterBar.vue'
 
 const showMoreElement = ref(null)
 const title = ref('')
 
 const route = useRoute()
-let feedsStore = useFeedsStore()
-let postsStore = usePostsStore()
-let posts = computed(() => postsStore.posts)
-let isReady = computed(() => postsStore.isReady)
+const feedsStore = useFeedsStore()
+const postsStore = usePostsStore()
+const posts = computed(() => postsStore.posts)
+const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
 
-let observer = new IntersectionObserver(onObserverChanges)
+const observer = new IntersectionObserver(onObserverChanges)
 
 let tags = []
 if (route.params.feed) {
-  let feed = feedsStore.getFeedById(route.params.feed)
+  const feed = feedsStore.getFeedById(route.params.feed)
   tags = feed.tags
   title.value = feed.title
 } else {
@@ -36,13 +36,13 @@ onBeforeUnmount(() => {
 })
 
 function onObserverChanges(entries) {
-  let isIntersecting = entries[0].isIntersecting
+  const isIntersecting = entries[0].isIntersecting
   if (isReady.value && isIntersecting) postsStore.getMorePosts()
 }
 </script>
 <template>
   <div class="stream">
-    <FilterBar :title="title" :tags="tags" />
+    <TheFilterBar :title="title" :tags="tags" />
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>
@@ -52,6 +52,7 @@ function onObserverChanges(entries) {
 .stream {
   position: relative;
   width: 70%;
+  align-self: self-start;
 }
 
 .filter-bar {

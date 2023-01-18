@@ -9,7 +9,7 @@ const props = defineProps({
 const postsStore = usePostsStore()
 const date = formatDate(props.post.pubDate)
 
-const textLimit = 400
+const textLimit = 300
 let content = props.post.content.slice(0, textLimit)
 if (content.length === textLimit) {
   content += '...'

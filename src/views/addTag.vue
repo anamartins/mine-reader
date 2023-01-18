@@ -2,17 +2,17 @@
 import { ref, computed } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
-import Sidebar from '../components/sidebar/sidebar.vue'
+import Sidebar from '../components/sidebar/TheSidebar.vue'
 import Checkbox from '../components/checkbox.vue'
 
 const tag = ref('')
 const selected = ref([])
 
-let feedsStore = useFeedsStore()
-let feeds = computed(() => feedsStore.feeds)
+const feedsStore = useFeedsStore()
+const feeds = computed(() => feedsStore.feeds)
 
-let tagsStore = useTagsStore()
-let tags = computed(() => tagsStore.tags)
+const tagsStore = useTagsStore()
+const tags = computed(() => tagsStore.tags)
 
 async function onAddButtonClick() {
   await tagsStore.addTag(selected.value, tag.value)

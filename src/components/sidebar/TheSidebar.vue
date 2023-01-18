@@ -1,29 +1,29 @@
 <script setup>
 import { computed } from 'vue'
-import Logo from '../logo.vue'
-import ProfileCard from './profileCard.vue'
+import Logo from '../TheLogo.vue'
+import SidebarProfileCard from './sidebarTheProfileCard.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
 
 const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
 
-let feedsStore = useFeedsStore()
+const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
 
-let feeds = computed(() => feedsStore.feeds)
-let totalFeeds = computed(() => feedsStore.total)
-let readLater = computed(() => feedsStore.readLater)
+const feeds = computed(() => feedsStore.feeds)
+const totalFeeds = computed(() => feedsStore.total)
+const readLater = computed(() => feedsStore.readLater)
 
-let tagsStore = useTagsStore()
+const tagsStore = useTagsStore()
 tagsStore.getTags()
-let tags = computed(() => tagsStore.tags)
+const tags = computed(() => tagsStore.tags)
 </script>
 
 <template>
   <div class="sidebar">
     <Logo link="home" />
     <section class="side-sub">
-      <h2>
+      <h2 class="sidebar-heading">
         <router-link :to="{ name: 'home' }"
           >all feeds ({{ totalFeeds }})</router-link
         >
@@ -53,7 +53,7 @@ let tags = computed(() => tagsStore.tags)
       <h2>tags</h2>
       <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
       <ul class="alltags list">
-        <li v-for="tag in tagsStore.tags" :key="tag.id">
+        <li v-for="tag in tags" :key="tag.id">
           <router-link
             v-if="tag.text"
             :to="{ name: 'tag', params: { tag: tag.text } }"
@@ -66,8 +66,6 @@ let tags = computed(() => tagsStore.tags)
       <h2>mine</h2>
       <ul>
         <li>read later ({{ readLater }})</li>
-        <li>one</li>
-        <li>two</li>
       </ul>
     </section>
     <section class="side-sub">
@@ -77,7 +75,7 @@ let tags = computed(() => tagsStore.tags)
         <li>two</li>
       </ul>
     </section>
-    <ProfileCard class="profile-card" />
+    <SidebarProfileCard class="profile-card" />
   </div>
 </template>
 
@@ -92,19 +90,16 @@ let tags = computed(() => tagsStore.tags)
   flex-direction: column;
   border-right: 1px solid #ccc;
 }
-h2 {
+.sidebar-h2 {
   font-size: 30px;
   font-weight: 700;
-}
-ul {
-  font-size: 15px;
-  font-weight: 400;
-  list-style-type: none;
 }
 .list {
   height: 20vh;
   overflow-y: scroll;
-  /* flex: 1; */
+  font-size: 15px;
+  font-weight: 400;
+  list-style-type: none;
 }
 .feed {
   margin: 2% 0 2% 0;

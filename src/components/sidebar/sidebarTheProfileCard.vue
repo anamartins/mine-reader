@@ -19,7 +19,9 @@ function onSignOut(e) {
       <router-link :to="{ name: 'profile' }">{{ user.email }}</router-link>
     </div>
 
-    <button type="button" @click="onSignOut">Sign out</button>
+    <button class="classic-button" type="button" @click="onSignOut">
+      Sign out
+    </button>
   </div>
 </template>
 
@@ -35,7 +37,7 @@ function onSignOut(e) {
   margin: 1% 0;
 }
 
-button {
+.classic-button {
   display: block;
   margin: 5% 0px 0px 0px;
   padding: 5px 10px;

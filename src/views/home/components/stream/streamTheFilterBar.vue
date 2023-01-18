@@ -1,9 +1,9 @@
 <script setup>
-import SeeUnread from './seeUnread.vue'
+import StreamSeeUnread from './streamTheSeeUnread.vue'
 
 const props = defineProps({
-  title: String,
-  tags: Array
+  title: { type: String },
+  tags: { type: Array }
 })
 </script>
 <template>
@@ -12,7 +12,7 @@ const props = defineProps({
     <div class="tags">
       <span v-for="tag in tags">{{ tag }}</span>
     </div>
-    <SeeUnread />
+    <StreamSeeUnread />
   </div>
 </template>
 <style scoped></style>

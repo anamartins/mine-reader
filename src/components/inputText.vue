@@ -3,17 +3,18 @@ import vFocus from '../directives/vFocus'
 
 const props = defineProps({
   type: { type: String, default: 'text' },
-  isRequired: Boolean,
-  label: String,
-  modelValue: String,
+  isRequired: { type: Boolean },
+  label: { type: String },
+  modelValue: { type: String },
   focus: { type: Boolean, default: false }
 })
 </script>
 <template>
   <div class="input-text">
-    <label>
+    <label class="label-input">
       {{ label }}
       <input
+        class="input"
         :type="type"
         :value="modelValue"
         :required="isRequired"
@@ -36,7 +37,7 @@ input {
   font-size: 1.2rem;
 }
 
-label {
+.label-input {
   font-size: 1rem;
 }
 </style>
