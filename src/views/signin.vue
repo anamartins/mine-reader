@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
-import TheLogo from '../components/TheLogo.vue'
-import InputText from '../components/inputText.vue'
-import ConfirmButton from '../components/TheConfirmButton.vue'
+import TheLogo from '../components/Logo.vue'
+import InputText from '../components/InputText.vue'
+import ConfirmButton from '../components/ConfirmButton.vue'
 
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')

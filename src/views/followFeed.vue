@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import Sidebar from '../components/sidebar/TheSidebar.vue'
+import Sidebar from '../components/sidebar/Sidebar.vue'
 import { useFeedsStore } from '../stores/feeds'
 
 const feed = ref('')

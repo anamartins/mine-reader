@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
-import Sidebar from '../../components/sidebar/TheSidebar.vue'
-import Stream from './components/stream/TheStream.vue'
+import Sidebar from '../../components/sidebar/Sidebar.vue'
+import Stream from './components/stream/Stream.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 import { useUserPreferences } from '../../composables/userPreferences'

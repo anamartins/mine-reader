@@ -3,8 +3,8 @@ import { useRoute } from 'vue-router'
 import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
-import Post from './streamPost.vue'
-import TheFilterBar from './streamTheFilterBar.vue'
+import Post from './StreamPost.vue'
+import TheFilterBar from './StreamFilterBar.vue'
 
 const showMoreElement = ref(null)
 const title = ref('')

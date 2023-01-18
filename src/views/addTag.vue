@@ -2,8 +2,8 @@
 import { ref, computed } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
-import Sidebar from '../components/sidebar/TheSidebar.vue'
-import Checkbox from '../components/checkbox.vue'
+import Sidebar from '../components/sidebar/Sidebar.vue'
+import Checkbox from '../components/Checkbox.vue'
 
 const tag = ref('')
 const selected = ref([])

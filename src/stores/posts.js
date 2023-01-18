@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApi } from '../composables/api'
-import { useFeedsStore } from '../stores/feeds'
+import { useFeedsStore } from './feeds'
 
 export const usePostsStore = defineStore('posts', () => {
   const posts = ref([])

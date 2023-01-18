@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import Logo from '../TheLogo.vue'
-import SidebarProfileCard from './sidebarTheProfileCard.vue'
+import Logo from '../Logo.vue'
+import SidebarProfileCard from './SidebarProfileCard.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
 
@@ -24,9 +24,9 @@ const tags = computed(() => tagsStore.tags)
     <Logo link="home" />
     <section class="side-sub">
       <h2 class="sidebar-heading">
-        <router-link :to="{ name: 'home' }"
-          >all feeds ({{ totalFeeds }})</router-link
-        >
+        <router-link :to="{ name: 'home' }">
+          all feeds ({{ totalFeeds }})
+        </router-link>
       </h2>
       <p><router-link :to="{ name: 'addFeed' }">add a new feed</router-link></p>
       <ul class="allfeeds list">

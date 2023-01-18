@@ -1,5 +1,5 @@
 <script setup>
-import StreamSeeUnread from './streamTheSeeUnread.vue'
+import StreamSeeUnread from './StreamSeeUnread.vue'
 
 const props = defineProps({
   title: { type: String },
