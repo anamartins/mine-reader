@@ -53,6 +53,8 @@ function onObserverChanges(entries) {
   position: relative;
   width: 70%;
   align-self: self-start;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .filter-bar {

@@ -2,10 +2,10 @@
 import { computed } from 'vue'
 import Logo from '../Logo.vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
+import SidebarFeedItem from './SidebarFeedItem.vue'
+import SidebarFeedItemIcon from './SidebarFeedItemIcon.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
-
-const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
 
 const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
@@ -23,25 +23,14 @@ const tags = computed(() => tagsStore.tags)
   <div class="sidebar">
     <Logo link="home" />
     <section class="side-sub">
-      <h2 class="sidebar-heading">
+      <h2 class="sidebar__heading">
         <router-link :to="{ name: 'home' }">
           all feeds ({{ totalFeeds }})
         </router-link>
       </h2>
       <p><router-link :to="{ name: 'addFeed' }">add a new feed</router-link></p>
-      <ul class="allfeeds list">
-        <li v-for="feed in feeds" class="feed" :key="feed.id">
-          <img class="feed-icon" :src="IMG_BASE_URL + feed.icon" />
-          <router-link
-            class="feed-name"
-            :to="{
-              name: 'feed',
-              params: { feed: feed.feedId }
-            }"
-          >
-            {{ feed.title }} ({{ feed.unread }})
-          </router-link>
-        </li>
+      <ul class="sidebar__list">
+        <SidebarFeedItem v-for="feed in feeds" :feed="feed" />
       </ul>
     </section>
     <section class="read-later">
@@ -79,9 +68,10 @@ const tags = computed(() => tagsStore.tags)
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .sidebar {
   width: 20%;
+  max-width: 300px;
   height: 100%;
   top: 0;
   padding: 0 1%;
@@ -89,37 +79,31 @@ const tags = computed(() => tagsStore.tags)
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
+
+  &__heading,
+  &__heading:link,
+  &__heading:visited {
+    font-size: 30px;
+    font-weight: 700;
+  }
 }
-.sidebar-h2 {
-  font-size: 30px;
-  font-weight: 700;
-}
-.list {
+
+.sidebar__list {
   height: 20vh;
   overflow-y: scroll;
   font-size: 15px;
   font-weight: 400;
   list-style-type: none;
 }
-.feed {
-  margin: 2% 0 2% 0;
-  display: flex;
-  align-items: center;
-}
 
-.feed-icon {
-  position: relative;
-  width: 5%;
-  margin: 0% 3% 0% 0;
-}
 .side-sub {
   margin: 5% 5% 5% 0;
 }
 
 .profile-card {
   position: fixed;
-  bottom: 0;
-  /* left: 0; */
+  bottom: 0px;
+  left: 1%;
   height: 5%;
 }
 </style>

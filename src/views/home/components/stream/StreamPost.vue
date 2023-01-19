@@ -45,7 +45,6 @@ async function onReadLaterChange() {
 <template>
   <div class="post" :class="{ read: post.isRead }">
     <base target="_blank" />
-    <div class="post-image"><img v-if="image" :src="post.image" /></div>
     <div class="post-wrapper">
       <div class="post-title">
         <a :href="post.link" @click="onPostClick">{{ post.title }}</a>
@@ -70,29 +69,33 @@ async function onReadLaterChange() {
           @change="onReadLaterChange"
         />Read Later
       </label>
-      <div class="post-content" v-html="content"></div>
     </div>
+    <div class="post-image" v-if="image"><img :src="post.image" /></div>
   </div>
 </template>
 
 <style scoped>
 .post {
-  /* border: 2px solid black; */
   margin: 1% 0;
-  padding: 1% 0;
+  padding: 1%;
   width: calc(100% - 4px - 2%);
+  max-width: 1500px;
+  height: 150px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
 }
 .post:hover {
   background-color: #ddd;
 }
+
+.post-wrapper {
+  width: 78%;
+}
 .read {
-  /* background-color: deeppink; */
-  /* border: 1px solid #666; */
   padding: calc(1% + 1px);
   color: #666;
 }
@@ -119,8 +122,9 @@ async function onReadLaterChange() {
 }
 
 .post-image {
-  width: 30%;
-  min-width: 30%;
+  width: 20%;
+  min-width: 50px;
+  height: 100%;
   margin: 0 1% 0 0;
   background-color: deeppink;
   border-radius: 10px;
@@ -129,8 +133,5 @@ async function onReadLaterChange() {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-}
-.post-content :deep(img) {
-  display: none;
 }
 </style>

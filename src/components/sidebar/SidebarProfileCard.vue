@@ -14,7 +14,7 @@ function onSignOut(e) {
 </script>
 
 <template>
-  <div class="profile-card">
+  <div class="profile-card-wrapper">
     <div class="user-data">
       <router-link :to="{ name: 'profile' }">{{ user.email }}</router-link>
     </div>
@@ -26,9 +26,10 @@ function onSignOut(e) {
 </template>
 
 <style scoped>
-.profile-card {
-  width: 15%;
-  padding: 2%;
+.profile-card-wrapper {
+  width: 100%;
+  max-width: 300px;
+  padding: 1%;
   background-color: #ccc;
 }
 
