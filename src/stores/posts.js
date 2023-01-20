@@ -21,24 +21,26 @@ export const usePostsStore = defineStore('posts', () => {
       posts.value = returnAPI.data.items
       total.value = returnAPI.data.total
       next.value = returnAPI.data.next
-      isReady.value = true
     } catch (error) {
       //todo
       console.log('show an error message', error)
+    } finally {
+      isReady.value = true
     }
   }
 
   async function getMorePosts() {
-    isReady.value = false
     try {
+      isReady.value = false
       const returnAPI = await getApi(next.value)
       posts.value = [...posts.value, ...returnAPI.data.items]
       total.value += returnAPI.data.total
       next.value = returnAPI.data.next
-      isReady.value = true
     } catch (error) {
       //todo
       console.log('show an error message', error)
+    } finally {
+      isReady.value = true
     }
   }
 

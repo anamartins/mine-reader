@@ -53,6 +53,7 @@ function onObserverChanges(entries) {
 <template>
   <div class="stream">
     <TheFilterBar :title="title" :tags="tags" />
+    <div class="loading" v-if="!isReady">Loading</div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>

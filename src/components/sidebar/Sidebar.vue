@@ -12,10 +12,12 @@ feedsStore.getFeeds()
 const feeds = computed(() => feedsStore.feeds)
 const totalFeeds = computed(() => feedsStore.total)
 const readLater = computed(() => feedsStore.readLater)
+const isLoadingFeeds = computed(() => feedsStore.isLoading)
 
 const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
+const isLoadingTags = computed(() => tagsStore.isLoading)
 </script>
 
 <template>
@@ -29,6 +31,7 @@ const tags = computed(() => tagsStore.tags)
       </h2>
       <p><router-link :to="{ name: 'addFeed' }">add a new feed</router-link></p>
       <ul class="sidebar__list">
+        <div class="loading" v-if="isLoadingFeeds">Loading</div>
         <SidebarFeedItem v-for="feed in feeds" :feed="feed" />
       </ul>
     </section>
@@ -41,6 +44,7 @@ const tags = computed(() => tagsStore.tags)
       <h2>tags</h2>
       <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
       <ul class="alltags list">
+        <div class="loading" v-if="isLoadingTags">Loading</div>
         <li v-for="tag in tags" :key="tag.id">
           <router-link
             v-if="tag.text"
@@ -104,5 +108,8 @@ const tags = computed(() => tagsStore.tags)
   bottom: 0px;
   left: 1%;
   height: 5%;
+}
+.loading {
+  background-color: deeppink;
 }
 </style>

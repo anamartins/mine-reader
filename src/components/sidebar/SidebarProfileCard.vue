@@ -1,11 +1,13 @@
 <script setup>
 import { useUsersStore } from '../../stores/users'
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
 
 const router = useRouter()
 const usersStore = useUsersStore()
 usersStore.getUser()
 const user = usersStore.user
+const isLoading = computed(() => usersStore.isLoading)
 
 function onSignOut(e) {
   localStorage.removeItem('mineToken')
@@ -15,6 +17,7 @@ function onSignOut(e) {
 
 <template>
   <div class="profile-card-wrapper">
+    <div class="loading" v-if="isLoading">Loading</div>
     <div class="user-data">
       <router-link :to="{ name: 'profile' }">{{ user.email }}</router-link>
     </div>

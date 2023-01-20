@@ -6,6 +6,7 @@ export const useFeedsStore = defineStore('feeds', () => {
   const feeds = ref([])
   const total = ref(0)
   const readLater = ref(0)
+  const isLoading = ref(false)
   const { getApi, postApi } = useApi()
 
   function getFeedById(id) {
@@ -27,6 +28,7 @@ export const useFeedsStore = defineStore('feeds', () => {
 
   async function getFeeds() {
     try {
+      isLoading.value = true
       const returnAPI = await getApi(`user/feeds`, {})
       feeds.value = returnAPI.data.feeds
       total.value = returnAPI.data.total
@@ -34,6 +36,8 @@ export const useFeedsStore = defineStore('feeds', () => {
     } catch (error) {
       //todo
       console.log('show an error message', error)
+    } finally {
+      isLoading.value = false
     }
   }
 
@@ -46,6 +50,7 @@ export const useFeedsStore = defineStore('feeds', () => {
     //ref
     feeds,
     total,
-    readLater
+    readLater,
+    isLoading
   }
 })
