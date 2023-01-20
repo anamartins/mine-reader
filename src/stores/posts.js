@@ -21,6 +21,8 @@ export const usePostsStore = defineStore('posts', () => {
     total.value = returnAPI.data.total
     next.value = returnAPI.data.next
     isReady.value = true
+
+    console.log('returnAPI', returnAPI.status)
   }
 
   async function getMorePosts() {

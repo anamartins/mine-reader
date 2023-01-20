@@ -7,7 +7,20 @@ import Post from './StreamPost.vue'
 import TheFilterBar from './StreamFilterBar.vue'
 
 const showMoreElement = ref(null)
-const title = ref('')
+const title = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.title
+  } else {
+    return 'Home'
+  }
+})
+const tags = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.tags
+  } else {
+    return []
+  }
+})
 
 const route = useRoute()
 const feedsStore = useFeedsStore()
@@ -16,16 +29,13 @@ const posts = computed(() => postsStore.posts)
 const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
 
-const observer = new IntersectionObserver(onObserverChanges)
+const selectedFeed = computed(() => {
+  if (route.params.feed && feedsStore.feeds.length > 0) {
+    return feedsStore.getFeedById(route.params.feed)
+  }
+})
 
-let tags = []
-if (route.params.feed) {
-  const feed = feedsStore.getFeedById(route.params.feed)
-  tags = feed.tags
-  title.value = feed.title
-} else {
-  title.value = 'Home'
-}
+const observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {
   observer.observe(showMoreElement.value)
