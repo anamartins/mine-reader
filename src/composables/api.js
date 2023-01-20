@@ -1,4 +1,15 @@
 import axios from 'axios'
+
+axios.interceptors.response.use(
+  function (response) {
+    return response
+  },
+  function (error) {
+    window.location.href = '/'
+    return Promise.reject(error)
+  }
+)
+
 export function useApi() {
   const API_BASE_URL = 'https://api-mqf5kfu3ba-ez.a.run.app'
 

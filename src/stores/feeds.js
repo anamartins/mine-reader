@@ -27,8 +27,6 @@ export const useFeedsStore = defineStore('feeds', () => {
 
   async function getFeeds() {
     const returnAPI = await getApi(`user/feeds`, {})
-    console.log('returnAPI', returnAPI.status)
-
     feeds.value = returnAPI.data.feeds
     total.value = returnAPI.data.total
     readLater.value = returnAPI.data.readLater
