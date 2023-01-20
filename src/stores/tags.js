@@ -9,10 +9,15 @@ export const useTagsStore = defineStore('tags', () => {
   const { getApi, postApi } = useApi()
 
   async function getTags() {
-    const returnAPI = await getApi(`user/tags`)
-    tags.value = returnAPI.data.tags
-    readLater.value = returnAPI.data.readLater
-    total.value = returnAPI.data.total
+    try {
+      const returnAPI = await getApi(`user/tags`)
+      tags.value = returnAPI.data.tags
+      readLater.value = returnAPI.data.readLater
+      total.value = returnAPI.data.total
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    }
   }
 
   async function addTag(feeds, tag) {

@@ -15,21 +15,31 @@ export const usePostsStore = defineStore('posts', () => {
   const feedsStore = useFeedsStore()
 
   async function getPosts(params) {
-    isReady.value = false
-    const returnAPI = await getApi('stream', params)
-    posts.value = returnAPI.data.items
-    total.value = returnAPI.data.total
-    next.value = returnAPI.data.next
-    isReady.value = true
+    try {
+      isReady.value = false
+      const returnAPI = await getApi('stream', params)
+      posts.value = returnAPI.data.items
+      total.value = returnAPI.data.total
+      next.value = returnAPI.data.next
+      isReady.value = true
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    }
   }
 
   async function getMorePosts() {
     isReady.value = false
-    const returnAPI = await getApi(next.value)
-    posts.value = [...posts.value, ...returnAPI.data.items]
-    total.value += returnAPI.data.total
-    next.value = returnAPI.data.next
-    isReady.value = true
+    try {
+      const returnAPI = await getApi(next.value)
+      posts.value = [...posts.value, ...returnAPI.data.items]
+      total.value += returnAPI.data.total
+      next.value = returnAPI.data.next
+      isReady.value = true
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    }
   }
 
   async function markPostAsRead(id, feedId, isRead) {

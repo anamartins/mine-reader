@@ -14,7 +14,7 @@ const router = useRouter()
 
 async function onButtonClick() {
   await usersStore.newUser(email.value, password.value)
-  router.push('/')
+  router.push({ name: 'signIn' })
 }
 
 onMounted(() => {})

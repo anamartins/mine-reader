@@ -16,9 +16,8 @@ const router = useRouter()
 async function onButtonClick() {
   try {
     await usersStore.login(email.value, password.value)
-    router.push('/home')
+    router.push({ name: 'home' })
   } catch (error) {
-    console.log(error)
     hasError.value = true
     email.value = ''
     password.value = ''

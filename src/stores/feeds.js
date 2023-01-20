@@ -26,10 +26,15 @@ export const useFeedsStore = defineStore('feeds', () => {
   }
 
   async function getFeeds() {
-    const returnAPI = await getApi(`user/feeds`, {})
-    feeds.value = returnAPI.data.feeds
-    total.value = returnAPI.data.total
-    readLater.value = returnAPI.data.readLater
+    try {
+      const returnAPI = await getApi(`user/feeds`, {})
+      feeds.value = returnAPI.data.feeds
+      total.value = returnAPI.data.total
+      readLater.value = returnAPI.data.readLater
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    }
   }
 
   return {

@@ -1,17 +1,19 @@
 import axios from 'axios'
-
-axios.interceptors.response.use(
-  function (response) {
-    return response
-  },
-  function (error) {
-    window.location.href = '/'
-    return Promise.reject(error)
-  }
-)
+import { useRouter } from 'vue-router'
 
 export function useApi() {
   const API_BASE_URL = 'https://api-mqf5kfu3ba-ez.a.run.app'
+
+  const router = useRouter()
+  axios.interceptors.response.use(
+    (response) => response,
+    function (error) {
+      if (error.response.status === 401) {
+        router.push({ name: 'signIn' })
+        // return Promise.reject(error)
+      }
+    }
+  )
 
   async function getApi(url, params) {
     const token = localStorage.getItem('mineToken')

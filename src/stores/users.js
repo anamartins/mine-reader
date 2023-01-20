@@ -19,8 +19,13 @@ export const useUsersStore = defineStore('users', () => {
   }
 
   async function getUser() {
-    const returnAPI = await getApi(`user/me`)
-    user.value.email = returnAPI.data.email
+    try {
+      const returnAPI = await getApi(`user/me`)
+      user.value.email = returnAPI.data.email
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    }
   }
 
   async function newUser(email, password) {

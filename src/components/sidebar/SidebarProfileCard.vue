@@ -9,7 +9,7 @@ const user = usersStore.user
 
 function onSignOut(e) {
   localStorage.removeItem('mineToken')
-  router.push('/')
+  router.push({ name: 'signIn' })
 }
 </script>
 
