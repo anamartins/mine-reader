@@ -79,13 +79,13 @@ async function onReadLaterChange() {
   margin: 1% 0;
   padding: 1%;
   width: calc(100% - 4px - 2%);
-  max-width: 1500px;
+  max-width: 1000px;
   height: 150px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .post:hover {
@@ -125,13 +125,13 @@ async function onReadLaterChange() {
   width: 20%;
   min-width: 50px;
   height: 100%;
-  margin: 0 1% 0 0;
-  background-color: deeppink;
+  margin: 0 0 0 1%;
   border-radius: 10px;
 }
 .post-image img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 </style>

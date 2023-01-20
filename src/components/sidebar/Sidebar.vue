@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import Logo from '../Logo.vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
-import SidebarFeedItemIcon from './SidebarFeedItemIcon.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
 

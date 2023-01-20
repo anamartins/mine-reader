@@ -52,6 +52,7 @@ function onObserverChanges(entries) {
 .stream {
   position: relative;
   width: 70%;
+  max-width: 1500px;
   align-self: self-start;
   display: flex;
   flex-wrap: wrap;

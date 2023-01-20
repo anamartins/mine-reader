@@ -3,7 +3,6 @@ import { ref } from 'vue'
 
 const isIconShown = ref(true)
 const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
-// const DEFAULT_ICON = '../../assets/img/pink.png'
 
 const props = defineProps({
   icon: {
@@ -23,6 +22,7 @@ function onError() {
     :src="IMG_BASE_URL + props.icon"
     @error="onError"
   />
+  <img class="feed__icon" v-else src="../../assets/img/pink.png" />
 </template>
 
 <style scoped lang="scss">
