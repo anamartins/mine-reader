@@ -16,7 +16,7 @@ const props = defineProps({
 
 <style scoped>
 .logo {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Bree Serif', serif;
   font-size: 3rem;
   margin: 0;
   padding: 0;

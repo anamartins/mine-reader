@@ -1,11 +1,21 @@
-
+:root{
+  --primary-color: #c2185b;
+  --primary-color-variation: #fa5788;
+  --secondary-color: #4a148c;
+  --secondary-color-variation: #7c43bd;
+  --background-color: #ffffff;
+  --surface-color: #ffffff;
+  --border-color: #333333;
+  --dark-text: #333333;
+  --light-text: #ffffff;
+}
 *{
     margin: 0;
     padding: 0;
 
 }
 html{
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 20px; 
 
 }
