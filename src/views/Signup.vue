@@ -5,9 +5,11 @@ import { useRouter } from 'vue-router'
 import TheLogo from '../components/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
+import AnimatedBox from '../components/AnimatedBox.vue'
 
 const email = ref('')
 const password = ref('')
+
 const usersStore = useUsersStore()
 
 const router = useRouter()
@@ -22,42 +24,103 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <TheLogo linkName="signUp" />
-    <form class="signup-form">
-      <InputText
-        class="input"
-        :is-required="true"
-        :focus="true"
-        label="Email"
-        v-model="email"
-      />
-      <InputText
-        class="input"
-        :is-required="true"
-        label="Password"
-        type="password"
-        v-model="password"
-      />
-      <ConfirmButton label="Sign me up!" @click="onButtonClick" />
-    </form>
+    <AnimatedBox
+      color="#c2185b"
+      border-color="#c2185b"
+      :round="{
+        top: '1750px',
+        right: '1500px',
+        bottom: '750px',
+        left: '1000px'
+      }"
+    />
+
+    <AnimatedBox
+      color="#fa5788"
+      :round="{
+        top: '1870px',
+        right: '2500px',
+        bottom: '3350px',
+        left: '4000px'
+      }"
+    />
+    <AnimatedBox
+      color="#4a148c"
+      :round="{
+        top: '5870px',
+        right: '6500px',
+        bottom: '650px',
+        left: '100px'
+      }"
+    />
+    <AnimatedBox
+      color="#7c43bd"
+      :round="{
+        top: '5870px',
+        right: '6500px',
+        bottom: '650px',
+        left: '100px'
+      }"
+    />
+    <AnimatedBox
+      border-color="#333"
+      :round="{
+        top: '270px',
+        right: '500px',
+        bottom: '360px',
+        left: '500px'
+      }"
+    />
+    <div class="wrapper">
+      <div class="main-box">
+        <TheLogo linkName="signUp" />
+        <form class="signup-form">
+          <InputText
+            class="input"
+            :is-required="true"
+            :focus="true"
+            label="Email"
+            v-model="email"
+          />
+          <InputText
+            class="input"
+            :is-required="true"
+            label="Password"
+            type="password"
+            v-model="password"
+          />
+          <ConfirmButton label="Sign me up!" @click="onButtonClick" />
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .signup {
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+}
+.main-box {
   min-width: calc(400px - 14%);
   max-width: calc(700px - 14%);
   min-height: calc(300px - 10%);
   max-height: calc(500px - 10%);
   padding: 8% 7%;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 1750px 1500px 750px 1000px;
-  /* border-radius: 175% 150% 70% 125%; */
-
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+  background-color: var(--surface-color);
 }
 
 .signup-form {
