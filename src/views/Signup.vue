@@ -25,32 +25,30 @@ onMounted(() => {})
 <template>
   <div class="signup">
     <AnimatedBox color="#c2185b" border-color="#c2185b" />
-
     <AnimatedBox color="#fa5788" />
     <AnimatedBox color="#4a148c" />
     <AnimatedBox color="#7c43bd" />
     <AnimatedBox border-color="#333" />
+    <AnimatedBox color="#ffffff" opacity="1" class="main-box" />
     <div class="wrapper">
-      <div class="main-box">
-        <TheLogo linkName="signUp" />
-        <form class="signup-form">
-          <InputText
-            class="input"
-            :is-required="true"
-            :focus="true"
-            label="Email"
-            v-model="email"
-          />
-          <InputText
-            class="input"
-            :is-required="true"
-            label="Password"
-            type="password"
-            v-model="password"
-          />
-          <ConfirmButton label="Sign me up!" @click="onButtonClick" />
-        </form>
-      </div>
+      <TheLogo linkName="signUp" />
+      <form class="signup-form">
+        <InputText
+          class="input"
+          :is-required="true"
+          :focus="true"
+          label="Email"
+          v-model="email"
+        />
+        <InputText
+          class="input"
+          :is-required="true"
+          label="Password"
+          type="password"
+          v-model="password"
+        />
+        <ConfirmButton label="Sign me up!" @click="onButtonClick" />
+      </form>
     </div>
   </div>
 </template>
@@ -58,8 +56,14 @@ onMounted(() => {})
 <style scoped>
 .signup {
   background-color: var(--background-color);
-  /* position: relative; */
-  /* overflow: hidden; */
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
 }
 .wrapper {
   display: flex;
@@ -69,23 +73,23 @@ onMounted(() => {})
   position: relative;
 }
 .main-box {
-  min-width: calc(400px - 14%);
-  max-width: calc(700px - 14%);
-  min-height: calc(300px - 10%);
-  max-height: calc(500px - 10%);
-  padding: 8% 7%;
-  border: 1px solid #ccc;
-  border-radius: 1750px 1500px 750px 1000px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  background-color: var(--surface-color);
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 500px;
+  max-height: 700px;
 }
 
 .signup-form {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
   align-content: center;
 }

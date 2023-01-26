@@ -3,7 +3,8 @@ import { ref } from 'vue'
 
 const props = defineProps({
   color: { type: String, requiqued: false },
-  borderColor: { type: String, requiqued: false }
+  borderColor: { type: String, requiqued: false },
+  opacity: { type: String, required: false, default: '0.7' }
 })
 
 function randomNumber(min, max) {
@@ -12,8 +13,8 @@ function randomNumber(min, max) {
 
 const animationDuration = `${randomNumber(5, 20)}s`
 
-const minRotation = `${randomNumber(-45, -1)}deg`
-const maxRotation = `${randomNumber(1, 45)}deg`
+const rotation1 = `${randomNumber(-45, 45)}deg`
+const rotation2 = `${randomNumber(-45, 45)}deg`
 
 const minTopBorder = randomNumber(500, 2000)
 const minRightBorder = randomNumber(500, 2000)
@@ -34,12 +35,16 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
 .box {
   background-color: v-bind('props.color');
   border: 2px solid v-bind('props.borderColor');
-  width: 60%;
+  width: 70%;
+  min-width: calc(600px - 14%);
+  max-width: calc(1200px - 14%);
   height: 100%;
+  min-height: calc(600px - 10%);
+  max-height: calc(1000px - 10%);
   top: 50%;
   left: 50%;
   position: absolute;
-  opacity: 0.7;
+  opacity: v-bind('props.opacity');
   animation: animation infinite alternate ease-in-out
     v-bind('animationDuration');
   overflow: hidden;
@@ -48,12 +53,12 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
 @keyframes animation {
   0% {
     border-radius: v-bind('minBorder');
-    transform: translate(-50%, -50%) rotate(v-bind('minRotation'));
+    transform: translate(-50%, -50%) rotate(v-bind('rotation1'));
   }
 
   100% {
     border-radius: v-bind('maxBorder');
-    transform: translate(-50%, -50%) rotate(v-bind('maxRotation'));
+    transform: translate(-50%, -50%) rotate(v-bind('rotation2'));
   }
 }
 </style>
