@@ -4,12 +4,15 @@ import { ref } from 'vue'
 const props = defineProps({
   color: { type: String, requiqued: false },
   borderColor: { type: String, requiqued: false },
-  opacity: { type: String, required: false, default: '0.7' }
+  opacity: { type: String, required: false, default: '0.7' },
+  z: { type: String, required: true, default: '0' }
 })
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
+
+const z = `0.${props.z}px`
 
 const animationDuration = `${randomNumber(5, 20)}s`
 
@@ -53,12 +56,12 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
 @keyframes animation {
   0% {
     border-radius: v-bind('minBorder');
-    transform: translate(-50%, -50%) rotate(v-bind('rotation1'));
+    transform: translate3D(-50%, -50%, v-bind('z')) rotate(v-bind('rotation1'));
   }
 
   100% {
     border-radius: v-bind('maxBorder');
-    transform: translate(-50%, -50%) rotate(v-bind('rotation2'));
+    transform: translate3D(-50%, -50%, v-bind('z')) rotate(v-bind('rotation2'));
   }
 }
 </style>

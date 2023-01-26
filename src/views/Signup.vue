@@ -24,12 +24,12 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <AnimatedBox color="#c2185b" border-color="#c2185b" />
-    <AnimatedBox color="#fa5788" />
-    <AnimatedBox color="#4a148c" />
-    <AnimatedBox color="#7c43bd" />
-    <AnimatedBox border-color="#333" />
-    <AnimatedBox color="#ffffff" opacity="1" class="main-box" />
+    <AnimatedBox color="#c2185b" border-color="#c2185b" z="5" />
+    <AnimatedBox color="#fa5788" z="4" />
+    <AnimatedBox color="#4a148c" z="3" />
+    <AnimatedBox color="#7c43bd" z="2" />
+    <AnimatedBox border-color="#333" z="1" />
+    <AnimatedBox color="#ffffff" opacity="1" class="main-box" z="0" />
     <div class="wrapper">
       <TheLogo linkName="signUp" />
       <form class="signup-form">
