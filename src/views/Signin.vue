@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import TheLogo from '../components/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
+import AnimatedBox from '../components/AnimatedBox.vue'
 
 const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
@@ -27,54 +28,78 @@ async function onButtonClick() {
 
 <template>
   <div class="signin">
-    <TheLogo linkName="signIn" />
-    <form class="signin-form">
-      <InputText
-        class="input"
-        :is-required="true"
-        label="email"
-        v-model="email"
-        :focus="true"
-      />
-      <InputText
-        class="input"
-        :is-required="true"
-        label="password"
-        type="password"
-        v-model="password"
-      />
-      <div class="fail" v-if="hasError">Login failed</div>
-      <ConfirmButton label="Go!" @click="onButtonClick" />
-    </form>
-    <div class="link">
-      <router-link :to="{ name: 'signUp' }">
-        -> new user? create an account
-      </router-link>
+    <AnimatedBox color="#c2185b" border-color="#c2185b" z="5" />
+    <AnimatedBox color="#fa5788" z="4" />
+    <AnimatedBox color="#4a148c" z="3" />
+    <AnimatedBox color="#7c43bd" z="2" />
+    <AnimatedBox border-color="#333" z="1" />
+    <AnimatedBox color="#ffffff" opacity="1" class="main-box" z="0" />
+    <div class="wrapper">
+      <TheLogo class="logo" linkName="signIn" />
+      <form class="signin-form">
+        <InputText
+          class="input"
+          :is-required="true"
+          label="email"
+          v-model="email"
+          :focus="true"
+        />
+        <InputText
+          class="input"
+          :is-required="true"
+          label="password"
+          type="password"
+          v-model="password"
+        />
+        <div class="fail" v-if="hasError">Login failed</div>
+        <ConfirmButton label="Go!" @click="onButtonClick" />
+      </form>
+      <div class="link">
+        <router-link :to="{ name: 'signUp' }">
+          -> new user? create an account
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .signin {
-  min-width: calc(400px - 14%);
-  max-width: calc(700px - 14%);
-  min-height: calc(300px - 10%);
-  max-height: calc(500px - 10%);
-  padding: 8% 7%;
-  border: 2px solid #ccc;
-  border-radius: 1750px 1500px 750px 1000px;
-  /* border-radius: 175% 150% 70% 125%; */
-
+  background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+}
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+}
+
+.main-box {
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 500px;
+  max-height: 700px;
 }
 .signin-form {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+}
+.logo {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
 }
 
 .input {

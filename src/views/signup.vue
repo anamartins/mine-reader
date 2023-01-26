@@ -31,7 +31,7 @@ onMounted(() => {})
     <AnimatedBox border-color="#333" z="1" />
     <AnimatedBox color="#ffffff" opacity="1" class="main-box" z="0" />
     <div class="wrapper">
-      <TheLogo linkName="signUp" />
+      <TheLogo class="logo" linkName="signUp" />
       <form class="signup-form">
         <InputText
           class="input"
@@ -91,7 +91,6 @@ onMounted(() => {})
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-content: center;
 }
 
 .input {
