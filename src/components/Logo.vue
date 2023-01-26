@@ -1,6 +1,7 @@
 <script setup>
+import AnimatedBox from './AnimatedBox.vue'
 const props = defineProps({
-  linkName: { type: String, default: 'home' }
+  linkName: { type: String, required: false, default: 'home' }
 })
 </script>
 
