@@ -24,53 +24,12 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <AnimatedBox
-      color="#c2185b"
-      border-color="#c2185b"
-      :round="{
-        top: '1750px',
-        right: '1500px',
-        bottom: '750px',
-        left: '1000px'
-      }"
-    />
+    <AnimatedBox color="#c2185b" border-color="#c2185b" />
 
-    <AnimatedBox
-      color="#fa5788"
-      :round="{
-        top: '1870px',
-        right: '2500px',
-        bottom: '3350px',
-        left: '4000px'
-      }"
-    />
-    <AnimatedBox
-      color="#4a148c"
-      :round="{
-        top: '5870px',
-        right: '6500px',
-        bottom: '650px',
-        left: '100px'
-      }"
-    />
-    <AnimatedBox
-      color="#7c43bd"
-      :round="{
-        top: '5870px',
-        right: '6500px',
-        bottom: '650px',
-        left: '100px'
-      }"
-    />
-    <AnimatedBox
-      border-color="#333"
-      :round="{
-        top: '270px',
-        right: '500px',
-        bottom: '360px',
-        left: '500px'
-      }"
-    />
+    <AnimatedBox color="#fa5788" />
+    <AnimatedBox color="#4a148c" />
+    <AnimatedBox color="#7c43bd" />
+    <AnimatedBox border-color="#333" />
     <div class="wrapper">
       <div class="main-box">
         <TheLogo linkName="signUp" />
@@ -99,7 +58,8 @@ onMounted(() => {})
 <style scoped>
 .signup {
   background-color: var(--background-color);
-  overflow: hidden;
+  /* position: relative; */
+  /* overflow: hidden; */
 }
 .wrapper {
   display: flex;
