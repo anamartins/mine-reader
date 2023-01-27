@@ -61,18 +61,17 @@ function onObserverChanges(entries) {
 
 <style scoped>
 .stream {
+  display: flex;
   position: relative;
   width: 70%;
   max-width: 1500px;
   align-self: self-start;
-  display: flex;
   flex-wrap: wrap;
 }
 
 .filter-bar {
   width: 100%;
-  height: auto;
-  padding: 10px 5px 5px 5px;
+  padding: 1% 2%;
 }
 
 .box {

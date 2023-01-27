@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import Sidebar from '../../components/sidebar/Sidebar.vue'
 import Stream from './components/stream/Stream.vue'
+import Header from '../../components/header/Header.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 import { useUserPreferences } from '../../composables/userPreferences'
@@ -26,13 +27,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <Sidebar class="sidebar" />
-  <Stream class="stream" />
+  <div class="wrapper">
+    <div class="content">
+      <Sidebar class="sidebar" />
+      <Stream class="stream" />
+    </div>
+    <Header class="header"></Header>
+  </div>
 </template>
 
 <style scoped>
+.wrapper {
+  width: 90%;
+}
+.content {
+  width: 100%;
+  display: flex;
+}
+.header {
+  position: fixed;
+  top: 0;
+  width: 90%;
+}
 .sidebar {
   position: sticky;
-  align-self: flex-start;
+}
+.stream {
+  padding: 5.5rem 0 0 0;
 }
 </style>

@@ -1,12 +1,24 @@
 <script setup>
-import { randomNumber } from '../../utils/number'
+import { computed } from 'vue'
+import { randomNumber } from '../utils/number'
 const props = defineProps({
   color: { type: String, requiqued: false },
   borderColor: { type: String, requiqued: false },
-  opacity: { type: String, required: false, default: '0.7' }
+  opacity: { type: String, required: false, default: '0.7' },
+  minWidth: { type: String, required: false, default: '100px' },
+  minHeight: { type: String, required: false, default: '100px' },
+  isPaused: { type: Boolean, required: false, default: false }
 })
 
 const animationDuration = `${randomNumber(5, 20)}s`
+
+const animationState = computed(() => {
+  if (props.isPaused) {
+    return 'paused'
+  } else {
+    return 'running'
+  }
+})
 
 const rotation1 = `${randomNumber(-45, 45)}deg`
 const rotation2 = `${randomNumber(-45, 45)}deg`
@@ -31,18 +43,22 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
   background-color: v-bind('props.color');
   border: 2px solid v-bind('props.borderColor');
   width: 70%;
-  min-width: calc(600px - 14%);
+  min-width: v-bind('props.minWidth');
   max-width: calc(1200px - 14%);
   height: 100%;
-  min-height: calc(600px - 10%);
-  max-height: calc(1000px - 10%);
+  min-height: v-bind('props.minHeight');
   top: 50%;
   left: 50%;
   position: absolute;
   opacity: v-bind('props.opacity');
   animation: animation infinite alternate ease-in-out
     v-bind('animationDuration');
+  animation-play-state: v-bind('animationState');
   overflow: hidden;
+  cursor: pointer;
+}
+.box:hover {
+  animation-play-state: running;
 }
 
 @keyframes animation {

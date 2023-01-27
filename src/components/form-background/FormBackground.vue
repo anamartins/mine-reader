@@ -1,14 +1,40 @@
 <script setup>
-import FormBackgroundLayer from './FormBackgroundLayer.vue'
+import AnimatedBoxLayer from '../AnimatedBoxLayer.vue'
 </script>
 <template>
   <div class="background">
-    <FormBackgroundLayer color="#c2185b" border-color="#c2185b" />
-    <FormBackgroundLayer color="#fa5788" />
-    <FormBackgroundLayer color="#4a148c" />
-    <FormBackgroundLayer color="#7c43bd" />
-    <FormBackgroundLayer border-color="#333" />
-    <FormBackgroundLayer color="#ffffff" opacity="1" class="main-box" />
+    <AnimatedBoxLayer
+      color="#c2185b"
+      min-width="calc(700px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
+    <AnimatedBoxLayer
+      color="#fa5788"
+      min-width="calc(700px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
+    <AnimatedBoxLayer
+      color="#4a148c"
+      min-width="calc(700px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
+    <AnimatedBoxLayer
+      color="#7c43bd"
+      min-width="calc(700px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
+    <AnimatedBoxLayer
+      border-color="#333"
+      min-width="calc(700px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
+    <AnimatedBoxLayer
+      color="#ffffff"
+      opacity="1"
+      class="main-box"
+      min-width="calc(600px - 14%)"
+      min-height="calc(1000px - 10%)"
+    />
     <slot></slot>
   </div>
 </template>

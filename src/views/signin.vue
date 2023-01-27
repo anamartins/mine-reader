@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
-import TheLogo from '../components/Logo.vue'
+import TheLogo from '../components/logo/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'

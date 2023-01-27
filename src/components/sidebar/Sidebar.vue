@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import Logo from '../Logo.vue'
+import Logo from '../logo/Logo.vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import { useFeedsStore } from '../../stores/feeds'
@@ -22,7 +22,7 @@ const isLoadingTags = computed(() => tagsStore.isLoading)
 
 <template>
   <div class="sidebar">
-    <Logo link="home" />
+    <!-- <Logo link="home" /> -->
     <section class="side-sub">
       <h2 class="sidebar__heading">
         <router-link :to="{ name: 'home' }">
@@ -76,7 +76,7 @@ const isLoadingTags = computed(() => tagsStore.isLoading)
   width: 20%;
   max-width: 300px;
   height: 100%;
-  top: 0;
+  top: 5.5rem;
   padding: 0 1%;
   margin: 0 1% 0 0;
   display: flex;
