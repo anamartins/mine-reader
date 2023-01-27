@@ -57,6 +57,6 @@ function setPlural(number, unit) {
   }
 }
 
-export function getNow() {
+function getNow() {
   return new Date()
 }

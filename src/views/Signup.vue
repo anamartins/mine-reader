@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import TheLogo from '../components/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
-import AnimatedBox from '../components/AnimatedBox.vue'
+import FormBackground from '../components/form-background/FormBackground.vue'
 
 const email = ref('')
 const password = ref('')
@@ -24,32 +24,28 @@ onMounted(() => {})
 
 <template>
   <div class="signup">
-    <AnimatedBox color="#c2185b" border-color="#c2185b" z="5" />
-    <AnimatedBox color="#fa5788" z="4" />
-    <AnimatedBox color="#4a148c" z="3" />
-    <AnimatedBox color="#7c43bd" z="2" />
-    <AnimatedBox border-color="#333" z="1" />
-    <AnimatedBox color="#ffffff" opacity="1" class="main-box" z="0" />
-    <div class="wrapper">
-      <TheLogo class="logo" linkName="signUp" />
-      <form class="signup-form">
-        <InputText
-          class="input"
-          :is-required="true"
-          :focus="true"
-          label="Email"
-          v-model="email"
-        />
-        <InputText
-          class="input"
-          :is-required="true"
-          label="Password"
-          type="password"
-          v-model="password"
-        />
-        <ConfirmButton label="Sign me up!" @click="onButtonClick" />
-      </form>
-    </div>
+    <FormBackground>
+      <div class="wrapper">
+        <TheLogo class="logo" linkName="signUp" />
+        <form class="signup-form">
+          <InputText
+            class="input"
+            :is-required="true"
+            :focus="true"
+            label="Email"
+            v-model="email"
+          />
+          <InputText
+            class="input"
+            :is-required="true"
+            label="Password"
+            type="password"
+            v-model="password"
+          />
+          <ConfirmButton label="Sign me up!" @click="onButtonClick" />
+        </form>
+      </div>
+    </FormBackground>
   </div>
 </template>
 
@@ -71,6 +67,7 @@ onMounted(() => {})
   justify-content: center;
   align-content: center;
   position: relative;
+  z-index: 6;
 }
 .main-box {
   min-width: 500px;
