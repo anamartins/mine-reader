@@ -5,7 +5,7 @@ import App from './App.vue'
 import Signup from './views/Signup.vue'
 import Signin from './views/Signin.vue'
 import Home from './views/home/Home.vue'
-import Followfeed from './views/followFeed.vue'
+import FollowFeed from './views/FollowFeed.vue'
 import Profile from './views/Profile.vue'
 import Addtag from './views/AddTag.vue'
 
@@ -17,7 +17,7 @@ const routes = [
   { path: '/home', name: 'home', component: Home },
   { path: '/me', name: 'profile', component: Profile },
   { path: '/feed/:feed', name: 'feed', component: Home },
-  { path: '/feed/add', name: 'addFeed', component: Followfeed },
+  { path: '/feed/add', name: 'addFeed', component: FollowFeed },
   { path: '/tag/add', name: 'addTag', component: Addtag },
   { path: '/tag/:tag', name: 'tag', component: Home },
   { path: '/read-later', name: 'readLater', component: Home }

@@ -4,6 +4,7 @@ import { useApi } from '../composables/api'
 
 export const useFeedsStore = defineStore('feeds', () => {
   const feeds = ref([])
+  const searchList = ref([])
   const total = ref(0)
   const readLater = ref(0)
   const isLoading = ref(false)
@@ -41,16 +42,25 @@ export const useFeedsStore = defineStore('feeds', () => {
     }
   }
 
+  async function searchFeed(query) {
+    const returnAPI = await getApi(`feed/search?query=${query}`)
+
+    console.log('searchList', returnAPI.data.feeds)
+    searchList.value = returnAPI.data.feeds
+  }
+
   return {
     //actions
     getFeeds,
     getFeedById,
     followNewFeed,
     removeFeed,
+    searchFeed,
     //ref
     feeds,
     total,
     readLater,
-    isLoading
+    isLoading,
+    searchList
   }
 })

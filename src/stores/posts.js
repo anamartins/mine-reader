@@ -45,7 +45,7 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   async function markPostAsRead(id, feedId, isRead) {
-    const feed = await feedsStore.getFeedById(feedId)
+    const feed = feedsStore.getFeedById(feedId)
     if (isRead) {
       await postApi(`stream/${id}/is-read`, null)
       feed.unread--

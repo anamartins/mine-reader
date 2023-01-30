@@ -21,12 +21,12 @@ if (content.length === textLimit) {
 }
 
 async function onPostClick() {
+  props.post.isRead = true
   await postsStore.markPostAsRead(
     props.post.id,
     props.post.feedId,
     props.post.isRead
   )
-  props.post.isRead = true
 }
 
 async function onMarkAsReadChange() {
