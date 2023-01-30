@@ -37,12 +37,7 @@ watch(feed, (newValue) => {
 
 <template>
   <Sidebar />
-  <div class="follow-feed">
-    <!-- <Input class="follow-input" label="Feed URL:" :model-value="feed" focus /> -->
-    <label>Feed URL:</label>
-    <input type="text" name="feed" v-model="feed" />
-    <button type="button" @click="onAddButtonClick">+ add feed!</button>
-
+  <div class="manage-feed">
     <div>
       <ul>
         <li v-for="item in feeds" :key="item.id">
@@ -57,12 +52,8 @@ watch(feed, (newValue) => {
 </template>
 
 <style scoped>
-.follow-feed {
+.manage-feed {
   position: relative;
-  width: 70%;
-}
-
-.follow-input {
   width: 70%;
 }
 </style>
