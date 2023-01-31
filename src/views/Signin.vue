@@ -22,8 +22,6 @@ async function onButtonClick() {
     router.push({ name: 'home' })
   } catch (error) {
     hasError.value = true
-    email.value = ''
-    password.value = ''
   }
 }
 </script>
@@ -34,6 +32,7 @@ async function onButtonClick() {
       <div class="wrapper">
         <TheLogo class="logo" linkName="signIn" />
         <form class="signin-form">
+          <div class="loading" v-if="isLoading">Loading</div>
           <InputText
             class="input-text"
             :is-required="true"
@@ -49,9 +48,13 @@ async function onButtonClick() {
             v-model="password"
           />
           <div class="fail" v-if="hasError">Login failed</div>
-          <ConfirmButton label="Go!" @click="onButtonClick" />
+          <ConfirmButton
+            class="go-button"
+            label="Go!"
+            @click="onButtonClick"
+            :disabled="isLoading"
+          />
         </form>
-        <div class="loading" v-if="isLoading">Loading</div>
 
         <div class="link">
           <router-link :to="{ name: 'signUp' }">
@@ -100,6 +103,11 @@ async function onButtonClick() {
 
 .input-text {
   width: 100%;
+}
+
+.go-button:disabled {
+  background-color: #333;
+  cursor: none;
 }
 
 .fail {

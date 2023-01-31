@@ -10,12 +10,20 @@ export const useUsersStore = defineStore('users', () => {
   const { getApi, postApi } = useApi()
 
   async function login(email, password) {
-    const returnAPI = await postApi(`auth/sign-in`, {
-      email: email,
-      password: password
-    })
-    token.value = returnAPI.data.token
-    localStorage.setItem('mineToken', token.value)
+    try {
+      isLoading.value = true
+      const returnAPI = await postApi(`auth/sign-in`, {
+        email: email,
+        password: password
+      })
+      token.value = returnAPI.data.token
+      localStorage.setItem('mineToken', token.value)
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    } finally {
+      isLoading.value = false
+    }
   }
 
   async function getUser() {

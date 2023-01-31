@@ -11,7 +11,6 @@ const props = defineProps({
 })
 
 const colors = getColors()
-console.log('colors', colors)
 const darkTextColor = colors.darkTextColor
 </script>
 <template>
