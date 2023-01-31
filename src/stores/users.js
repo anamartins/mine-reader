@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
+// import axios from 'axios'
 import { ref } from 'vue'
 import { useApi } from '../composables/api'
 
@@ -32,10 +32,18 @@ export const useUsersStore = defineStore('users', () => {
   }
 
   async function newUser(email, password) {
-    const returnAPI = await postApi(`auth/sign-up`, {
-      email: email,
-      password: password
-    })
+    try {
+      isLoading.value = true
+      const returnAPI = await postApi(`auth/sign-up`, {
+        email: email,
+        password: password
+      })
+    } catch (error) {
+      //todo
+      console.log('show an error message', error)
+    } finally {
+      isLoading.value = false
+    }
   }
 
   return {

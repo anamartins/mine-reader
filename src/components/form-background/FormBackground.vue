@@ -6,34 +6,34 @@ import AnimatedBoxLayer from '../AnimatedBoxLayer.vue'
     <AnimatedBoxLayer
       color="#c2185b"
       min-width="calc(700px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <AnimatedBoxLayer
       color="#fa5788"
       min-width="calc(700px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <AnimatedBoxLayer
       color="#4a148c"
       min-width="calc(700px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <AnimatedBoxLayer
       color="#7c43bd"
       min-width="calc(700px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <AnimatedBoxLayer
       border-color="#333"
       min-width="calc(700px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <AnimatedBoxLayer
       color="#ffffff"
       opacity="1"
       class="main-box"
       min-width="calc(600px - 14%)"
-      min-height="calc(1000px - 10%)"
+      min-height="calc(700px - 10%)"
     />
     <slot></slot>
   </div>

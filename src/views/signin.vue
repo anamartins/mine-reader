@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import TheLogo from '../components/logo/Logo.vue'
@@ -11,6 +11,8 @@ const email = ref('anacarolcm@gmail.com')
 const password = ref('12345')
 const usersStore = useUsersStore()
 const hasError = ref(false)
+
+const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
 
@@ -33,14 +35,14 @@ async function onButtonClick() {
         <TheLogo class="logo" linkName="signIn" />
         <form class="signin-form">
           <InputText
-            class="input"
+            class="input-text"
             :is-required="true"
             label="email"
             v-model="email"
             :focus="true"
           />
           <InputText
-            class="input"
+            class="input-text"
             :is-required="true"
             label="password"
             type="password"
@@ -49,6 +51,8 @@ async function onButtonClick() {
           <div class="fail" v-if="hasError">Login failed</div>
           <ConfirmButton label="Go!" @click="onButtonClick" />
         </form>
+        <div class="loading" v-if="isLoading">Loading</div>
+
         <div class="link">
           <router-link :to="{ name: 'signUp' }">
             -> new user? create an account
@@ -77,6 +81,7 @@ async function onButtonClick() {
   justify-content: center;
   align-content: center;
   position: relative;
+  width: 100%;
 }
 
 .signin-form {
@@ -84,6 +89,7 @@ async function onButtonClick() {
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+  width: 40%;
 }
 .logo {
   width: 100%;
@@ -92,8 +98,8 @@ async function onButtonClick() {
   justify-content: center;
 }
 
-.input {
-  width: 65%;
+.input-text {
+  width: 100%;
 }
 
 .fail {
@@ -104,8 +110,12 @@ async function onButtonClick() {
 }
 
 .link {
-  width: 60%;
+  width: 100%;
   position: relative;
   text-align: center;
+}
+
+.loading {
+  background-color: deeppink;
 }
 </style>

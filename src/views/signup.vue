@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import TheLogo from '../components/logo/Logo.vue'
@@ -11,6 +11,8 @@ const email = ref('')
 const password = ref('')
 
 const usersStore = useUsersStore()
+
+const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
 
@@ -26,19 +28,21 @@ onMounted(() => {})
   <div class="signup">
     <FormBackground>
       <div class="wrapper">
+        <div class="loading" v-if="isLoading">Loading</div>
+
         <TheLogo class="logo" linkName="signUp" />
         <form class="signup-form">
           <InputText
             class="input"
             :is-required="true"
             :focus="true"
-            label="Email"
+            label="email"
             v-model="email"
           />
           <InputText
             class="input"
             :is-required="true"
-            label="Password"
+            label="password"
             type="password"
             v-model="password"
           />
@@ -105,5 +109,8 @@ onMounted(() => {})
   width: 60%;
   position: relative;
   text-align: center;
+}
+.loading {
+  background-color: deeppink;
 }
 </style>

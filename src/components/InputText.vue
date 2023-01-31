@@ -1,5 +1,6 @@
 <script setup>
 import vFocus from '../directives/vFocus'
+import { getColors } from '../utils/colors'
 
 const props = defineProps({
   type: { type: String, default: 'text' },
@@ -8,6 +9,10 @@ const props = defineProps({
   modelValue: { type: String },
   focus: { type: Boolean, default: false }
 })
+
+const colors = getColors()
+console.log('colors', colors)
+const darkTextColor = colors.darkTextColor
 </script>
 <template>
   <div class="input-text">
@@ -25,16 +30,15 @@ const props = defineProps({
   </div>
 </template>
 <style scoped>
-input {
+.input {
   margin: 1% 0px 10% 0px;
-  padding: 3% 5%;
+  padding: 3%;
   width: 100%;
-  height: 20px;
-  border: 0px;
-  border-radius: 65px 100px 50px 80px;
-  background-color: #eee;
-  font-family: 'Inter';
-  font-size: 1.2rem;
+  height: 1.3rem;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
 }
 
 .label-input {
