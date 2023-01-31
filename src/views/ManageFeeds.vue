@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 
 import { useFeedsStore } from '../stores/feeds'
 import Sidebar from '../components/sidebar/Sidebar.vue'
@@ -10,7 +10,7 @@ const feed = ref('')
 const feedsStore = useFeedsStore()
 const feeds = computed(() => feedsStore.feeds)
 
-// const isTimeoutSet = ref(false)
+console.log('feed', feeds)
 
 let timeout
 
@@ -22,17 +22,6 @@ async function onAddButtonClick() {
 function onRemoveButtonClick(feedId) {
   feedsStore.removeFeed(feedId)
 }
-
-watch(feed, (newValue) => {
-  // if (isTimeoutSet) {
-  clearTimeout(timeout)
-  // }
-  timeout = setTimeout(() => {
-    console.log('newValue', newValue)
-    console.log('feed', feed.value)
-    feedsStore.searchFeed(feed.value)
-  }, 1000)
-})
 </script>
 
 <template>
@@ -41,7 +30,7 @@ watch(feed, (newValue) => {
     <div>
       <ul>
         <li v-for="item in feeds" :key="item.id">
-          {{ item.title }}
+          <a :href="item.link" target="_blank">{{ item.title }}</a>
           <button type="button" @click="onRemoveButtonClick(item.feedId)">
             remove feed
           </button>
