@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
+import { getColors } from '../utils/colors'
 import TheLogo from '../components/logo/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
@@ -14,6 +15,10 @@ const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
+
+const colors = getColors()
+const darkTextColor = colors.darkTextColor
+const primaryColor = colors.primaryColor
 
 async function onButtonClick() {
   await usersStore.login(email.value, password.value)
@@ -112,12 +117,12 @@ async function onButtonClick() {
   width: 100%;
 }
 .go-button:disabled {
-  background-color: #333;
+  background-color: v-bind('darkTextColor');
   cursor: none;
 }
 
 .fail {
-  color: red;
+  color: v-bind('primaryColor');
   position: relative;
   width: 100%;
   text-align: center;
@@ -129,7 +134,7 @@ async function onButtonClick() {
   text-align: center;
 }
 
-.loading {
+/* .loading {
   background-color: deeppink;
-}
+} */
 </style>

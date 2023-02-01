@@ -20,7 +20,6 @@ export const useUsersStore = defineStore('users', () => {
       token.value = returnAPI.data.token
       localStorage.setItem('mineToken', token.value)
     } catch (error) {
-      //todo
       console.log(error)
       hasError.value = true
     } finally {
@@ -50,8 +49,7 @@ export const useUsersStore = defineStore('users', () => {
         password: password
       })
     } catch (error) {
-      //todo
-      console.log('show an error message', error)
+      console.log(error)
       hasError.value = true
     } finally {
       isLoading.value = false

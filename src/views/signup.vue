@@ -11,7 +11,7 @@ const email = ref('')
 const password = ref('')
 
 const usersStore = useUsersStore()
-
+const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
@@ -46,6 +46,7 @@ onMounted(() => {})
             type="password"
             v-model="password"
           />
+          <div class="fail" v-if="hasError">error</div>
           <ConfirmButton
             class="go-button"
             label="Sign me up!"
@@ -127,7 +128,7 @@ onMounted(() => {})
   position: relative;
   text-align: center;
 }
-.loading {
+/* .loading {
   background-color: deeppink;
-}
+} */
 </style>
