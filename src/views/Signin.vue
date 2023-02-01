@@ -8,21 +8,16 @@ import ConfirmButton from '../components/ConfirmButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
 
 const email = ref('anacarolcm@gmail.com')
-const password = ref('12345')
+const password = ref('123454545')
 const usersStore = useUsersStore()
-const hasError = ref(false)
-
+const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
 
 async function onButtonClick() {
-  try {
-    await usersStore.login(email.value, password.value)
-    router.push({ name: 'home' })
-  } catch (error) {
-    hasError.value = true
-  }
+  await usersStore.login(email.value, password.value)
+  router.push({ name: 'home' })
 }
 </script>
 
@@ -47,10 +42,12 @@ async function onButtonClick() {
             type="password"
             v-model="password"
           />
-          <div class="fail" v-if="hasError">Login failed</div>
+          <div class="fail" v-if="hasError">
+            email or password are incorrect
+          </div>
           <ConfirmButton
             class="go-button"
-            label="Go!"
+            label="login"
             @click="onButtonClick"
             :disabled="isLoading"
           />
@@ -67,6 +64,13 @@ async function onButtonClick() {
 </template>
 
 <style scoped>
+.background {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  width: 25%;
+}
 .signin {
   background-color: var(--background-color);
   position: relative;
@@ -92,7 +96,7 @@ async function onButtonClick() {
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
-  width: 40%;
+  width: 100%;
 }
 .logo {
   width: 100%;
@@ -104,7 +108,9 @@ async function onButtonClick() {
 .input-text {
   width: 100%;
 }
-
+.go-button {
+  width: 100%;
+}
 .go-button:disabled {
   background-color: #333;
   cursor: none;

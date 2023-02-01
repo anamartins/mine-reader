@@ -7,6 +7,7 @@ export const useUsersStore = defineStore('users', () => {
   const user = ref({ email: '' })
   const token = ref('')
   const isLoading = ref(false)
+  const hasError = ref(false)
   const { getApi, postApi } = useApi()
 
   async function login(email, password) {
@@ -20,7 +21,8 @@ export const useUsersStore = defineStore('users', () => {
       localStorage.setItem('mineToken', token.value)
     } catch (error) {
       //todo
-      console.log('show an error message', error)
+      console.log(error)
+      hasError.value = true
     } finally {
       isLoading.value = false
     }
@@ -34,6 +36,7 @@ export const useUsersStore = defineStore('users', () => {
     } catch (error) {
       //todo
       console.log('show an error message', error)
+      hasError.value = true
     } finally {
       isLoading.value = false
     }
@@ -49,6 +52,7 @@ export const useUsersStore = defineStore('users', () => {
     } catch (error) {
       //todo
       console.log('show an error message', error)
+      hasError.value = true
     } finally {
       isLoading.value = false
     }
@@ -62,6 +66,7 @@ export const useUsersStore = defineStore('users', () => {
     //state
     user,
     token,
-    isLoading
+    isLoading,
+    hasError
   }
 })

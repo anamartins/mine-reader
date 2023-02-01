@@ -15,9 +15,8 @@ const lightTextColor = colors.lightTextColor
 <style scoped>
 .confirmation-button {
   position: relative;
-  width: 40%;
   align-self: center;
-  padding: 3% 0;
+  padding: 5% 0%;
   margin: 5% 0px;
   border: 0px;
   border-radius: 10px;

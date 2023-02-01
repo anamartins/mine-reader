@@ -33,27 +33,43 @@ onMounted(() => {})
         <TheLogo class="logo" linkName="signUp" />
         <form class="signup-form">
           <InputText
-            class="input"
+            class="input-text"
             :is-required="true"
             :focus="true"
             label="email"
             v-model="email"
           />
           <InputText
-            class="input"
+            class="input-text"
             :is-required="true"
             label="password"
             type="password"
             v-model="password"
           />
-          <ConfirmButton label="Sign me up!" @click="onButtonClick" />
+          <ConfirmButton
+            class="go-button"
+            label="Sign me up!"
+            @click="onButtonClick"
+          />
         </form>
+        <div class="link">
+          <router-link :to="{ name: 'signIn' }">
+            -> i already have an account!
+          </router-link>
+        </div>
       </div>
     </FormBackground>
   </div>
 </template>
 
 <style scoped>
+.background {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  width: 25%;
+}
 .signup {
   background-color: var(--background-color);
   position: relative;
@@ -71,13 +87,7 @@ onMounted(() => {})
   justify-content: center;
   align-content: center;
   position: relative;
-  z-index: 6;
-}
-.main-box {
-  min-width: 500px;
-  max-width: 800px;
-  min-height: 500px;
-  max-height: 700px;
+  width: 100%;
 }
 
 .signup-form {
@@ -85,6 +95,7 @@ onMounted(() => {})
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+  width: 100%;
 }
 
 .logo {
@@ -94,10 +105,16 @@ onMounted(() => {})
   justify-content: center;
 }
 
-.input {
-  width: 65%;
+.input-text {
+  width: 100%;
 }
-
+.go-button {
+  width: 100%;
+}
+.go-button:disabled {
+  background-color: #333;
+  cursor: none;
+}
 .fail {
   color: red;
   position: relative;
@@ -106,7 +123,7 @@ onMounted(() => {})
 }
 
 .link {
-  width: 60%;
+  width: 100%;
   position: relative;
   text-align: center;
 }
