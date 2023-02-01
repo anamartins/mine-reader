@@ -46,7 +46,9 @@ onMounted(() => {})
             type="password"
             v-model="password"
           />
-          <div class="fail" v-if="hasError">error</div>
+          <div class="fail" v-if="hasError">
+            something weird happened. can you try again?
+          </div>
           <ConfirmButton
             class="go-button"
             label="Sign me up!"
