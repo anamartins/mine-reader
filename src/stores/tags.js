@@ -27,11 +27,7 @@ export const useTagsStore = defineStore('tags', () => {
   async function addTag(feeds, tag) {
     try {
       isLoading.value = true
-      const returnAPI = await postApi(
-        `user/tags`,
-        { tag: tag },
-        { feedIds: feeds }
-      )
+      const returnAPI = await postApi(`user/tags`, { tag: tag, feedIds: feeds })
       tags.value.push(returnAPI.data)
       return returnAPI.data
     } catch (error) {

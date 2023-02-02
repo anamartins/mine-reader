@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import Logo from '../logo/Logo.vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
@@ -18,6 +18,10 @@ const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
 const isLoadingTags = computed(() => tagsStore.isLoading)
+
+onMounted(() => {
+  console.log('mounted sidebar')
+})
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import Sidebar from '../../components/sidebar/Sidebar.vue'
 import Stream from './components/stream/Stream.vue'
 import Header from '../../components/header/Header.vue'
@@ -8,31 +8,42 @@ import { usePostsStore } from '../../stores/posts'
 import { useUserPreferences } from '../../composables/userPreferences'
 
 const userPreferences = useUserPreferences()
+const route = useRoute()
+const postsStore = usePostsStore()
 
-onMounted(() => {
-  const route = useRoute()
+function fetchPosts() {
   const feedId = route.params.feed
   const tag = route.params.tag
   const isRead = userPreferences.seeUnreadPosts.value
   const isReadLater = route.name === 'readLater'
-
-  const postsStore = usePostsStore()
 
   const params = { feedId, tag, isReadLater }
   if (isRead) {
     params.isRead = false
   }
   postsStore.getPosts(params)
+}
+
+onMounted(() => {
+  fetchPosts()
 })
+
+watch(
+  () => route.params,
+  () => {
+    console.log('uhuuuu')
+    fetchPosts()
+  }
+)
 </script>
 
 <template>
   <div class="wrapper">
+    <Header class="header"></Header>
     <div class="content">
       <Sidebar class="sidebar" />
       <Stream class="stream" />
     </div>
-    <Header class="header"></Header>
   </div>
 </template>
 
