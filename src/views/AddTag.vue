@@ -15,13 +15,15 @@ const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
 
 async function onAddButtonClick() {
+  console.log('tags', tags.value)
+  console.log('feeds', feeds.value)
+
   await tagsStore.addTag(selected.value, tag.value)
   tag.value = ''
   selected.value = []
 }
 
 async function onRemoveButtonClick(id) {
-  console.log('click!')
   await tagsStore.deleteTag(id)
 }
 </script>

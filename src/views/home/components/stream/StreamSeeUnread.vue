@@ -18,7 +18,6 @@ function onSeeUnreadPostsChange() {
   if (userPreferences.seeUnreadPosts.value) {
     params.isRead = false
   }
-
   postsStore.getPosts(params)
 }
 </script>

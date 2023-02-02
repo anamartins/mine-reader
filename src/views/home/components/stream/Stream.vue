@@ -7,20 +7,6 @@ import Post from './StreamPost.vue'
 import TheFilterBar from './StreamFilterBar.vue'
 
 const showMoreElement = ref(null)
-const title = computed(() => {
-  if (selectedFeed.value) {
-    return selectedFeed.value.title
-  } else {
-    return 'Home'
-  }
-})
-const tags = computed(() => {
-  if (selectedFeed.value) {
-    return selectedFeed.value.tags
-  } else {
-    return []
-  }
-})
 
 const route = useRoute()
 const feedsStore = useFeedsStore()
@@ -29,9 +15,33 @@ const posts = computed(() => postsStore.posts)
 const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
 
+const tags = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.tags
+  } else {
+    return []
+  }
+})
+
 const selectedFeed = computed(() => {
   if (route.params.feed && feedsStore.feeds.length > 0) {
     return feedsStore.getFeedById(route.params.feed)
+  }
+})
+
+const selectedTag = computed(() => {
+  if (route.params.tag) {
+    return route.params.tag
+  }
+})
+
+const title = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.title
+  } else if (selectedTag.value) {
+    return selectedTag.value
+  } else {
+    return 'Home'
   }
 })
 

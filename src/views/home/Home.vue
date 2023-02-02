@@ -18,7 +18,7 @@ onMounted(() => {
 
   const postsStore = usePostsStore()
 
-  const params = { feedId, isReadLater }
+  const params = { feedId, tag, isReadLater }
   if (isRead) {
     params.isRead = false
   }
