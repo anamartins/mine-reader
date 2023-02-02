@@ -41,9 +41,10 @@ export function useApi() {
     })
   }
 
-  async function deleteApi(url) {
+  async function deleteApi(url, data) {
     const token = localStorage.getItem('mineToken')
     return axios.delete(`${API_BASE_URL}/${url}`, {
+      data,
       headers: {
         Authorization: `Bearer ${token}`
       },

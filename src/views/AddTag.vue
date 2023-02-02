@@ -20,7 +20,10 @@ async function onAddButtonClick() {
   selected.value = []
 }
 
-async function onRemoveButtonClick() {}
+async function onRemoveButtonClick(id) {
+  console.log('click!')
+  await tagsStore.deleteTag(id)
+}
 </script>
 <template>
   <Sidebar />
