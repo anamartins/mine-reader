@@ -6,7 +6,9 @@ const props = defineProps({
   borderColor: { type: String, requiqued: false },
   opacity: { type: String, required: false, default: '0.7' },
   minWidth: { type: String, required: false, default: '100px' },
+  maxWidth: { type: String, required: false, default: '100px' },
   minHeight: { type: String, required: false, default: '100px' },
+  maxHeight: { type: String, required: false, default: '100px' },
   isPaused: { type: Boolean, required: false, default: false }
 })
 
@@ -44,9 +46,10 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
   border: 2px solid v-bind('props.borderColor');
   width: 70%;
   min-width: v-bind('props.minWidth');
-  max-width: calc(1200px - 14%);
+  max-width: v-bind('props.maxWidth');
   height: 100%;
   min-height: v-bind('props.minHeight');
+  max-height: v-bind('props.maxHeight');
   top: 50%;
   left: 50%;
   position: absolute;

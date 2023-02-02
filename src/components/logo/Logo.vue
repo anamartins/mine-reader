@@ -16,14 +16,34 @@ const props = defineProps({
 
 <template>
   <div class="logo">
-    <AnimatedBoxLayer color="#fa5788" :is-paused="true" v-if="hasAnimatedBox" />
-    <AnimatedBoxLayer color="#4a148c" :is-paused="true" v-if="hasAnimatedBox" />
     <AnimatedBoxLayer
-      border-color="#333"
+      color="#fa5788"
+      max-width="500px"
+      max-height="500px"
       :is-paused="true"
       v-if="hasAnimatedBox"
     />
-    <AnimatedBoxLayer color="#c2185b" :is-paused="true" v-if="hasAnimatedBox" />
+    <AnimatedBoxLayer
+      color="#4a148c"
+      max-width="500px"
+      max-height="500px"
+      :is-paused="true"
+      v-if="hasAnimatedBox"
+    />
+    <AnimatedBoxLayer
+      border-color="#333"
+      max-width="500px"
+      max-height="500px"
+      :is-paused="true"
+      v-if="hasAnimatedBox"
+    />
+    <AnimatedBoxLayer
+      color="#c2185b"
+      max-width="500px"
+      max-height="500px"
+      :is-paused="true"
+      v-if="hasAnimatedBox"
+    />
     <h1>
       <router-link class="logo-link" :to="{ name: props.linkName }"
         >mine</router-link
@@ -50,17 +70,10 @@ h1 {
 }
 .logo-link {
   color: v-bind('props.fontColor');
+  width: 100%;
 }
 .logo-link:hover {
   color: v-bind('darkTextColor');
   text-decoration: none;
-}
-
-.box {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 7rem;
-  height: 5rem;
 }
 </style>
