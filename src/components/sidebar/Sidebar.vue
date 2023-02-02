@@ -49,7 +49,8 @@ const isLoadingTags = computed(() => tagsStore.isLoading)
     </section>
     <section class="side-sub">
       <h2>tags</h2>
-      <router-link :to="{ name: 'addTag' }">add a new tag</router-link>
+      <p><router-link :to="{ name: 'addTag' }">add a new tag</router-link></p>
+      <p><router-link :to="{ name: 'manageTag' }">manage tags</router-link></p>
       <ul class="alltags list">
         <div class="loading" v-if="isLoadingTags">Loading</div>
         <li v-for="tag in tags" :key="tag.id">

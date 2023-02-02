@@ -29,19 +29,28 @@ async function onRemoveButtonClick(id) {
 </script>
 <template>
   <Sidebar />
-  <div class="add-tag">
-    <label
+  <div class="manage-tag">
+    <!-- <label
       >add the tag
       <input type="text" v-model="tag" />
-    </label>
-    at
+    </label> -->
     <ul>
       <li v-for="item in feeds" :key="item.id">
         <Checkbox :label="item.title" :value="item.feedId" v-model="selected" />
       </li>
     </ul>
 
-    <button type="button" @click="onAddButtonClick">+ add tag</button>
+    <!-- <button type="button" @click="onAddButtonClick">+ add tag</button> -->
+  </div>
+  <div class="remove-tag">
+    <ul class="alltags list">
+      <li v-for="tag in tags" :key="tag.id">
+        {{ tag.text }}
+        <button type="button" @click="onRemoveButtonClick(tag.id)">
+          remove tag
+        </button>
+      </li>
+    </ul>
   </div>
 </template>
 <style scoped></style>
