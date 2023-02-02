@@ -55,6 +55,8 @@ const props = defineProps({
 <style scoped>
 .logo {
   position: relative;
+  display: flex;
+  justify-content: center;
   font-family: 'Bree Serif', serif;
   font-size: v-bind('props.fontSize');
   margin: 0;
