@@ -1,6 +1,6 @@
 <script setup>
-import { computed, onMounted } from 'vue'
-import Logo from '../logo/Logo.vue'
+import { getColors } from '../../utils/colors'
+import { computed } from 'vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import { useFeedsStore } from '../../stores/feeds'
@@ -19,20 +19,22 @@ tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
 const isLoadingTags = computed(() => tagsStore.isLoading)
 
-onMounted(() => {
-  console.log('mounted sidebar')
-})
+const colors = computed(() => getColors())
+console.log('colors', colors.value)
+const primaryColor = colors.primaryColor
+const darkTextColor = colors.darkTextColor
+const secondaryColor = colors.secondaryColor
 </script>
 
 <template>
   <div class="sidebar">
-    <!-- <Logo link="home" /> -->
-    <section class="side-sub">
-      <h2 class="sidebar__heading">
+    <section class="sidebar__item">
+      <h2 class="sidebar__heading">feeds</h2>
+      <p>
         <router-link :to="{ name: 'home' }">
           all feeds ({{ totalFeeds }})
         </router-link>
-      </h2>
+      </p>
       <p>
         <router-link :to="{ name: 'addFeed' }"> add a new feed </router-link>
       </p>
@@ -41,86 +43,86 @@ onMounted(() => {
           manage mine feeds
         </router-link>
       </p>
+      <div class="loading" v-if="isLoadingFeeds">Loading</div>
       <ul class="sidebar__list">
-        <div class="loading" v-if="isLoadingFeeds">Loading</div>
         <SidebarFeedItem v-for="feed in feeds" :feed="feed" />
       </ul>
     </section>
-    <section class="read-later">
-      <router-link :to="{ name: 'readLater' }">
-        <h2>Read Later ({{ readLater }})</h2>
-      </router-link>
-    </section>
-    <section class="side-sub">
-      <h2>tags</h2>
+
+    <section class="sidebar__item">
+      <h2 class="sidebar__heading">tags</h2>
       <p><router-link :to="{ name: 'addTag' }">add a new tag</router-link></p>
       <p><router-link :to="{ name: 'manageTag' }">manage tags</router-link></p>
-      <ul class="alltags list">
-        <div class="loading" v-if="isLoadingTags">Loading</div>
+      <div class="loading" v-if="isLoadingTags">Loading</div>
+      <ul class="sidebar__list">
         <li v-for="tag in tags" :key="tag.id">
           <router-link
             v-if="tag.text"
             :to="{ name: 'tag', params: { tag: tag.text } }"
-            >{{ tag.text }}</router-link
+            >{{ tag.text }} ({{ tag.unread }})</router-link
           >
         </li>
       </ul>
     </section>
-    <section class="side-sub">
-      <h2>mine</h2>
-      <ul>
-        <li>read later ({{ readLater }})</li>
-      </ul>
-    </section>
-    <section class="side-sub">
-      <h2>theirs</h2>
-      <ul>
-        <li>one</li>
-        <li>two</li>
-      </ul>
-    </section>
+
     <SidebarProfileCard class="profile-card" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .sidebar {
-  width: 20%;
-  max-width: 300px;
-  height: 100%;
+  width: 15rem;
+  height: 85vh;
+  min-height: 300px;
+  max-height: 2000px;
   top: 5.5rem;
   padding: 0 1%;
   margin: 0 1% 0 0;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
-
   &__heading,
   &__heading:link,
   &__heading:visited {
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 }
-
-.sidebar__list {
-  height: 20vh;
-  overflow-y: scroll;
-  font-size: 15px;
-  font-weight: 400;
-  list-style-type: none;
+::-webkit-scrollbar {
+  width: 1px;
+}
+::-webkit-scrollbar-track {
+  background: v-bind('darkTextColor');
 }
 
-.side-sub {
+::-webkit-scrollbar-thumb {
+  background-color: v-bind('primaryColor');
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: v-bind('secondaryColor');
+}
+
+.sidebar__heading {
+  display: block;
+}
+.sidebar__list {
+  font-size: 0.8rem;
+  font-weight: 400;
+  list-style-type: none;
+  margin-bottom: 3rem;
+  scrollbar-width: thin;
+}
+
+.sidebar__list:target {
+  max-height: 10rem;
+}
+
+.sidebar__item {
   margin: 5% 5% 5% 0;
 }
 
-.profile-card {
-  position: fixed;
-  bottom: 0px;
-  left: 1%;
-  height: 5%;
-}
 .loading {
   background-color: deeppink;
 }

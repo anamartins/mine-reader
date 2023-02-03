@@ -2,6 +2,10 @@
 import { useUsersStore } from '../../stores/users'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
+import Icon from '../Icon.vue'
+import ReadLaterIcon from '../../assets/img/read-later.svg'
+import UserIcon from '../../assets/img/user.svg'
+import AddFeedIcon from '../../assets/img/add-feed.svg'
 
 const router = useRouter()
 const usersStore = useUsersStore()
@@ -19,31 +23,48 @@ function onSignOut(e) {
   <div class="profile-card-wrapper">
     <div class="loading" v-if="isLoading">Loading</div>
     <div class="user-data">
-      <router-link :to="{ name: 'profile' }">{{ user.email }}</router-link>
+      <Icon :image-source="AddFeedIcon" linkName="addFeed" class="icon" />
+      <Icon :image-source="ReadLaterIcon" linkName="readLater" class="icon" />
+      <Icon :image-source="UserIcon" linkName="profile" class="icon" />
+      <button class="classic-button" type="button" @click="onSignOut">
+        Sign out
+      </button>
     </div>
-
-    <button class="classic-button" type="button" @click="onSignOut">
-      Sign out
-    </button>
   </div>
 </template>
 
 <style scoped>
 .profile-card-wrapper {
-  width: 100%;
-  max-width: 300px;
+  width: 15rem;
+  min-width: 200px;
+  max-width: 285px;
   padding: 1%;
   background-color: #ccc;
+  position: fixed;
+  bottom: 0px;
 }
 
 .user-data {
   font-size: 15px;
   margin: 1% 0;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
 }
 
 .classic-button {
   display: block;
   margin: 5% 0px 0px 0px;
   padding: 5px 10px;
+}
+
+.icon {
+  position: relative;
+  padding: 0 1%;
+  height: 100%;
+}
+
+.icon:hover {
+  background-color: var(--primary-color-variation);
 }
 </style>
