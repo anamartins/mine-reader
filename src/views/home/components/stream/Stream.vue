@@ -79,10 +79,10 @@ function onObserverChanges(entries) {
   flex-wrap: wrap;
 }
 
-.filter-bar {
+/* .filter-bar {
   width: 100%;
   padding: 1% 2%;
-}
+} */
 
 .box {
   height: 5px;

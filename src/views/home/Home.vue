@@ -49,15 +49,15 @@ watch(
 <style scoped>
 .wrapper {
   width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 .content {
+  position: relative;
   width: 100%;
   display: flex;
-}
-.sidebar {
-  position: sticky;
-}
-.stream {
-  padding: 5.5rem 0 0 0;
+  flex-flow: row nowrap;
+  margin-top: 3rem;
 }
 </style>

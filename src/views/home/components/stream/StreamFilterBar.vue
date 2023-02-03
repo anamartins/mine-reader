@@ -29,6 +29,14 @@ async function onCloseButtonClick(tag) {
   </div>
 </template>
 <style scoped>
+.filter-bar {
+  position: sticky;
+  top: 3rem;
+  width: 96%;
+  padding: 1% 2%;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid #ccc;
+}
 .close {
   background-color: deeppink;
   cursor: pointer;

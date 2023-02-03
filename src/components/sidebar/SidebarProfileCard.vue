@@ -35,13 +35,10 @@ function onSignOut(e) {
 
 <style scoped>
 .profile-card-wrapper {
-  width: 15rem;
-  min-width: 200px;
-  max-width: 285px;
+  width: 100%;
   padding: 1%;
-  background-color: #ccc;
-  position: fixed;
-  bottom: 0px;
+  background-color: var(--surface-color);
+  border: 1px solid #333;
 }
 
 .user-data {
