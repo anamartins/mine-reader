@@ -41,7 +41,7 @@ const title = computed(() => {
   } else if (selectedTag.value) {
     return selectedTag.value
   } else {
-    return 'Home'
+    return ''
   }
 })
 
@@ -78,11 +78,6 @@ function onObserverChanges(entries) {
   align-self: self-start;
   flex-wrap: wrap;
 }
-
-/* .filter-bar {
-  width: 100%;
-  padding: 1% 2%;
-} */
 
 .box {
   height: 5px;

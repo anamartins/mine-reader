@@ -14,12 +14,6 @@ const image = computed(() => {
 const postsStore = usePostsStore()
 const date = formatDate(props.post.pubDate)
 
-const textLimit = 300
-let content = props.post.content.slice(0, textLimit)
-if (content.length === textLimit) {
-  content += '...'
-}
-
 async function onPostClick() {
   props.post.isRead = true
   await postsStore.markPostAsRead(

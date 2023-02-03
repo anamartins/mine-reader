@@ -76,28 +76,20 @@ const secondaryColor = colors.secondaryColor
   width: 1px;
 }
 ::-webkit-scrollbar-track {
-  background: v-bind('darkTextColor');
+  background: #ddd;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: v-bind('primaryColor');
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: v-bind('secondaryColor');
-}
 .sidebar {
   position: sticky;
   display: flex;
   flex-flow: row wrap;
   top: 4rem;
   width: 15rem;
-  height: 92vh;
+  height: 90vh;
   min-height: 300px;
   max-height: 2000px;
-  padding: 0 1%;
-  margin: 0 1% 0 0;
-  border-right: 1px solid #ccc;
+  margin: 0 1rem 0 0;
+  padding: 0 1rem 0 0.5rem;
   &__heading,
   &__heading:link,
   &__heading:visited {
@@ -117,7 +109,6 @@ const secondaryColor = colors.secondaryColor
   font-weight: 400;
   list-style-type: none;
   margin-bottom: 3rem;
-  scrollbar-width: thin;
 }
 
 .sidebar__list:target {

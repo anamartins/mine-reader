@@ -6,6 +6,7 @@ import Icon from '../Icon.vue'
 import ReadLaterIcon from '../../assets/img/read-later.svg'
 import UserIcon from '../../assets/img/user.svg'
 import AddFeedIcon from '../../assets/img/add-feed.svg'
+import SignOut from '../../assets/img/signout.svg'
 
 const router = useRouter()
 const usersStore = useUsersStore()
@@ -26,9 +27,7 @@ function onSignOut(e) {
       <Icon :image-source="AddFeedIcon" linkName="addFeed" class="icon" />
       <Icon :image-source="ReadLaterIcon" linkName="readLater" class="icon" />
       <Icon :image-source="UserIcon" linkName="profile" class="icon" />
-      <button class="classic-button" type="button" @click="onSignOut">
-        Sign out
-      </button>
+      <icon :image-source="SignOut" @click="onSignOut" class="icon" />
     </div>
   </div>
 </template>
@@ -37,31 +36,39 @@ function onSignOut(e) {
 .profile-card-wrapper {
   width: 100%;
   padding: 1%;
-  background-color: var(--surface-color);
-  border: 1px solid #333;
+  background-color: var(--primary-color);
 }
 
 .user-data {
+  height: 100%;
   font-size: 15px;
   margin: 1% 0;
   position: relative;
   display: flex;
   justify-content: space-around;
-}
-
-.classic-button {
-  display: block;
-  margin: 5% 0px 0px 0px;
-  padding: 5px 10px;
+  align-items: center;
 }
 
 .icon {
   position: relative;
-  padding: 0 1%;
+  padding: 0 1rem;
   height: 100%;
+  width: 1.5rem;
+}
+
+.icon img {
+  fill: #fff;
 }
 
 .icon:hover {
   background-color: var(--primary-color-variation);
+}
+
+.svg-icon {
+  fill: #fff;
+}
+
+.svg-icon:hover {
+  fill: deeppink;
 }
 </style>
