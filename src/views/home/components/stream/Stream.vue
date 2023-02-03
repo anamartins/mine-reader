@@ -4,7 +4,7 @@ import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import Post from './StreamPost.vue'
-import TheFilterBar from './StreamFilterBar.vue'
+import StreamFilterBar from './StreamFilterBar.vue'
 
 const showMoreElement = ref(null)
 
@@ -62,7 +62,7 @@ function onObserverChanges(entries) {
 </script>
 <template>
   <div class="stream">
-    <TheFilterBar :title="title" :tags="tags" />
+    <StreamFilterBar :title="title" :tags="tags" :feedId="route.params.feed" />
     <div class="loading" v-if="!isReady">Loading</div>
     <Post v-for="post in posts" :post="post" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>

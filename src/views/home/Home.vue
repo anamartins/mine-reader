@@ -31,7 +31,6 @@ onMounted(() => {
 watch(
   () => route.params,
   () => {
-    console.log('uhuuuu')
     fetchPosts()
   }
 )
@@ -59,6 +58,7 @@ watch(
   position: fixed;
   top: 0;
   width: 90%;
+  z-index: 1;
 }
 .sidebar {
   position: sticky;
