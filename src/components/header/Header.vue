@@ -27,7 +27,10 @@ const backgroundColor = colors.backgroundColor
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-content: center;
+  position: fixed;
+  top: 0;
+  width: 90%;
+  z-index: 1;
 }
 .logo {
   position: relative;

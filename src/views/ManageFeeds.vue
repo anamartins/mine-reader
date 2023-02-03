@@ -1,9 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
-
 import { useFeedsStore } from '../stores/feeds'
 import Sidebar from '../components/sidebar/Sidebar.vue'
-import Input from '../components/InputText.vue'
+import Header from '../components/header/Header.vue'
 import Button from '../components/ConfirmButton.vue'
 
 const feed = ref('')
@@ -25,6 +24,7 @@ function onRemoveButtonClick(feedId) {
 </script>
 
 <template>
+  <Header class="header"></Header>
   <Sidebar />
   <div class="manage-feed">
     <div>

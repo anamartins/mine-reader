@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-
 import { useFeedsStore } from '../stores/feeds'
+import Header from '../components/header/Header.vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import Input from '../components/InputText.vue'
 import Button from '../components/ConfirmButton.vue'
@@ -35,6 +35,7 @@ watch(feed, (newValue) => {
 </script>
 
 <template>
+  <Header class="header"></Header>
   <Sidebar />
   <div class="follow-feed">
     <!-- <Input class="follow-input" label="Feed URL:" :model-value="feed" focus /> -->

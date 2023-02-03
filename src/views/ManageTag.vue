@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
 import Sidebar from '../components/sidebar/Sidebar.vue'
+import Header from '../components/header/Header.vue'
 import Checkbox from '../components/Checkbox.vue'
 
 const tag = ref('')
@@ -28,6 +29,7 @@ async function onRemoveButtonClick(id) {
 }
 </script>
 <template>
+  <Header class="header"></Header>
   <Sidebar />
   <div class="manage-tag">
     <!-- <label

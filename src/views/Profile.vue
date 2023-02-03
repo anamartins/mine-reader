@@ -1,4 +1,5 @@
 <script setup>
+import Header from '../components/header/Header.vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import { useUsersStore } from '../stores/users'
 
@@ -8,6 +9,7 @@ const user = usersStore.user
 </script>
 
 <template>
+  <Header class="header"></Header>
   <Sidebar />
   <div class="profile">
     <h1>your profile</h1>
