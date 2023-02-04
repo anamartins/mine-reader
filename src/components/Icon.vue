@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   imageSource: { type: String, required: true },
-  linkName: { type: String, required: true }
+  linkName: { type: String, required: false }
 })
 </script>
 <template>

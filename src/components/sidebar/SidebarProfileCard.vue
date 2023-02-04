@@ -25,7 +25,12 @@ function onSignOut(e) {
     <div class="loading" v-if="isLoading">Loading</div>
     <div class="user-data">
       <Icon :image-source="AddFeedIcon" linkName="addFeed" class="icon" />
-      <Icon :image-source="ReadLaterIcon" linkName="readLater" class="icon" />
+      <Icon
+        :image-source="ReadLaterIcon"
+        linkName="readLater"
+        params="{readLater: true}"
+        class="icon"
+      />
       <Icon :image-source="UserIcon" linkName="profile" class="icon" />
       <icon :image-source="SignOut" @click="onSignOut" class="icon" />
     </div>
