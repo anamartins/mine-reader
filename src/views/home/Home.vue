@@ -1,8 +1,7 @@
 <script setup>
 import { onMounted, watch } from 'vue'
-import Sidebar from '../../components/sidebar/Sidebar.vue'
 import Stream from './components/stream/Stream.vue'
-import Header from '../../components/header/Header.vue'
+import PageWithSidebar from '../../components/PageWithSidebar.vue'
 import { useRoute } from 'vue-router'
 import { usePostsStore } from '../../stores/posts'
 import { useUserPreferences } from '../../composables/userPreferences'
@@ -38,11 +37,9 @@ watch(
 
 <template>
   <div class="wrapper">
-    <Header class="header"></Header>
-    <div class="content">
-      <Sidebar class="sidebar" />
+    <PageWithSidebar>
       <Stream class="stream" />
-    </div>
+    </PageWithSidebar>
   </div>
 </template>
 
@@ -52,12 +49,5 @@ watch(
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-}
-.content {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  margin-top: 3rem;
 }
 </style>

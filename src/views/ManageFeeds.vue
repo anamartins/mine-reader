@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useFeedsStore } from '../stores/feeds'
+import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import Header from '../components/header/Header.vue'
 import Button from '../components/ConfirmButton.vue'

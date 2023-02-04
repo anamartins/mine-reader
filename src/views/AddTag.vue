@@ -2,8 +2,7 @@
 import { ref, computed } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
-import Header from '../components/header/Header.vue'
-import Sidebar from '../components/sidebar/Sidebar.vue'
+import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Checkbox from '../components/Checkbox.vue'
 
 const tag = ref('')
@@ -29,21 +28,25 @@ async function onRemoveButtonClick(id) {
 }
 </script>
 <template>
-  <Header class="header"></Header>
-  <Sidebar />
-  <div class="add-tag">
-    <label
-      >add the tag
-      <input type="text" v-model="tag" />
-    </label>
-    at
-    <ul>
-      <li v-for="item in feeds" :key="item.id">
-        <Checkbox :label="item.title" :value="item.feedId" v-model="selected" />
-      </li>
-    </ul>
+  <PageWithSidebar>
+    <div class="add-tag">
+      <label
+        >add the tag
+        <input type="text" v-model="tag" />
+      </label>
+      at
+      <ul>
+        <li v-for="item in feeds" :key="item.id">
+          <Checkbox
+            :label="item.title"
+            :value="item.feedId"
+            v-model="selected"
+          />
+        </li>
+      </ul>
 
-    <button type="button" @click="onAddButtonClick">+ add tag</button>
-  </div>
+      <button type="button" @click="onAddButtonClick">+ add tag</button>
+    </div>
+  </PageWithSidebar>
 </template>
 <style scoped></style>

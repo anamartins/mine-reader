@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useFeedsStore } from '../stores/feeds'
+import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Header from '../components/header/Header.vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import Input from '../components/InputText.vue'
@@ -35,25 +36,22 @@ watch(feed, (newValue) => {
 </script>
 
 <template>
-  <Header class="header"></Header>
-  <Sidebar />
-  <div class="follow-feed">
-    <!-- <Input class="follow-input" label="Feed URL:" :model-value="feed" focus /> -->
-    <label>Feed URL:</label>
-    <input type="text" name="feed" v-model="feed" />
-    <!-- <button type="button" @click="onAddButtonClick">+ add feed!</button> -->
-
-    <div>
-      <ul>
-        <li v-for="item in searchList" :key="item.id">
-          <a :href="item.website" target="_blank">{{ item.title }}</a>
-          <button type="button" @click="onAddButtonClick(item.url)">
-            + add feed!
-          </button>
-        </li>
-      </ul>
+  <PageWithSidebar>
+    <div class="follow-feed">
+      <label>Feed URL:</label>
+      <input type="text" name="feed" v-model="feed" class="follow-input" />
+      <div>
+        <ul>
+          <li v-for="item in searchList" :key="item.id">
+            <a :href="item.website" target="_blank">{{ item.title }}</a>
+            <button type="button" @click="onAddButtonClick(item.url)">
+              + add feed!
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </PageWithSidebar>
 </template>
 
 <style scoped>
