@@ -31,16 +31,32 @@ function onSignOut(e) {
   <div class="profile-card-wrapper">
     <div class="loading" v-if="isLoading">Loading</div>
     <div class="user-data">
-      <Icon :image-source="AddFeedIcon" linkName="addFeed" class="icon" />
+      <Icon
+        :image-source="AddFeedIcon"
+        linkName="addFeed"
+        class="icon"
+        tooltip="add feed"
+      />
       <Icon
         :image-source="ReadLaterIcon"
         linkName="readLater"
         params="{readLater: true}"
         class="icon"
         :number="readLater"
+        tooltip="read later"
       />
-      <Icon :image-source="UserIcon" linkName="profile" class="icon" />
-      <icon :image-source="SignOut" @click="onSignOut" class="icon" />
+      <Icon
+        :image-source="UserIcon"
+        linkName="profile"
+        class="icon"
+        tooltip="profile"
+      />
+      <icon
+        :image-source="SignOut"
+        @click="onSignOut"
+        class="icon"
+        tooltip="sign out"
+      />
     </div>
   </div>
 </template>
@@ -48,13 +64,13 @@ function onSignOut(e) {
 <style scoped>
 .profile-card-wrapper {
   width: 100%;
-  padding: 1%;
+  padding: 1% 1% 3% 1%;
   background-color: var(--primary-color);
 }
 
 .user-data {
   height: 100%;
-  font-size: 15px;
+  font-size: 0.5rem;
   margin: 1% 0;
   position: relative;
   display: flex;

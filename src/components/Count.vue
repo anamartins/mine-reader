@@ -13,8 +13,7 @@ const props = defineProps({
 <style scoped>
 .count {
   position: absolute;
-  top: 0.2rem;
-  right: 0.5rem;
+  right: -0.5rem;
   border-radius: 50%;
   background-color: v-bind('props.backgroundColor');
   color: v-bind('props.fontColor');
