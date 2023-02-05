@@ -2,11 +2,12 @@
 import { onMounted, ref, computed } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
-import TheLogo from '../components/logo/Logo.vue'
+import Logo from '../components/logo/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
 
+const username = ref('')
 const email = ref('')
 const password = ref('')
 
@@ -17,7 +18,7 @@ const isLoading = computed(() => usersStore.isLoading)
 const router = useRouter()
 
 async function onButtonClick() {
-  await usersStore.newUser(email.value, password.value)
+  await usersStore.newUser(username.value, email.value, password.value)
   router.push({ name: 'signIn' })
 }
 
@@ -30,19 +31,25 @@ onMounted(() => {})
       <div class="wrapper">
         <div class="loading" v-if="isLoading">Loading</div>
 
-        <TheLogo class="logo" linkName="signUp" />
+        <Logo class="logo" linkName="signUp" />
         <form class="signup-form">
           <InputText
             class="input-text"
             :is-required="true"
             :focus="true"
-            label="email"
+            label="your username"
+            v-model="username"
+          />
+          <InputText
+            class="input-text"
+            :is-required="true"
+            label="your good email"
             v-model="email"
           />
           <InputText
             class="input-text"
             :is-required="true"
-            label="password"
+            label="your password"
             type="password"
             v-model="password"
           />

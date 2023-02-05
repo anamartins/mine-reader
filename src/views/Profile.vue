@@ -11,7 +11,8 @@ const user = usersStore.user
   <PageWithSidebar>
     <div class="profile">
       <h1>your profile</h1>
-      {{ user.email }}
+      <p>username:{{ user.username }}</p>
+      <p>email: {{ user.email }}</p>
     </div>
   </PageWithSidebar>
 </template>
@@ -20,5 +21,8 @@ const user = usersStore.user
 .profile {
   position: relative;
   width: 70%;
+}
+p {
+  margin: 2% 0;
 }
 </style>

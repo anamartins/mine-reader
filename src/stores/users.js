@@ -41,12 +41,13 @@ export const useUsersStore = defineStore('users', () => {
     }
   }
 
-  async function newUser(email, password) {
+  async function newUser(username, email, password) {
     try {
       isLoading.value = true
       const returnAPI = await postApi(`auth/sign-up`, {
-        email: email,
-        password: password
+        username,
+        email,
+        password
       })
     } catch (error) {
       console.log(error)

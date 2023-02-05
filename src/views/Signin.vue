@@ -8,8 +8,8 @@ import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
 
-const email = ref('anacarolcm@gmail.com')
-const password = ref('12345')
+const email = ref('')
+const password = ref('')
 const usersStore = useUsersStore()
 const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
