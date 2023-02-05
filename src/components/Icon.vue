@@ -52,7 +52,7 @@ const colors = getColors()
   transform: translate(-50%, -300%);
   width: 3rem;
   padding: 0.2rem 0.1rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--surface-color);
   font-size: 0.7rem;
   color: #333;
   border: 1px solid #ccc;
