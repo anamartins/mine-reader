@@ -10,8 +10,6 @@ const feed = ref('')
 const feedsStore = useFeedsStore()
 const feeds = computed(() => feedsStore.feeds)
 
-console.log('feed', feeds)
-
 let timeout
 
 async function onAddButtonClick() {

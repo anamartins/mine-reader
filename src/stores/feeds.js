@@ -44,8 +44,6 @@ export const useFeedsStore = defineStore('feeds', () => {
 
   async function searchFeed(query) {
     const returnAPI = await getApi(`feed/search?query=${query}`)
-
-    console.log('searchList', returnAPI.data.feeds)
     searchList.value = returnAPI.data.feeds
   }
 

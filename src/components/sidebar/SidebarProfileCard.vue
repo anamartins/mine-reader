@@ -19,8 +19,6 @@ const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
 const readLater = computed(() => feedsStore.readLater)
 
-console.log('readlater', readLater)
-
 function onSignOut(e) {
   localStorage.removeItem('mineToken')
   router.push({ name: 'signIn' })

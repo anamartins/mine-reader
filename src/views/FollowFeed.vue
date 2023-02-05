@@ -28,8 +28,6 @@ watch(feed, (newValue) => {
   clearTimeout(timeout)
   // }
   timeout = setTimeout(() => {
-    console.log('newValue', newValue)
-    console.log('feed', feed.value)
     feedsStore.searchFeed(feed.value)
   }, 1000)
 })

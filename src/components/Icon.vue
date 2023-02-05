@@ -4,12 +4,11 @@ import { getColors } from '../utils/colors'
 const props = defineProps({
   imageSource: { type: String, required: true },
   linkName: { type: String, required: false },
-  number: { type: String, required: false },
+  number: { type: Number, required: false },
   tooltip: { type: String, required: false }
 })
 
 const colors = getColors()
-console.log('colors', colors)
 </script>
 <template>
   <div class="icon">

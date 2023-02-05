@@ -50,8 +50,7 @@ export const useTagsStore = defineStore('tags', () => {
   }
 
   async function removeTagFromFeed(feedId, tag) {
-    console.log('store', feedId, tag)
-    const res = await deleteApi(`user/feeds/${feedId}/tags`, { tag })
+    await deleteApi(`user/feeds/${feedId}/tags`, { tag })
   }
 
   return {
