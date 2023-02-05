@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import Signup from './views/Signup.vue'
 import Signin from './views/Signin.vue'
+import ConfirmEmail from './views/ConfirmEmail.vue'
 import Home from './views/home/Home.vue'
 import FollowFeed from './views/FollowFeed.vue'
 import ManageFeed from './views/ManageFeeds.vue'
@@ -16,6 +17,11 @@ import './assets/style.css'
 const routes = [
   { path: '/', name: 'signIn', component: Signin },
   { path: '/signup', name: 'signUp', component: Signup },
+  {
+    path: '/confirm',
+    name: 'confirmEmail',
+    component: ConfirmEmail
+  },
   { path: '/home', name: 'home', component: Home },
   { path: '/me', name: 'profile', component: Profile },
   { path: '/feed/:feed', name: 'feed', component: Home },
