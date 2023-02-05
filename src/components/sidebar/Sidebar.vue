@@ -36,9 +36,6 @@ const secondaryColor = colors.secondaryColor
           </router-link>
         </p>
         <p>
-          <router-link :to="{ name: 'addFeed' }"> add a new feed </router-link>
-        </p>
-        <p>
           <router-link :to="{ name: 'manageFeed' }">
             manage mine feeds
           </router-link>
