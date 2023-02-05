@@ -1,5 +1,6 @@
 <script setup>
 import { useUsersStore } from '../../stores/users'
+import { useFeedsStore } from '../../stores/feeds'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
 import Icon from '../Icon.vue'
@@ -13,6 +14,12 @@ const usersStore = useUsersStore()
 usersStore.getUser()
 const user = usersStore.user
 const isLoading = computed(() => usersStore.isLoading)
+
+const feedsStore = useFeedsStore()
+feedsStore.getFeeds()
+const readLater = computed(() => feedsStore.readLater)
+
+console.log('readlater', readLater)
 
 function onSignOut(e) {
   localStorage.removeItem('mineToken')
@@ -30,6 +37,7 @@ function onSignOut(e) {
         linkName="readLater"
         params="{readLater: true}"
         class="icon"
+        :number="readLater"
       />
       <Icon :image-source="UserIcon" linkName="profile" class="icon" />
       <icon :image-source="SignOut" @click="onSignOut" class="icon" />
