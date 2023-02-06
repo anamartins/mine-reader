@@ -1,18 +1,23 @@
 <script setup>
 import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
+import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
 
+const postsStore = usePostsStore()
+const date = formatDate(props.post.pubDate)
+
+const feedsStore = useFeedsStore()
+const feedData = computed(() => feedsStore.getFeedById(props.post.feed.id))
+
 const props = defineProps({
-  post: { type: Object, required: true }
+  post: { type: Object, required: true },
+  isHome: { type: Boolean, required: false, default: false }
 })
 
 const image = computed(() => {
   return props.post.image
 })
-
-const postsStore = usePostsStore()
-const date = formatDate(props.post.pubDate)
 
 async function onPostClick() {
   props.post.isRead = true
@@ -38,12 +43,16 @@ async function onReadLaterChange() {
 
 <template>
   <div class="post" :class="{ read: post.isRead }">
-    <base target="_blank" />
     <div class="post-wrapper">
       <div class="post-title">
-        <a :href="post.link" @click="onPostClick">{{ post.title }}</a>
+        <a :href="post.link" @click="onPostClick" target="_blank">{{
+          post.title
+        }}</a>
       </div>
-      <div class="post-source">{{ post.feed.title }}</div>
+
+      <div class="post-source" v-if="props.isHome">
+        <div class="post-source-title">{{ post.feed.title }}</div>
+      </div>
       <div class="post-date">{{ date }}</div>
       <label class="check-label">
         <input
@@ -81,6 +90,7 @@ async function onReadLaterChange() {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  font-weight: 300;
 }
 .post:hover {
   background-color: #ddd;
@@ -111,13 +121,17 @@ async function onReadLaterChange() {
 }
 
 .post-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
+}
+
+.post-source {
+  display: flex;
+  align-items: center;
 }
 
 .post-image {
   width: 20%;
-  min-width: 50px;
+  min-width: 2rem;
   height: 100%;
   margin: 0 0 0 1%;
   border-radius: 10px;

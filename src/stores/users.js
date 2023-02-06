@@ -63,7 +63,6 @@ export const useUsersStore = defineStore('users', () => {
       const returnAPI = await postApi(`auth/confirm-email`, {
         token
       })
-      console.log('returnAPI', returnAPI)
     } catch (error) {
       console.log(error)
       hasError.value = true

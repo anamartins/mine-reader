@@ -9,11 +9,14 @@ import StreamFilterBar from './StreamFilterBar.vue'
 const showMoreElement = ref(null)
 
 const route = useRoute()
-const feedsStore = useFeedsStore()
+const isHome = computed(() => !route.params.feed)
+
 const postsStore = usePostsStore()
 const posts = computed(() => postsStore.posts)
 const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
+
+const feedsStore = useFeedsStore()
 
 const tags = computed(() => {
   if (selectedFeed.value) {
@@ -64,7 +67,7 @@ function onObserverChanges(entries) {
   <div class="stream">
     <StreamFilterBar :title="title" :tags="tags" :feedId="route.params.feed" />
     <div class="loading" v-if="!isReady">Loading</div>
-    <Post v-for="post in posts" :post="post" :key="post.id" />
+    <Post v-for="post in posts" :post="post" :isHome="isHome" :key="post.id" />
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>
 </template>

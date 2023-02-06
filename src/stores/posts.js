@@ -38,33 +38,46 @@ export const usePostsStore = defineStore('posts', () => {
       next.value = returnAPI.data.next
     } catch (error) {
       //todo
-      console.log('show an error message', error)
+      console.log(error)
     } finally {
       isReady.value = true
     }
   }
 
   async function markPostAsRead(id, feedId, isRead) {
-    const feed = feedsStore.getFeedById(feedId)
-    if (isRead) {
-      await postApi(`stream/${id}/is-read`, null)
-      feed.unread--
-      feedsStore.total--
-    } else {
-      await deleteApi(`stream/${id}/is-read`)
-      feed.unread++
-      feedsStore.total++
+    try {
+      isReady.value = false
+      const feed = feedsStore.getFeedById(feedId)
+      if (isRead) {
+        await postApi(`stream/${id}/is-read`, null)
+        feed.unread--
+        feedsStore.total--
+      } else {
+        await deleteApi(`stream/${id}/is-read`)
+        feed.unread++
+        feedsStore.total++
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      isReady.value = true
     }
   }
 
   async function readPostLater(id, isReadLater) {
-    isReady.value = false
-    if (isReadLater) {
-      await postApi(`stream/${id}/read-later`, null)
-      feedsStore.readLater++
-    } else {
-      await deleteApi(`stream/${id}/read-later`)
-      feedsStore.readLater--
+    try {
+      isReady.value = false
+      if (isReadLater) {
+        await postApi(`stream/${id}/read-later`, null)
+        feedsStore.readLater++
+      } else {
+        await deleteApi(`stream/${id}/read-later`)
+        feedsStore.readLater--
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      isReady.value = true
     }
   }
 

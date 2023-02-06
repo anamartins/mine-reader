@@ -14,7 +14,7 @@ const colors = getColors()
   <div class="icon">
     <span :data-text="props.tooltip" class="tooltip">
       <router-link class="icon__link" :to="{ name: props.linkName }">
-        <img :src="props.imageSource" class="icon__img" inline />
+        <img :src="props.imageSource" class="icon__img" />
       </router-link>
       <Count
         class="number"

@@ -11,7 +11,6 @@ const hasError = computed(() => usersStore.hasError)
 
 onMounted(() => {
   const token = route.query.token
-  console.log('query', token)
   usersStore.confirmEmail(token)
 })
 </script>

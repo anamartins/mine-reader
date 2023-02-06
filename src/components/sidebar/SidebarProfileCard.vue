@@ -16,7 +16,6 @@ const user = usersStore.user
 const isLoading = computed(() => usersStore.isLoading)
 
 const feedsStore = useFeedsStore()
-feedsStore.getFeeds()
 const readLater = computed(() => feedsStore.readLater)
 
 function onSignOut(e) {

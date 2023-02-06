@@ -95,6 +95,12 @@ const secondaryColor = colors.secondaryColor
   }
 }
 
+p a {
+  font-weight: 400;
+}
+.sidebar__heading {
+  font-weight: 400;
+}
 .sidebar__sections {
   overflow-y: scroll;
   flex: 1;
@@ -103,7 +109,6 @@ const secondaryColor = colors.secondaryColor
 
 .sidebar__list {
   font-size: 0.8rem;
-  font-weight: 400;
   list-style-type: none;
   margin-bottom: 3rem;
 }
