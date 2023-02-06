@@ -23,20 +23,20 @@ function onRemoveButtonClick(feedId) {
 </script>
 
 <template>
-  <Header class="header"></Header>
-  <Sidebar />
-  <div class="manage-feed">
-    <div>
-      <ul>
-        <li v-for="item in feeds" :key="item.id">
-          <a :href="item.link" target="_blank">{{ item.title }}</a>
-          <button type="button" @click="onRemoveButtonClick(item.feedId)">
-            remove feed
-          </button>
-        </li>
-      </ul>
+  <PageWithSidebar>
+    <div class="manage-feed">
+      <div>
+        <ul>
+          <li v-for="item in feeds" :key="item.id">
+            <a :href="item.link" target="_blank">{{ item.title }}</a>
+            <button type="button" @click="onRemoveButtonClick(item.feedId)">
+              remove feed
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </PageWithSidebar>
 </template>
 
 <style scoped>
