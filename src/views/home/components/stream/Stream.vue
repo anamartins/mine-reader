@@ -21,7 +21,6 @@ const tags = computed(() => {
   } else {
     return []
   }
-  ß
 })
 
 const selectedFeed = computed(() => {

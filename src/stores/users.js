@@ -57,11 +57,27 @@ export const useUsersStore = defineStore('users', () => {
     }
   }
 
+  async function confirmEmail(token) {
+    try {
+      isLoading.value = true
+      const returnAPI = await postApi(`auth/confirm-email`, {
+        token
+      })
+      console.log('returnAPI', returnAPI)
+    } catch (error) {
+      console.log(error)
+      hasError.value = true
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   return {
     //actions
     login,
     getUser,
     newUser,
+    confirmEmail,
     //state
     user,
     token,

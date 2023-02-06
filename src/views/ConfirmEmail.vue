@@ -1,11 +1,19 @@
 <script setup>
-import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { computed, onMounted } from 'vue'
 import { useUsersStore } from '../stores/users'
 import FormBackground from '../components/form-background/FormBackground.vue'
 
+const route = useRoute()
+
 const usersStore = useUsersStore()
-console.log('users', usersStore)
 const hasError = computed(() => usersStore.hasError)
+
+onMounted(() => {
+  const token = route.query.token
+  console.log('query', token)
+  usersStore.confirmEmail(token)
+})
 </script>
 
 <template>
@@ -14,15 +22,14 @@ const hasError = computed(() => usersStore.hasError)
       <div class="wrapper">
         <div class="message" v-if="!hasError">
           Yay, your email was activated!
+          <div class="link">
+            <router-link :to="{ name: 'signIn' }">
+              -> now go and sign in!
+            </router-link>
+          </div>
         </div>
         <div class="message error" v-else>
           Something weird happened. Can you try again later?
-        </div>
-
-        <div class="link">
-          <router-link :to="{ name: 'signIn' }">
-            -> now go and sign in!
-          </router-link>
         </div>
       </div>
     </FormBackground>
