@@ -29,6 +29,6 @@ function onError() {
 .feed__icon {
   position: relative;
   width: 5%;
-  margin: 0% 3% 0% 0;
+  margin: 0 0.5rem 0 0;
 }
 </style>

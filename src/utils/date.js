@@ -7,14 +7,15 @@ export function formatDate(date) {
   let hour = newDate.getHours()
   let minute = newDate.getMinutes()
 
+  day = day.toString().padStart(2, '0')
   month = month.toString().padStart(2, '0')
   hour = hour.toString().padStart(2, '0')
   minute = minute.toString().padStart(2, '0')
 
-  const time = diffDate(newDate)
+  const timeAgo = diffDate(newDate)
 
-  const fullDate = `${day}-${month}-${year} ${hour}:${minute} - ${time}`
-  return fullDate
+  const fullDate = `${day}-${month}-${year} ${hour}:${minute} - ${timeAgo}`
+  return { timeAgo, fullDate }
 }
 
 function diffDate(date) {

@@ -3,17 +3,21 @@ import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
-
-const postsStore = usePostsStore()
-const date = formatDate(props.post.pubDate)
-
-const feedsStore = useFeedsStore()
-const feedData = computed(() => feedsStore.getFeedById(props.post.feed.id))
+import Icon from '../../../../components/sidebar/SidebarFeedItemIcon.vue'
 
 const props = defineProps({
   post: { type: Object, required: true },
   isHome: { type: Boolean, required: false, default: false }
 })
+
+const postsStore = usePostsStore()
+
+const feedsStore = useFeedsStore()
+const feedIcon = computed(() => {
+  const feed = feedsStore.getFeedById(props.post.feedId)
+  return feed?.icon
+})
+const date = formatDate(props.post.pubDate)
 
 const image = computed(() => {
   return props.post.image
@@ -51,9 +55,10 @@ async function onReadLaterChange() {
       </div>
 
       <div class="post-source" v-if="props.isHome">
+        <Icon :icon="feedIcon" class="post-source-icon" />
         <div class="post-source-title">{{ post.feed.title }}</div>
       </div>
-      <div class="post-date">{{ date }}</div>
+      <div class="post-date">{{ date.timeAgo }}</div>
       <label class="check-label">
         <input
           class="check"
@@ -100,7 +105,6 @@ async function onReadLaterChange() {
   width: 78%;
 }
 .read {
-  padding: calc(1% + 1px);
   color: #666;
 }
 
@@ -127,6 +131,15 @@ async function onReadLaterChange() {
 .post-source {
   display: flex;
   align-items: center;
+}
+
+.post-source-title {
+  font-size: 0.8rem;
+}
+
+.post-source-icon {
+  width: 0.8rem;
+  margin: 0 0.3rem 0 0;
 }
 
 .post-image {
