@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
-import Icon from '../../../../components/sidebar/SidebarFeedItemIcon.vue'
+import Icon from '../../../../components/FeedIcon.vue'
 
 const props = defineProps({
   post: { type: Object, required: true },

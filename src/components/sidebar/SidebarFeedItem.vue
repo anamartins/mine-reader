@@ -1,5 +1,5 @@
 <script setup>
-import SidebarFeedItemIcon from './SidebarFeedItemIcon.vue'
+import SidebarFeedItemIcon from '../FeedIcon.vue'
 
 const props = defineProps({
   feed: { type: Object, required: true }

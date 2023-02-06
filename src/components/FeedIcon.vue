@@ -29,7 +29,7 @@ function onError() {
     :src="IMG_BASE_URL + props.icon"
     @error="onError"
   />
-  <img class="feed__icon" v-else src="../../assets/img/pink.png" />
+  <img class="feed__icon" v-else src="../assets/img/pink.png" />
 </template>
 
 <style scoped lang="scss">
