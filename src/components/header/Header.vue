@@ -20,6 +20,7 @@ const backgroundColor = colors.backgroundColor
   position: fixed;
   top: 0;
   width: 100%;
+  max-width: 1500px;
   height: 3rem;
   z-index: 1;
 }

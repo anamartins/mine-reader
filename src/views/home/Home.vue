@@ -45,9 +45,11 @@ watch(
 
 <style scoped>
 .wrapper {
-  width: 90%;
+  width: calc(100% - 2rem);
+  max-width: 2000px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  /* justify-content: center; */
+  align-content: flex-start;
 }
 </style>

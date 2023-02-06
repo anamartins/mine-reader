@@ -35,6 +35,7 @@ async function onCloseButtonClick(tag) {
   padding: 1% 2%;
   background-color: var(--surface-color);
   border-bottom: 1px solid #ccc;
+  z-index: 1;
 }
 .close {
   background-color: deeppink;

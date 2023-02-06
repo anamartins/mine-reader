@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
@@ -17,6 +17,7 @@ const feedIcon = computed(() => {
   const feed = feedsStore.getFeedById(props.post.feedId)
   return feed?.icon
 })
+
 const date = formatDate(props.post.pubDate)
 
 const image = computed(() => {
@@ -86,7 +87,7 @@ async function onReadLaterChange() {
 .post {
   margin: 1% 0;
   padding: 1%;
-  width: calc(100% - 4px - 2%);
+  width: 100%;
   max-width: 1000px;
   height: 150px;
   border-radius: 5px;
@@ -144,7 +145,7 @@ async function onReadLaterChange() {
 
 .post-image {
   width: 20%;
-  min-width: 2rem;
+  min-width: 3rem;
   height: 100%;
   margin: 0 0 0 1%;
   border-radius: 10px;

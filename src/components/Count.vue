@@ -2,7 +2,7 @@
 const props = defineProps({
   number: { type: Number, required: true },
   backgroundColor: { type: String, required: false, default: 'transparent' },
-  fontColor: { type: String, required: false, default: '#333' }
+  fontColor: { type: String, required: false, default: '#FFF' }
 })
 </script>
 

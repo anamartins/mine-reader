@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar/Sidebar.vue'
 import Header from '../components/header/Header.vue'
 </script>
 <template>
-  <div class="wrapper">
+  <div class="page">
     <Header class="header"></Header>
     <div class="content">
       <Sidebar class="sidebar" />
@@ -13,7 +13,8 @@ import Header from '../components/header/Header.vue'
 </template>
 
 <style scoped>
-.wrapper {
+.page {
+  position: relative;
   width: 90%;
   display: flex;
   flex-flow: row wrap;

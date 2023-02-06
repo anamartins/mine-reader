@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const isIconShown = ref(true)
 const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
@@ -9,6 +9,13 @@ const props = defineProps({
     type: String
   }
 })
+
+watch(
+  () => props.icon,
+  () => {
+    isIconShown.value = true
+  }
+)
 
 function onError() {
   isIconShown.value = false
