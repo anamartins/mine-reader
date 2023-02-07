@@ -8,11 +8,18 @@ export const usePostsStore = defineStore('posts', () => {
   const total = ref(0)
   const next = ref('')
   const isReady = ref(false)
+  // const isPostLoading = ref(false)
 
   const hasNext = computed(() => !!next.value)
   const { getApi, postApi, deleteApi } = useApi()
 
   const feedsStore = useFeedsStore()
+
+  function getPostById(id) {
+    return posts.value.find((e) => {
+      return e.id === id
+    })
+  }
 
   async function getPosts(params) {
     try {
@@ -22,8 +29,7 @@ export const usePostsStore = defineStore('posts', () => {
       total.value = returnAPI.data.total
       next.value = returnAPI.data.next
     } catch (error) {
-      //todo
-      console.log('show an error message', error)
+      console.log(error)
     } finally {
       isReady.value = true
     }
@@ -45,8 +51,9 @@ export const usePostsStore = defineStore('posts', () => {
   }
 
   async function markPostAsRead(id, feedId, isRead) {
+    const post = getPostById(id)
     try {
-      isReady.value = false
+      post.isMarkPostAsReadLoading = true
       const feed = feedsStore.getFeedById(feedId)
       if (isRead) {
         await postApi(`stream/${id}/is-read`, null)
@@ -60,13 +67,14 @@ export const usePostsStore = defineStore('posts', () => {
     } catch (error) {
       console.log(error)
     } finally {
-      isReady.value = true
+      post.isMarkPostAsReadLoading = false
     }
   }
 
   async function readPostLater(id, isReadLater) {
+    const post = getPostById(id)
     try {
-      isReady.value = false
+      post.isReadPostLaterLoading = true
       if (isReadLater) {
         await postApi(`stream/${id}/read-later`, null)
         feedsStore.readLater++
@@ -77,7 +85,7 @@ export const usePostsStore = defineStore('posts', () => {
     } catch (error) {
       console.log(error)
     } finally {
-      isReady.value = true
+      post.isReadPostLaterLoading = false
     }
   }
 

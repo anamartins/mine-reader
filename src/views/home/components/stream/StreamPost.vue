@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { watch, computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
@@ -10,9 +10,12 @@ const props = defineProps({
   isHome: { type: Boolean, required: false, default: false }
 })
 
+// const isPostLoading = computed(() => postsStore.isPostLoading)
+
 const postsStore = usePostsStore()
 
 const feedsStore = useFeedsStore()
+
 const feedIcon = computed(() => {
   const feed = feedsStore.getFeedById(props.post.feedId)
   return feed?.icon
@@ -49,6 +52,12 @@ async function onReadLaterChange() {
 <template>
   <div class="post" :class="{ read: post.isRead }">
     <div class="post-wrapper">
+      <div class="loading mark-read" v-if="post.isMarkPostAsReadLoading">
+        Mark as Read Loading
+      </div>
+      <div class="loading read-later" v-if="post.isReadPostLaterLoading">
+        REad LAter Loading
+      </div>
       <div class="post-title">
         <a :href="post.link" @click="onPostClick" target="_blank">{{
           post.title
@@ -85,7 +94,7 @@ async function onReadLaterChange() {
 
 <style scoped>
 .post {
-  margin: 1% 0;
+  margin: 0;
   padding: 1%;
   width: 100%;
   max-width: 1000px;
@@ -145,7 +154,7 @@ async function onReadLaterChange() {
 
 .post-image {
   width: 20%;
-  min-width: 3rem;
+  min-width: 5rem;
   height: 100%;
   margin: 0 0 0 1%;
   border-radius: 10px;
@@ -155,5 +164,13 @@ async function onReadLaterChange() {
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.loading {
+  background-color: blueviolet;
+}
+
+.read-later {
+  background-color: orange;
 }
 </style>

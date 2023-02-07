@@ -35,8 +35,7 @@ export const useFeedsStore = defineStore('feeds', () => {
       total.value = returnAPI.data.total
       readLater.value = returnAPI.data.readLater
     } catch (error) {
-      //todo
-      console.log('show an error message', error)
+      console.log(error)
     } finally {
       isLoading.value = false
     }
