@@ -164,4 +164,10 @@ async function onReadLaterChange() {
   border-radius: 10px;
   object-fit: cover;
 }
+
+.loading {
+  position: relative;
+  top: 25%;
+  left: 50%;
+}
 </style>
