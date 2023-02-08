@@ -7,6 +7,7 @@ import TheLogo from '../components/logo/Logo.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
+import Loading from '../components/Loading/Loading.vue'
 
 const email = ref('')
 const password = ref('')
@@ -32,7 +33,7 @@ async function onButtonClick() {
       <div class="wrapper">
         <TheLogo class="logo" linkName="signIn" />
         <form class="signin-form">
-          <div class="loading" v-if="isLoading">Loading</div>
+          <div class="loading" v-if="isLoading"><Loading /></div>
           <InputText
             class="input-text"
             :is-required="true"
@@ -136,7 +137,9 @@ async function onButtonClick() {
   text-align: center;
 }
 
-/* .loading {
-  background-color: deeppink;
-} */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 </style>

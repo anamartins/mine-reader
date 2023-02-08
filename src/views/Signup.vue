@@ -29,7 +29,7 @@ onMounted(() => {})
   <div class="signup">
     <FormBackground>
       <div class="wrapper">
-        <div class="loading" v-if="isLoading">Loading</div>
+        <div class="loading" v-if="isLoading"><Loading /></div>
 
         <Logo class="logo" linkName="signUp" />
         <form class="signup-form">
@@ -137,7 +137,9 @@ onMounted(() => {})
   position: relative;
   text-align: center;
 }
-/* .loading {
-  background-color: deeppink;
-} */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 </style>

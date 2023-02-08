@@ -5,6 +5,7 @@ import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import Post from './StreamPost.vue'
 import StreamFilterBar from './StreamFilterBar.vue'
+import Loading from '../../../../components/Loading/Loading.vue'
 
 const showMoreElement = ref(null)
 
@@ -66,8 +67,15 @@ function onObserverChanges(entries) {
 <template>
   <div class="stream">
     <StreamFilterBar :title="title" :tags="tags" :feedId="route.params.feed" />
-    <div class="loading" v-if="!isReady">Loading</div>
-    <Post v-for="post in posts" :post="post" :isHome="isHome" :key="post.id" />
+    <div class="loading" v-if="!isReady"><Loading /></div>
+    <div class="posts">
+      <Post
+        v-for="post in posts"
+        :post="post"
+        :isHome="isHome"
+        :key="post.id"
+      />
+    </div>
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
   </div>
 </template>
@@ -82,7 +90,34 @@ function onObserverChanges(entries) {
   flex-wrap: wrap;
 }
 
+.posts {
+  bottom: -200px;
+}
+
+.posts {
+  animation: rise 2s ease-in-out;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
 .box {
   height: 5px;
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  top: 8rem;
+  left: 50%;
 }
 </style>

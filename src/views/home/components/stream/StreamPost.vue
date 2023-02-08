@@ -4,13 +4,12 @@ import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
 import Icon from '../../../../components/FeedIcon.vue'
+import Loading from '../../../../components/Loading/Loading.vue'
 
 const props = defineProps({
   post: { type: Object, required: true },
   isHome: { type: Boolean, required: false, default: false }
 })
-
-// const isPostLoading = computed(() => postsStore.isPostLoading)
 
 const postsStore = usePostsStore()
 
@@ -53,10 +52,10 @@ async function onReadLaterChange() {
   <div class="post" :class="{ read: post.isRead }">
     <div class="post-wrapper">
       <div class="loading mark-read" v-if="post.isMarkPostAsReadLoading">
-        Mark as Read Loading
+        <Loading />
       </div>
       <div class="loading read-later" v-if="post.isReadPostLaterLoading">
-        REad LAter Loading
+        <Loading />
       </div>
       <div class="post-title">
         <a :href="post.link" @click="onPostClick" target="_blank">{{
@@ -164,13 +163,5 @@ async function onReadLaterChange() {
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
-}
-
-.loading {
-  background-color: blueviolet;
-}
-
-.read-later {
-  background-color: orange;
 }
 </style>

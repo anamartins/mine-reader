@@ -100,7 +100,4 @@ onMounted(() => {
   position: relative;
   text-align: center;
 }
-/* .loading {
-  background-color: deeppink;
-} */
 </style>

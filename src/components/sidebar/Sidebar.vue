@@ -5,6 +5,7 @@ import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
+import Loading from '../../components/Loading/Loading.vue'
 
 const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
@@ -40,7 +41,7 @@ const secondaryColor = colors.secondaryColor
             manage mine feeds
           </router-link>
         </p>
-        <div class="loading" v-if="isLoadingFeeds">Loading</div>
+        <div class="loading" v-if="isLoadingFeeds"><Loading /></div>
         <ul class="sidebar__list">
           <SidebarFeedItem v-for="feed in feeds" :feed="feed" />
         </ul>
@@ -52,7 +53,7 @@ const secondaryColor = colors.secondaryColor
         <p>
           <router-link :to="{ name: 'manageTag' }">manage tags</router-link>
         </p>
-        <div class="loading" v-if="isLoadingTags">Loading</div>
+        <div class="loading" v-if="isLoadingTags"><Loading /></div>
         <ul class="sidebar__list">
           <li v-for="tag in tags" :key="tag.id" class="tag__item">
             <router-link
@@ -127,5 +128,10 @@ p a {
 
 .tag__item {
   line-height: 1.2rem;
+}
+
+.loading {
+  position: relative;
+  margin: 1rem;
 }
 </style>

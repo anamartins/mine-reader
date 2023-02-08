@@ -8,6 +8,7 @@ import ReadLaterIcon from '../../assets/img/read-later.svg'
 import UserIcon from '../../assets/img/user.svg'
 import AddFeedIcon from '../../assets/img/add-feed.svg'
 import SignOut from '../../assets/img/signout.svg'
+import Loading from '../Loading/Loading.vue'
 
 const router = useRouter()
 const usersStore = useUsersStore()
@@ -26,7 +27,7 @@ function onSignOut(e) {
 
 <template>
   <div class="profile-card-wrapper">
-    <div class="loading" v-if="isLoading">Loading</div>
+    <!-- <div class="loading" v-if="isLoading"><Loading /></div> -->
     <div class="user-data">
       <Icon
         :image-source="AddFeedIcon"
