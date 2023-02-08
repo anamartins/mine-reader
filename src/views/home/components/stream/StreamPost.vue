@@ -95,7 +95,6 @@ async function onReadLaterChange() {
         />Read Later
       </label>
       <div class="tags" v-if="props.isHome">
-        <div class="tag" v-for="tag in tags">{{ tag }}</div>
         <Tag v-for="tag in tags" :tag="tag" />
       </div>
     </div>

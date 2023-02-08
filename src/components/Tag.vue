@@ -21,7 +21,7 @@ async function onCloseButtonClick(tag) {
   </div>
 </template>
 
-<style>
+<style scoped>
 .tag {
   margin: 0.3rem 1rem 0 0;
   padding: 0.3rem;
