@@ -5,6 +5,7 @@ import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
 import Icon from '../../../../components/FeedIcon.vue'
 import Loading from '../../../../components/Loading/Loading.vue'
+import Tag from '../../../../components/Tag.vue'
 
 const props = defineProps({
   post: { type: Object, required: true },
@@ -19,6 +20,13 @@ const feedIcon = computed(() => {
   const feed = feedsStore.getFeedById(props.post.feedId)
   return feed?.icon
 })
+
+const tags = computed(() => {
+  const feed = feedsStore.getFeedById(props.post.feedId)
+  return feed?.tags
+})
+
+console.log('tags', tags)
 
 const date = formatDate(props.post.pubDate)
 
@@ -86,6 +94,10 @@ async function onReadLaterChange() {
           @change="onReadLaterChange"
         />Read Later
       </label>
+      <div class="tags" v-if="props.isHome">
+        <div class="tag" v-for="tag in tags">{{ tag }}</div>
+        <Tag v-for="tag in tags" :tag="tag" />
+      </div>
     </div>
     <div class="post-image" v-if="image"><img :src="post.image" /></div>
   </div>
@@ -163,6 +175,11 @@ async function onReadLaterChange() {
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.tags {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .loading {
