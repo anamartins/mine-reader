@@ -20,14 +20,6 @@ html{
   font-weight: 300;
 }
 
-main{
-  overflow-x: hidden;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-}
-
 a {
     text-decoration: none;
     color: #000;

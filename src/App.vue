@@ -1,14 +1,19 @@
 <script setup></script>
 
 <template>
-  <main>
+  <div class="all">
     <router-view />
-  </main>
+  </div>
 </template>
 
 <style scoped>
-main {
+.all {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>

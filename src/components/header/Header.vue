@@ -7,12 +7,12 @@ const primaryColor = colors.primaryColor
 const backgroundColor = colors.backgroundColor
 </script>
 <template>
-  <div class="header">
+  <header>
     <Logo font-size="1rem" :font-color="backgroundColor" has-animated-box />
-  </div>
+  </header>
 </template>
 <style scoped lang="scss">
-.header {
+header {
   background-color: var(--surface-color);
   display: flex;
   flex-flow: row nowrap;

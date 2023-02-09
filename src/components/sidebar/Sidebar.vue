@@ -27,7 +27,7 @@ const secondaryColor = colors.secondaryColor
 </script>
 
 <template>
-  <div class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar__sections">
       <section class="sidebar__item">
         <h2 class="sidebar__heading">feeds</h2>
@@ -66,7 +66,7 @@ const secondaryColor = colors.secondaryColor
       </section>
     </div>
     <SidebarProfileCard class="profile-card" />
-  </div>
+  </aside>
 </template>
 
 <style scoped lang="scss">

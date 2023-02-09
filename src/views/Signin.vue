@@ -26,12 +26,6 @@ async function onButtonClick() {
   await usersStore.login(email.value, password.value)
   router.push({ name: 'home' })
 }
-
-// onMounted(() => {
-//   if (token.value) {
-//     router.push({ name: 'home' })
-//   }
-// })
 </script>
 
 <template>

@@ -65,7 +65,8 @@ function onObserverChanges(entries) {
 }
 </script>
 <template>
-  <div class="stream">
+  <!-- <div class="stream"> -->
+  <main class="stream">
     <StreamFilterBar :title="title" :tags="tags" :feedId="route.params.feed" />
     <div class="loading" v-if="!isReady"><Loading /></div>
     <div class="posts">
@@ -77,7 +78,8 @@ function onObserverChanges(entries) {
       />
     </div>
     <div class="box" ref="showMoreElement" v-show="hasNext"></div>
-  </div>
+  </main>
+  <!-- </div> -->
 </template>
 
 <style scoped>
