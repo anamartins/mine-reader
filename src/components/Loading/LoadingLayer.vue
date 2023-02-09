@@ -56,15 +56,11 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
 @keyframes animation {
   0% {
     border-radius: v-bind('minBorder');
-    /* transform: translate(v-bind('translate1'), v-bind('translate2'))
-      rotate(v-bind('rotation1')); */
     transform: rotate(v-bind('rotation1'));
   }
 
   100% {
     border-radius: v-bind('maxBorder');
-    /* transform: translate(v-bind('translate3'), v-bind('translate4'))
-      rotate(v-bind('rotation2')); */
     transform: rotate(v-bind('rotation2'));
   }
 }
