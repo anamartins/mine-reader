@@ -10,7 +10,7 @@ const primaryColor = colors.primaryColor
 const lightTextColor = colors.lightTextColor
 </script>
 <template>
-  <button class="confirmation-button" type="button">{{ props.label }}</button>
+  <button class="confirmation-button" type="submit">{{ props.label }}</button>
 </template>
 <style scoped>
 .confirmation-button {

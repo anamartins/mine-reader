@@ -28,7 +28,7 @@ async function onCloseButtonClick(tag) {
   background-color: var(--secondary-color-variation);
   color: #fff;
   font-size: 0.7rem;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
   display: flex;
   flex-flow: row;
   position: relative;
@@ -39,7 +39,6 @@ async function onCloseButtonClick(tag) {
 .close {
   background-color: var(--secondary-color-variation);
   cursor: pointer;
-  /* padding: 0.3rem; */
   margin: 0 0 0 0.3rem;
   border: 0;
   color: #fff;
