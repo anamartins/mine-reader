@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
 import { getColors } from '../utils/colors'
@@ -14,6 +14,7 @@ const password = ref('')
 const usersStore = useUsersStore()
 const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
+const token = computed(() => localStorage.getItem('mineToken'))
 
 const router = useRouter()
 
@@ -25,6 +26,12 @@ async function onButtonClick() {
   await usersStore.login(email.value, password.value)
   router.push({ name: 'home' })
 }
+
+onMounted(() => {
+  if (token.value) {
+    router.push({ name: 'home' })
+  }
+})
 </script>
 
 <template>
