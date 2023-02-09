@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useUserPreferences } from '../../../../composables/userPreferences'
-import CheckBox from '../../../../components/checkbox.vue'
+import CheckBox from '../../../../components/Checkbox.vue'
 
 const route = useRoute()
 const path = computed(() => route.path)
