@@ -36,7 +36,7 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
 <template>
   <div class="box"></div>
 </template>
-<style>
+<style scoped>
 .box {
   position: absolute;
   opacity: 0.7;

@@ -26,8 +26,6 @@ const tags = computed(() => {
   return feed?.tags
 })
 
-console.log('tags', tags)
-
 const date = formatDate(props.post.pubDate)
 
 const image = computed(() => {

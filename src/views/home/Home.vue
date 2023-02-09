@@ -49,7 +49,6 @@ watch(
   max-width: 2000px;
   display: flex;
   flex-flow: row wrap;
-  /* justify-content: center; */
   align-content: flex-start;
 }
 </style>
