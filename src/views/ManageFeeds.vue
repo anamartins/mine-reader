@@ -69,13 +69,6 @@ function onSelectListChange(selected) {
             label="+ add feeds in this tags"
             @click="onAddSelectedTags"
           />
-          <!-- <button
-            type="button"
-            @click="onAddSelectedTags"
-            class="simple-button"
-          >
-            + add feeds in this tags
-          </button> -->
         </SelectList>
         <div class="actions">
           <ul>
@@ -99,46 +92,43 @@ function onSelectListChange(selected) {
       </ul>
 
       <div v-if="isModalOpen" class="modal">
+        <h2>Add a tag</h2>
         <div class="exit-modal" @click="onExitClick">X</div>
-        <InputText placeholder="type the tag name here" v-model="tag" />
-        <SimpleButton @click="onAddSingleTag" label="+ add tag" />
-
-        <!-- <label>
-         <input type="text" v-model="tag" /> 
-          <button type="button" @click="onAddSingleTag" class="simple-button">
-            + add tag
-          </button>
-        </label> -->
+        <InputText
+          placeholder="type the tag name here"
+          v-model="tag"
+          class="modal__input"
+        />
+        <SimpleButton
+          @click="onAddSingleTag"
+          label="+ add tag"
+          class="modal__button"
+        />
       </div>
     </div>
   </PageWithSidebar>
 </template>
 <style scoped>
-/* .simple-button {
-  padding: 0.5rem;
-  margin: 1rem;
-  font-size: 0.8rem;
-  background-color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--light-text);
-  cursor: pointer;
-}
-
-.simple-button:hover {
-  background-color: var(--surface-color);
-  color: var(--primary-color);
-} */
 .modal {
   position: fixed;
+  display: flex;
+  flex-flow: column;
   z-index: 1;
   left: 50%;
   top: 25%;
   transform: translate(-50%, -50%);
-  overflow: auto;
+  overflow: hidden;
   background-color: #fff;
   border: 1px solid;
   padding: 5rem;
+}
+.modal__input {
+  width: 100%;
+}
+
+.modal__button {
+  width: calc(100% + 4px);
+  margin: 0;
 }
 .exit-modal {
   cursor: pointer;
@@ -171,17 +161,13 @@ function onSelectListChange(selected) {
   color: #fff;
 }
 .actions {
-  /* border-top: 1px solid #333; */
-  /* padding: 0.5rem; */
   position: relative;
-  /* padding: 0 0.5rem 0 0; */
   border: 1px solid #333;
   cursor: pointer;
   font-size: 0.8rem;
 }
 .actions-item {
   cursor: pointer;
-  /* width: calc(100% - 1rem); */
   padding: 0.5rem;
 }
 .actions-item:hover {
