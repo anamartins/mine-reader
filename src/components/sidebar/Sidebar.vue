@@ -49,7 +49,7 @@ const secondaryColor = colors.secondaryColor
 
       <section class="sidebar__item">
         <h2 class="sidebar__heading">tags</h2>
-        <p><router-link :to="{ name: 'addTag' }">add a new tag</router-link></p>
+        <!-- <p><router-link :to="{ name: 'addTag' }">add a new tag</router-link></p> -->
         <p>
           <router-link :to="{ name: 'manageTag' }">manage tags</router-link>
         </p>
