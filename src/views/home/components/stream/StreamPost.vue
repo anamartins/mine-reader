@@ -104,6 +104,7 @@ async function onReadLaterChange() {
 .post {
   margin: 0;
   padding: 1%;
+  padding-right: 0;
   width: 100%;
   max-width: 1000px;
   height: 150px;
