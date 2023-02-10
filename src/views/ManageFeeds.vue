@@ -6,6 +6,7 @@ import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Checkbox from '../components/Checkbox.vue'
 import SelectList from '../components/SelectList.vue'
 import InputText from '../components/InputText.vue'
+import SimpleButton from '../components/SimpleButton.vue'
 
 const tag = ref('')
 
@@ -28,6 +29,7 @@ async function onAddSelectedTags() {
   selectedTags.value = ''
   selected.value = []
   isModalOpen.value = false
+  console.log('click!')
 }
 
 async function onAddSingleTag() {
@@ -63,13 +65,17 @@ function onSelectListChange(selected) {
           @on-item-change="onSelectListChange"
           :class="{ disabled: !isAnyFeedSelected }"
         >
-          <button
+          <SimpleButton
+            label="+ add feeds in this tags"
+            @click="onAddSelectedTags"
+          />
+          <!-- <button
             type="button"
             @click="onAddSelectedTags"
             class="simple-button"
           >
             + add feeds in this tags
-          </button>
+          </button> -->
         </SelectList>
         <div class="actions">
           <ul>
@@ -95,19 +101,20 @@ function onSelectListChange(selected) {
       <div v-if="isModalOpen" class="modal">
         <div class="exit-modal" @click="onExitClick">X</div>
         <InputText placeholder="type the tag name here" v-model="tag" />
+        <SimpleButton @click="onAddSingleTag" label="+ add tag" />
 
-        <label>
-          <!-- <input type="text" v-model="tag" /> -->
+        <!-- <label>
+         <input type="text" v-model="tag" /> 
           <button type="button" @click="onAddSingleTag" class="simple-button">
             + add tag
           </button>
-        </label>
+        </label> -->
       </div>
     </div>
   </PageWithSidebar>
 </template>
 <style scoped>
-.simple-button {
+/* .simple-button {
   padding: 0.5rem;
   margin: 1rem;
   font-size: 0.8rem;
@@ -121,7 +128,7 @@ function onSelectListChange(selected) {
 .simple-button:hover {
   background-color: var(--surface-color);
   color: var(--primary-color);
-}
+} */
 .modal {
   position: fixed;
   z-index: 1;
