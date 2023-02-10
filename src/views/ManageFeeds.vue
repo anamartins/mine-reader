@@ -141,6 +141,11 @@ function onSelectListChange(selected) {
   font-size: 1.5rem;
 }
 
+.exit-modal:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 .tool-bar {
   border: 1px solid #333;
   width: 100%;
@@ -156,10 +161,6 @@ function onSelectListChange(selected) {
   opacity: 0.4;
 }
 
-.exit-modal:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
 .actions {
   position: relative;
   border: 1px solid #333;
