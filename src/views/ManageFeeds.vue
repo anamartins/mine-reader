@@ -47,7 +47,7 @@ function onRemoveButtonClick(feedId) {
 </style> -->
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
@@ -59,6 +59,10 @@ const tag = ref('')
 const selectedTags = ref('')
 const selected = ref([])
 const isModalOpen = ref(false)
+
+const isAnyFeedSelected = computed(() => {
+  return selected.value.length > 0
+})
 
 const feedsStore = useFeedsStore()
 const feeds = computed(() => feedsStore.feeds)
@@ -93,7 +97,6 @@ function onExitClick() {
 }
 
 function onSelectListChange(selected) {
-  console.log('addtag!', selected)
   selectedTags.value = selected
 }
 </script>
@@ -105,19 +108,20 @@ function onSelectListChange(selected) {
           title="Select a tag"
           :items="tags"
           @on-item-change="onSelectListChange"
+          :class="{ disabled: !isAnyFeedSelected }"
         >
           <button type="button" @click="onAddSelectedTags">
-            + add in this tag
+            + add feeds in this tags
           </button>
-          <div class="actions">
-            <ul>
-              <li @click="createNewTagClick()" class="actions-item">
-                create a new tag
-              </li>
-            </ul>
-          </div>
         </SelectList>
-        <button type="button" @click="">remove feed</button>
+        <div class="actions">
+          <ul>
+            <li @click="createNewTagClick()" class="actions-item">
+              create a new tag
+            </li>
+          </ul>
+        </div>
+        <!-- <button type="button" @click="">remove feed</button> -->
       </div>
 
       <h2>Select the feeds you want to add in this tag</h2>
@@ -164,6 +168,13 @@ function onSelectListChange(selected) {
   margin-bottom: 1rem;
   display: flex;
 }
+
+.disabled {
+  background-color: #ddd;
+  border: 1px solid #eee;
+  pointer-events: none;
+  opacity: 0.4;
+}
 .exit-modal {
   cursor: pointer;
   position: absolute;
@@ -179,8 +190,13 @@ function onSelectListChange(selected) {
   color: #fff;
 }
 .actions {
-  border-top: 1px solid #333;
-  padding: 0.5rem;
+  /* border-top: 1px solid #333; */
+  /* padding: 0.5rem; */
+  position: relative;
+  /* padding: 0 0.5rem 0 0; */
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 0.8rem;
 }
 .actions-item {
   cursor: pointer;
