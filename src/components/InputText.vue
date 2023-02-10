@@ -6,6 +6,7 @@ const props = defineProps({
   type: { type: String, requided: false, default: 'text' },
   isRequired: { type: Boolean, requided: false },
   label: { type: String, requided: false },
+  placeholder: { type: String, required: false, default: '' },
   modelValue: { type: String },
   focus: { type: Boolean, default: false }
 })
@@ -24,6 +25,7 @@ const darkTextColor = colors.darkTextColor
         :required="isRequired"
         @input="$emit('update:modelValue', $event.target.value)"
         v-focus="focus"
+        :placeholder="props.placeholder"
       />
     </label>
   </div>

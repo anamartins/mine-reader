@@ -1,51 +1,3 @@
-<!-- <script setup>
-import { ref, computed } from 'vue'
-import { useFeedsStore } from '../stores/feeds'
-import PageWithSidebar from '../components/PageWithSidebar.vue'
-import Sidebar from '../components/sidebar/Sidebar.vue'
-import Header from '../components/header/Header.vue'
-import Button from '../components/ConfirmButton.vue'
-
-const feed = ref('')
-const feedsStore = useFeedsStore()
-const feeds = computed(() => feedsStore.feeds)
-
-let timeout
-
-async function onAddButtonClick() {
-  await feedsStore.followNewFeed(feed.value)
-  feed.value = ''
-}
-
-function onRemoveButtonClick(feedId) {
-  feedsStore.removeFeed(feedId)
-}
-</script>
-
-<template>
-  <PageWithSidebar>
-    <div class="manage-feed">
-      <div>
-        <ul>
-          <li v-for="item in feeds" :key="item.id">
-            <a :href="item.link" target="_blank">{{ item.title }}</a>
-            <button type="button" @click="onRemoveButtonClick(item.feedId)">
-              remove feed
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </PageWithSidebar>
-</template>
-
-<style scoped>
-.manage-feed {
-  position: relative;
-  width: 70%;
-}
-</style> -->
-
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useTagsStore } from '../stores/tags'
@@ -53,6 +5,7 @@ import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Checkbox from '../components/Checkbox.vue'
 import SelectList from '../components/SelectList.vue'
+import InputText from '../components/InputText.vue'
 
 const tag = ref('')
 
@@ -110,7 +63,11 @@ function onSelectListChange(selected) {
           @on-item-change="onSelectListChange"
           :class="{ disabled: !isAnyFeedSelected }"
         >
-          <button type="button" @click="onAddSelectedTags">
+          <button
+            type="button"
+            @click="onAddSelectedTags"
+            class="simple-button"
+          >
             + add feeds in this tags
           </button>
         </SelectList>
@@ -137,28 +94,54 @@ function onSelectListChange(selected) {
 
       <div v-if="isModalOpen" class="modal">
         <div class="exit-modal" @click="onExitClick">X</div>
-        <label
-          >add the tag
-          <input type="text" v-model="tag" />
-          <button type="button" @click="onAddSingleTag">+ add tag</button>
+        <InputText placeholder="type the tag name here" v-model="tag" />
+
+        <label>
+          <!-- <input type="text" v-model="tag" /> -->
+          <button type="button" @click="onAddSingleTag" class="simple-button">
+            + add tag
+          </button>
         </label>
       </div>
     </div>
   </PageWithSidebar>
 </template>
 <style scoped>
+.simple-button {
+  padding: 0.5rem;
+  margin: 1rem;
+  font-size: 0.8rem;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--light-text);
+  cursor: pointer;
+}
+
+.simple-button:hover {
+  background-color: var(--surface-color);
+  color: var(--primary-color);
+}
 .modal {
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 50%;
+  top: 25%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
   overflow: auto;
   background-color: #fff;
   border: 1px solid;
-  padding: 1rem;
+  padding: 5rem;
+}
+.exit-modal {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #333;
+  font-size: 1.5rem;
 }
 
 .tool-bar {
@@ -175,16 +158,7 @@ function onSelectListChange(selected) {
   pointer-events: none;
   opacity: 0.4;
 }
-.exit-modal {
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #333;
-  font-size: 1.5rem;
-}
+
 .exit-modal:hover {
   background-color: var(--primary-color);
   color: #fff;
