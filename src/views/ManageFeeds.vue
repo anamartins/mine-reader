@@ -71,8 +71,6 @@ async function onAddSelectedTags() {
   selectedTags.value = ''
   selected.value = []
   isModalOpen.value = false
-  console.log('here', selected.value)
-  console.log('tag', selectedTags.value)
 }
 
 async function onAddSingleTag() {
@@ -80,8 +78,6 @@ async function onAddSingleTag() {
   tag.value = ''
   selected.value = []
   isModalOpen.value = false
-  console.log('here', selected.value)
-  console.log('tag', tag.value)
 }
 
 async function onRemoveButtonClick(id) {
@@ -104,19 +100,25 @@ function onSelectListChange(selected) {
 <template>
   <PageWithSidebar>
     <div class="manage-feeds">
-      <SelectList
-        title="Select a tag"
-        :items="tags"
-        @on-item-change="onSelectListChange"
-      >
-        <div class="actions">
-          <ul>
-            <li @click="createNewTagClick()" class="actions-item">
-              create a new tag
-            </li>
-          </ul>
-        </div>
-      </SelectList>
+      <div class="tool-bar">
+        <SelectList
+          title="Select a tag"
+          :items="tags"
+          @on-item-change="onSelectListChange"
+        >
+          <button type="button" @click="onAddSelectedTags">
+            + add in this tag
+          </button>
+          <div class="actions">
+            <ul>
+              <li @click="createNewTagClick()" class="actions-item">
+                create a new tag
+              </li>
+            </ul>
+          </div>
+        </SelectList>
+        <button type="button" @click="">remove feed</button>
+      </div>
 
       <h2>Select the feeds you want to add in this tag</h2>
       <ul class="feed-list">
@@ -128,9 +130,6 @@ function onSelectListChange(selected) {
           />
         </li>
       </ul>
-      <button type="button" @click="onAddSelectedTags">
-        + add in this tag
-      </button>
 
       <div v-if="isModalOpen" class="modal">
         <div class="exit-modal" @click="onExitClick">X</div>
@@ -157,6 +156,14 @@ function onSelectListChange(selected) {
   border: 1px solid;
   padding: 1rem;
 }
+
+.tool-bar {
+  border: 1px solid #333;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
 .exit-modal {
   cursor: pointer;
   position: absolute;
@@ -182,6 +189,10 @@ function onSelectListChange(selected) {
 }
 .actions-item:hover {
   background-color: #eee;
+}
+
+.feed-list {
+  margin-bottom: 2rem;
 }
 
 ul li {

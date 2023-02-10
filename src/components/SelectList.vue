@@ -50,21 +50,23 @@ ul {
 }
 .select-list {
   position: relative;
-  width: 100%;
-  margin-bottom: 1rem;
+  padding: 0 0.5rem 0 0;
+  /* width: 100%; */
+  /* margin-bottom: 1rem; */
 }
 
 .select-content {
   position: absolute;
   border: 1px solid #333;
   background-color: var(--surface-color);
-  width: 100%;
+  width: 250%;
 }
 .select-button {
-  width: calc(100% - 2rem);
-  padding: 1rem;
+  /* width: calc(100% - 2rem); */
+  padding: 0.5rem;
   border: 1px solid #333;
   cursor: pointer;
+  font-size: 0.8rem;
 }
 
 .list {
