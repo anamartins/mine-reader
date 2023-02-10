@@ -93,7 +93,7 @@ async function onReadLaterChange() {
         />Read Later
       </label>
       <div class="tags" v-if="props.isHome">
-        <Tag v-for="tag in tags" :tag="tag" />
+        <Tag v-for="tag in tags" :tag="tag" :feedId="props.post.feedId" />
       </div>
     </div>
     <div class="post-image" v-if="image"><img :src="post.image" /></div>
