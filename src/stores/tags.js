@@ -24,11 +24,27 @@ export const useTagsStore = defineStore('tags', () => {
     }
   }
 
-  async function addTag(feeds, tags) {
+  async function addSingleTag(feeds, newTag) {
     try {
       isLoading.value = true
       const returnAPI = await postApi(`user/tags`, {
-        tags: tags,
+        tag: newTag,
+        feedIds: feeds
+      })
+      tags.value.push(returnAPI.data)
+      return returnAPI.data
+    } catch (error) {
+      console.log(error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  async function addMultipleTags(feeds, newTags) {
+    try {
+      isLoading.value = true
+      const returnAPI = await postApi(`user/tags`, {
+        tags: newTags,
         feedIds: feeds
       })
       tags.value.push(returnAPI.data)
@@ -58,7 +74,8 @@ export const useTagsStore = defineStore('tags', () => {
 
   return {
     getTags,
-    addTag,
+    addSingleTag,
+    addMultipleTags,
     deleteTag,
     removeTagFromFeed,
     tags,

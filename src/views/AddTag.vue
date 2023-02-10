@@ -6,6 +6,8 @@ import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Checkbox from '../components/Checkbox.vue'
 import SelectList from '../components/SelectList.vue'
 
+const tag = ref('')
+
 const selectedTags = ref('')
 const selected = ref([])
 const isModalOpen = ref(false)
@@ -16,13 +18,22 @@ const feeds = computed(() => feedsStore.feeds)
 const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
 
-async function onAddButtonClick() {
-  await tagsStore.addTag(selected.value, selectedTags.value)
+async function onAddSelectedTags() {
+  await tagsStore.addMultipleTags(selected.value, selectedTags.value)
   // tag.value = ''
   // selected.value = []
   isModalOpen.value = false
   console.log('here', selected.value)
-  console.log('tag', tag)
+  console.log('tag', selectedTags.value)
+}
+
+async function onAddSingleTag() {
+  await tagsStore.addSingleTag(selected.value, tag.value)
+  // tag.value = ''
+  // selected.value = []
+  isModalOpen.value = false
+  console.log('here', selected.value)
+  console.log('tag', tag.value)
 }
 
 async function onRemoveButtonClick(id) {
@@ -69,14 +80,16 @@ function onSelectListChange(selected) {
           />
         </li>
       </ul>
-      <button type="button" @click="onAddButtonClick">+ add in this tag</button>
+      <button type="button" @click="onAddSelectedTags">
+        + add in this tag
+      </button>
 
       <div v-if="isModalOpen" class="modal">
         <div class="exit-modal" @click="onExitClick">X</div>
         <label
           >add the tag
           <input type="text" v-model="tag" />
-          <button type="button" @click="onAddButtonClick">+ add tag</button>
+          <button type="button" @click="onAddSingleTag">+ add tag</button>
         </label>
       </div>
     </div>
