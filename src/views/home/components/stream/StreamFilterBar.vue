@@ -19,6 +19,7 @@ const props = defineProps({
       <Tag
         v-for="tag in tags"
         :tag="tag"
+        :feedId="props.feedId"
         :isCloseButtonVisible="true"
         class="tag"
       />

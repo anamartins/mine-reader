@@ -1,8 +1,12 @@
 <script setup>
+import { useTagsStore } from '../stores/tags'
 const props = defineProps({
   tag: { type: String, required: true },
+  feedId: { type: String, required: true },
   isCloseButtonVisible: { type: Boolean, required: false, default: false }
 })
+
+const tagsStore = useTagsStore()
 
 async function onCloseButtonClick(tag) {
   await tagsStore.removeTagFromFeed(props.feedId, tag)
