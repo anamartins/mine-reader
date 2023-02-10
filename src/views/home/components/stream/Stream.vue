@@ -93,11 +93,8 @@ function onObserverChanges(entries) {
 }
 
 .posts {
-  bottom: -200px;
-}
-
-.posts {
   animation: rise 2s ease-in-out;
+  width: 98%;
 }
 
 @keyframes rise {
