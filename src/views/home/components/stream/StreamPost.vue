@@ -107,7 +107,6 @@ async function onReadLaterChange() {
   padding-right: 0;
   width: 100%;
   max-width: 1000px;
-  height: 150px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
@@ -164,7 +163,6 @@ async function onReadLaterChange() {
 .post-image {
   width: 20%;
   min-width: 5rem;
-  height: 100%;
   margin: 0 0 0 1%;
   border-radius: 10px;
 }
@@ -184,5 +182,19 @@ async function onReadLaterChange() {
   position: relative;
   top: 25%;
   left: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  /* .post-image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: -1;
+    margin: 0;
+  } */
+
+  .post-image {
+    display: none;
+  }
 }
 </style>

@@ -9,7 +9,6 @@ const backgroundColor = colors.backgroundColor
 const emit = defineEmits('onMenuClick')
 
 function onMenuClick() {
-  console.log('onmenuclick')
   emit('onMenuClick')
 }
 </script>
