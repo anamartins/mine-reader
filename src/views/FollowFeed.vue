@@ -34,6 +34,7 @@ watch(feed, (newValue) => {
 </script>
 
 <template>
+  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <div class="follow-feed">
       <label>Feed URL:</label>
@@ -50,9 +51,17 @@ watch(feed, (newValue) => {
       </div>
     </div>
   </PageWithSidebar>
+  <!-- </div> -->
 </template>
 
 <style scoped>
+/* .wrapper {
+  width: calc(100% - 2rem);
+  max-width: 2000px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+} */
 .follow-feed {
   position: relative;
   width: 70%;

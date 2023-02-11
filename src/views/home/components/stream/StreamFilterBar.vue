@@ -41,4 +41,11 @@ const props = defineProps({
 .tags {
   display: flex;
 }
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .filter-bar {
+    /* background-color: deeppink; */
+    z-index: 0;
+  }
+}
 </style>

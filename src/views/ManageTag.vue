@@ -43,6 +43,7 @@ async function onAddSingleTag() {
 }
 </script>
 <template>
+  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <div class="manage-tag">
       <h2>Manage Tags</h2>
@@ -79,6 +80,7 @@ async function onAddSingleTag() {
       </div>
     </div>
   </PageWithSidebar>
+  <!-- </div> -->
 </template>
 <style scoped>
 .actions {

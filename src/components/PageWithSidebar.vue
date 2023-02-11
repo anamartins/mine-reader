@@ -1,12 +1,20 @@
 <script setup>
+import { ref } from 'vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import Header from '../components/header/Header.vue'
+
+const isMenuShown = ref(false)
+
+function onMenuClick() {
+  console.log('from pagewithsidebar')
+  isMenuShown.value = !isMenuShown.value
+}
 </script>
 <template>
   <div class="page">
-    <Header class="header"></Header>
+    <Header class="header" @on-menu-click="onMenuClick"></Header>
     <div class="content">
-      <Sidebar class="sidebar" />
+      <Sidebar class="sidebar" :class="{ 'show-menu': isMenuShown }" />
       <slot></slot>
     </div>
   </div>
@@ -27,4 +35,60 @@ import Header from '../components/header/Header.vue'
   flex-flow: row nowrap;
   margin-top: 3rem;
 }
+
+/* @media only screen and (max-width: 300px) {
+  .page {
+    background-color: deeppink;
+    left: 0;
+  }
+  .sidebar {
+    background-color: blue;
+    position: absolute;
+    left: -100%;
+  }
+} */
+@media only screen and (max-width: 600px) {
+  .page {
+    /* background-color: yellow; */
+    width: 100%;
+  }
+  .sidebar {
+    /* background-color: blue; */
+    position: absolute;
+    left: -100%;
+    top: 0;
+  }
+
+  .show-menu {
+    left: 0px;
+    z-index: 2;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .page {
+    /* background-color: orange; */
+    width: 100%;
+  }
+
+  .sidebar {
+    /* background-color: yellow; */
+    position: absolute;
+    left: -100%;
+  }
+
+  .show-menu {
+    top: 0rem;
+    left: 0px;
+    z-index: 2;
+  }
+}
+/* @media only screen and (min-width: 1001px) {
+  .page {
+    background-color: violet;
+  }
+  .sidebar {
+    background-color: blue;
+  }
+} */
 </style>

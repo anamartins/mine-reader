@@ -29,7 +29,6 @@ async function onAddSelectedTags() {
   selectedTags.value = ''
   selected.value = []
   isModalOpen.value = false
-  console.log('click!')
 }
 
 async function onAddSingleTag() {
@@ -109,6 +108,13 @@ function onSelectListChange(selected) {
   </PageWithSidebar>
 </template>
 <style scoped>
+/* .wrapper {
+  width: calc(100% - 2rem);
+  max-width: 2000px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+} */
 .modal {
   position: fixed;
   display: flex;

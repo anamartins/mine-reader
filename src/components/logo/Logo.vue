@@ -16,34 +16,37 @@ const props = defineProps({
 
 <template>
   <div class="logo">
-    <AnimatedBoxLayer
-      color="#fa5788"
-      max-width="500px"
-      max-height="500px"
-      :is-paused="true"
-      v-if="hasAnimatedBox"
-    />
-    <AnimatedBoxLayer
-      color="#4a148c"
-      max-width="500px"
-      max-height="500px"
-      :is-paused="true"
-      v-if="hasAnimatedBox"
-    />
-    <AnimatedBoxLayer
-      border-color="#333"
-      max-width="500px"
-      max-height="500px"
-      :is-paused="true"
-      v-if="hasAnimatedBox"
-    />
-    <AnimatedBoxLayer
-      color="#c2185b"
-      max-width="500px"
-      max-height="500px"
-      :is-paused="true"
-      v-if="hasAnimatedBox"
-    />
+    <div class="background">
+      <AnimatedBoxLayer
+        color="#fa5788"
+        max-width="500px"
+        max-height="500px"
+        :is-paused="true"
+        v-if="hasAnimatedBox"
+      />
+
+      <AnimatedBoxLayer
+        color="#4a148c"
+        max-width="500px"
+        max-height="500px"
+        :is-paused="true"
+        v-if="hasAnimatedBox"
+      />
+      <AnimatedBoxLayer
+        border-color="#333"
+        max-width="500px"
+        max-height="500px"
+        :is-paused="true"
+        v-if="hasAnimatedBox"
+      />
+      <AnimatedBoxLayer
+        color="#c2185b"
+        max-width="500px"
+        max-height="500px"
+        :is-paused="true"
+        v-if="hasAnimatedBox"
+      />
+    </div>
     <h1>
       <router-link class="logo-link" :to="{ name: props.linkName }"
         >mine</router-link
@@ -61,7 +64,7 @@ const props = defineProps({
   font-size: v-bind('props.fontSize');
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 8%;
 }
 
 h1 {
@@ -72,10 +75,48 @@ h1 {
 }
 .logo-link {
   color: v-bind('props.fontColor');
-  width: 100%;
 }
 .logo-link:hover {
   color: v-bind('darkTextColor');
   text-decoration: none;
+}
+
+@media only screen and (max-width: 300px) {
+  .background {
+    display: none;
+    color: #fff;
+  }
+  .logo-link {
+    color: var(--dark-text);
+    background-color: #fff;
+  }
+  .logo {
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media only screen and (min-width: 301px) and (max-width: 600px) {
+  .background {
+    display: none;
+  }
+  .logo-link {
+    color: var(--dark-text);
+    background-color: #fff;
+  }
+  .logo {
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .logo {
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 </style>

@@ -2,7 +2,9 @@
 
 <template>
   <div class="all">
-    <router-view />
+    <div class="wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,33 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+}
+.wrapper {
+  width: calc(100% - 2rem);
+  max-width: 2000px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .all {
+    justify-content: flex-start;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .all {
+    justify-content: flex-start;
+  }
+  .wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1001px) {
 }
 </style>

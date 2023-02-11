@@ -77,7 +77,7 @@ function onObserverChanges(entries) {
         :key="post.id"
       />
     </div>
-    <div class="box" ref="showMoreElement" v-show="hasNext"></div>
+    <div class="more-posts" ref="showMoreElement" v-show="hasNext"></div>
   </main>
   <!-- </div> -->
 </template>
@@ -109,8 +109,11 @@ function onObserverChanges(entries) {
   }
 }
 
-.box {
+.more-posts {
+  position: absolute;
+  bottom: 0;
   height: 5px;
+  width: 100%;
 }
 
 .loading {
@@ -118,5 +121,23 @@ function onObserverChanges(entries) {
   width: 100%;
   top: 8rem;
   left: 50%;
+}
+
+/* @media only screen and (max-width: 300px) {
+}
+@media only screen and (min-width: 301px) and (max-width: 600px) {
+}
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+}
+@media only screen and (min-width: 1001px) {
+} */
+
+@media only screen and (max-width: 300px) {
+}
+@media only screen and (min-width: 301px) and (max-width: 600px) {
+}
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+}
+@media only screen and (min-width: 1001px) {
 }
 </style>

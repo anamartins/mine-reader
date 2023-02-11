@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-// import { useTagsStore } from '../stores/tags'
 import Checkbox from './Checkbox.vue'
 
 const props = defineProps({
@@ -12,9 +11,6 @@ const emit = defineEmits(['onItemChange'])
 
 const isSelectOpen = ref(false)
 const selected = ref([])
-
-// const tagsStore = useTagsStore()
-// const tags = computed(() => tagsStore.tags)
 
 function openSelect() {
   isSelectOpen.value = !isSelectOpen.value
