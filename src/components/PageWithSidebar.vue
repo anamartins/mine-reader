@@ -13,7 +13,11 @@ function onMenuClick() {
   <div class="page">
     <Header class="header" @on-menu-click="onMenuClick"></Header>
     <div class="content">
-      <Sidebar class="sidebar" :class="{ 'show-menu': isMenuShown }" />
+      <Sidebar
+        class="sidebar"
+        :class="{ 'show-menu': isMenuShown }"
+        @on-link-click="onMenuClick"
+      />
       <slot></slot>
     </div>
   </div>
@@ -38,6 +42,8 @@ function onMenuClick() {
 .show-menu {
   background-color: var(--surface-color);
   z-index: 2;
+  top: 0rem;
+  left: 0px;
 }
 
 /* @media only screen and (max-width: 300px) {
@@ -65,7 +71,7 @@ function onMenuClick() {
 
   .show-menu {
     left: 0px;
-    /* z-index: 2; */
+    z-index: 2;
   }
 }
 
@@ -84,7 +90,7 @@ function onMenuClick() {
   .show-menu {
     top: 0rem;
     left: 0px;
-    /* z-index: 2; */
+    z-index: 2;
   }
 }
 /* @media only screen and (min-width: 1001px) {

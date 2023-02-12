@@ -79,17 +79,18 @@ function onSelectListChange(selected) {
         <!-- <button type="button" @click="">remove feed</button> -->
       </div>
 
-      <h2>Select the feeds you want to add in this tag</h2>
-      <ul class="feed-list">
-        <li v-for="item in feeds" :key="item.id">
-          <Checkbox
-            :label="item.title"
-            :value="item.feedId"
-            v-model="selected"
-          />
-        </li>
-      </ul>
-
+      <div class="feeds">
+        <h2>Select the feeds you want to add in this tag</h2>
+        <ul class="feed-list">
+          <li v-for="item in feeds" :key="item.id">
+            <Checkbox
+              :label="item.title"
+              :value="item.feedId"
+              v-model="selected"
+            />
+          </li>
+        </ul>
+      </div>
       <div v-if="isModalOpen" class="modal">
         <h2>Add a tag</h2>
         <div class="exit-modal" @click="onExitClick">X</div>
@@ -191,5 +192,17 @@ ul li {
 
 h2 {
   font-size: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .feeds {
+    padding: 0 1rem;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .feeds {
+    padding: 0 1rem;
+  }
 }
 </style>

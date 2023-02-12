@@ -66,8 +66,8 @@ header {
     display: block;
   }
   .header {
-    height: 2rem;
     left: 0;
+    z-index: 2;
   }
 }
 </style>

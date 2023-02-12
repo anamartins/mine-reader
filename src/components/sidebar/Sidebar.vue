@@ -10,6 +10,8 @@ import Loading from '../../components/Loading/Loading.vue'
 const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
 
+const emit = defineEmits('onLinkClick')
+
 const feeds = computed(() => feedsStore.feeds)
 const totalFeeds = computed(() => feedsStore.total)
 const readLater = computed(() => feedsStore.readLater)
@@ -24,6 +26,11 @@ const colors = computed(() => getColors())
 const primaryColor = colors.primaryColor
 const darkTextColor = colors.darkTextColor
 const secondaryColor = colors.secondaryColor
+
+function onClick() {
+  console.log('click from sidebar')
+  emit('onLinkClick')
+}
 </script>
 
 <template>
@@ -43,7 +50,11 @@ const secondaryColor = colors.secondaryColor
         </p>
         <div class="loading" v-if="isLoadingFeeds"><Loading /></div>
         <ul class="sidebar__list">
-          <SidebarFeedItem v-for="feed in feeds" :feed="feed" />
+          <SidebarFeedItem
+            v-for="feed in feeds"
+            :feed="feed"
+            @click="onClick"
+          />
         </ul>
       </section>
 
@@ -133,5 +144,11 @@ p a {
 .loading {
   position: relative;
   margin: 1rem;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 </style>

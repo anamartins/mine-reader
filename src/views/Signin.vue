@@ -24,7 +24,8 @@ const primaryColor = colors.primaryColor
 
 async function onButtonClick() {
   await usersStore.login(email.value, password.value)
-  router.push({ name: 'home' })
+  console.log('hasError', hasError)
+  if (!hasError.value) router.push({ name: 'home' })
 }
 </script>
 
