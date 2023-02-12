@@ -49,6 +49,16 @@ const title = computed(() => {
   }
 })
 
+const icon = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.icon
+  } else {
+    return ''
+  }
+})
+
+console.log('feed', selectedFeed.value)
+
 const observer = new IntersectionObserver(onObserverChanges)
 
 onMounted(() => {
@@ -67,7 +77,12 @@ function onObserverChanges(entries) {
 <template>
   <!-- <div class="stream"> -->
   <main class="stream">
-    <StreamFilterBar :title="title" :tags="tags" :feedId="route.params.feed" />
+    <StreamFilterBar
+      :title="title"
+      :icon="icon"
+      :tags="tags"
+      :feedId="route.params.feed"
+    />
     <div class="loading" v-if="!isReady"><Loading /></div>
     <div class="posts">
       <Post
@@ -77,7 +92,7 @@ function onObserverChanges(entries) {
         :key="post.id"
       />
     </div>
-    <div class="more-posts" ref="showMoreElement" v-show="hasNext"></div>
+    <div class="posts more-posts" ref="showMoreElement" v-show="hasNext"></div>
   </main>
   <!-- </div> -->
 </template>

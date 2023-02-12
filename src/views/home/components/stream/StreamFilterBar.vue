@@ -3,18 +3,20 @@
 // import { computed } from 'vue'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
+import Icon from '../../../../components/FeedIcon.vue'
 
 const props = defineProps({
-  title: { type: String },
-  tags: { type: Array },
-  feedId: { type: String }
+  title: { type: String, required: false },
+  icon: { typs: String, required: false },
+  tags: { type: Array, required: false },
+  feedId: { type: String, required: false }
 })
 
 // const tagsStore = useTagsStore()
 </script>
 <template>
   <div class="filter-bar">
-    <div class="title">{{ props.title }}</div>
+    <div class="filter-bar__title">{{ props.title }}</div>
     <div class="tags">
       <Tag
         v-for="tag in tags"
@@ -36,6 +38,11 @@ const props = defineProps({
   background-color: var(--surface-color);
   border-bottom: 1px solid #ccc;
   z-index: 1;
+}
+
+.filter-bar__title {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .tags {

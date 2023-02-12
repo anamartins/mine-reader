@@ -28,7 +28,6 @@ const darkTextColor = colors.darkTextColor
 const secondaryColor = colors.secondaryColor
 
 function onClick() {
-  console.log('click from sidebar')
   emit('onLinkClick')
 }
 </script>
