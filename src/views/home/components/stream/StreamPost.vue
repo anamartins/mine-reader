@@ -103,9 +103,8 @@ async function onReadLaterChange() {
 <style scoped>
 .post {
   margin: 0;
-  padding: 1%;
-  padding-right: 0;
-  width: 100%;
+  padding: 0.5rem;
+  width: calc(100% - 0.5rem);
   max-width: 1000px;
   border-radius: 5px;
   cursor: pointer;

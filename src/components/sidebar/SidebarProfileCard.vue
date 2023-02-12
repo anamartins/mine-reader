@@ -61,8 +61,10 @@ function onSignOut(e) {
 
 <style scoped>
 .profile-card-wrapper {
-  width: 100%;
+  width: calc(100% - 0.4rem);
   padding: 1% 1% 3% 1%;
+  /* padding: 0.5rem 0.5rem 1rem 0.5rem; */
+  margin: 0 0.2rem 0 0;
   background-color: var(--primary-color);
 }
 

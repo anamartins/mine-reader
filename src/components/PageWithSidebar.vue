@@ -26,7 +26,7 @@ function onMenuClick() {
 <style scoped>
 .page {
   position: relative;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;

@@ -20,7 +20,7 @@
 }
 .wrapper {
   width: calc(100% - 2rem);
-  max-width: 2000px;
+  max-width: 1200px;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;

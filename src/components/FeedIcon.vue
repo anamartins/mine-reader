@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 
 const isIconShown = ref(true)
-const IMG_BASE_URL = 'https://storage.cloud.google.com/rss-reader/'
+const IMG_BASE_URL = 'https://storage.googleapis.com/rss-reader/'
 
 const props = defineProps({
   icon: {

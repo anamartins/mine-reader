@@ -132,11 +132,11 @@ function onObserverChanges(entries) {
 @media only screen and (min-width: 1001px) {
 } */
 
-@media only screen and (max-width: 300px) {
-}
-@media only screen and (min-width: 301px) and (max-width: 600px) {
-}
-@media only screen and (min-width: 601px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
+  .posts {
+    width: calc(100% - 1rem);
+    padding: 0 0.5rem;
+  }
 }
 @media only screen and (min-width: 1001px) {
 }

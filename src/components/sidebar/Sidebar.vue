@@ -95,9 +95,7 @@ function onClick() {
   top: 4rem;
   width: 15rem;
   height: 90vh;
-  min-height: 300px;
-  max-height: 2000px;
-  margin: 0 1rem 0 0;
+  margin: 0;
   padding: 0 1rem 0 0.5rem;
   &__heading,
   &__heading:link,
@@ -150,5 +148,8 @@ p a {
   ::-webkit-scrollbar {
     width: 0px;
   }
+  // .sidebar {
+  //   border: 1px solid var(--border-color);
+  // }
 }
 </style>
