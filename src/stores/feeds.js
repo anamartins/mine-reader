@@ -17,8 +17,16 @@ export const useFeedsStore = defineStore('feeds', () => {
   }
 
   async function followNewFeed(url) {
-    await postApi(`feed/follow`, { url: url })
-    getFeeds()
+    try {
+      isLoading.value = true
+      await postApi(`feed/follow`, { url: url })
+      getFeeds()
+      searchList.value = []
+    } catch (error) {
+      console.log(error)
+    } finally {
+      isLoading.value = false
+    }
   }
 
   async function removeFeed(id) {

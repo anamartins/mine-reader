@@ -5,11 +5,13 @@ import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Header from '../components/header/Header.vue'
 import Sidebar from '../components/sidebar/Sidebar.vue'
 import Input from '../components/InputText.vue'
-import Button from '../components/ConfirmButton.vue'
+import Button from '../components/SimpleButton.vue'
+import Loading from '../components/Loading/Loading.vue'
 
 const feed = ref('')
 const feedsStore = useFeedsStore()
 // const feeds = computed(() => feedsStore.feeds)
+const isLoading = computed(() => feedsStore.isLoading)
 const searchList = computed(() => feedsStore.searchList)
 
 let timeout
@@ -17,10 +19,6 @@ let timeout
 async function onAddButtonClick(url) {
   await feedsStore.followNewFeed(url)
   feed.value = ''
-}
-
-function onRemoveButtonClick(feedId) {
-  feedsStore.removeFeed(feedId)
 }
 
 watch(feed, (newValue) => {
@@ -34,40 +32,66 @@ watch(feed, (newValue) => {
 </script>
 
 <template>
-  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <div class="follow-feed">
+      <h2>Follow a new feed</h2>
       <label>Feed URL:</label>
-      <input type="text" name="feed" v-model="feed" class="follow-input" />
-      <div>
-        <ul>
-          <li v-for="item in searchList" :key="item.id">
+      <Input
+        class="follow-input"
+        placeholder="add the feed name or URL here"
+        name="feed"
+        v-model="feed"
+        :focus="true"
+      />
+      <Loading class="loading mark-read" v-if="isLoading" />
+      <table class="search-list">
+        <tr v-for="item in searchList" :key="item.id">
+          <td class="search-list__link">
             <a :href="item.website" target="_blank">{{ item.title }}</a>
-            <button type="button" @click="onAddButtonClick(item.url)">
-              + add feed!
-            </button>
-          </li>
-        </ul>
-      </div>
+          </td>
+          <td class="search-list__button">
+            <Button
+              class="simple-button"
+              label="+ add feed"
+              @click="onAddButtonClick(item.url)"
+            />
+          </td>
+        </tr>
+      </table>
     </div>
   </PageWithSidebar>
-  <!-- </div> -->
 </template>
 
 <style scoped>
-/* .wrapper {
-  width: calc(100% - 2rem);
-  max-width: 2000px;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-} */
+.search-list {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.search-list__button {
+  text-align: right;
+}
+
 .follow-feed {
   position: relative;
-  width: 70%;
+  width: 100%;
 }
 
 .follow-input {
-  width: 70%;
+  width: 100%;
+}
+
+.input {
+  font-size: 0.8rem;
+}
+
+.loading {
+  position: relative;
+  top: 25%;
+  left: 25%;
+}
+
+.simple-button {
+  margin: 0.1rem 0rem;
 }
 </style>

@@ -32,10 +32,12 @@ const darkTextColor = colors.darkTextColor
 </template>
 <style scoped>
 .input {
-  margin: 1% 0px 10% 0px;
+  /* margin: 1% 0px 10% 0px; */
+  margin: 1rem 0;
   border-color: v-bind('darkTextColor');
-  padding: 3%;
-  width: 94%;
+  /* padding: 3%; */
+  padding: 0.8rem 1rem;
+  width: calc(94% - 2px);
   height: 1.3rem;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
