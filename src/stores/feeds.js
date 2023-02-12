@@ -21,7 +21,6 @@ export const useFeedsStore = defineStore('feeds', () => {
       isLoading.value = true
       await postApi(`feed/follow`, { url: url })
       getFeeds()
-      searchList.value = []
     } catch (error) {
       console.log(error)
     } finally {

@@ -1,9 +1,10 @@
 <script setup>
 // import { useTagsStore } from '../../../../stores/tags'
 // import { computed } from 'vue'
+import { usePostsStore } from '../../../../stores/posts'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
-import Icon from '../../../../components/FeedIcon.vue'
+import Button from '../../../../components/SimpleButton.vue'
 
 const props = defineProps({
   title: { type: String, required: false },
@@ -13,6 +14,12 @@ const props = defineProps({
 })
 
 // const tagsStore = useTagsStore()
+const postsStore = usePostsStore()
+
+function onClickButton() {
+  console.log('filterbar')
+  postsStore.markAllPostsAsRead(props.feedId)
+}
 </script>
 <template>
   <div class="filter-bar">
@@ -27,6 +34,12 @@ const props = defineProps({
       />
     </div>
     <StreamSeeUnread />
+
+    <Button
+      class="simple-button"
+      label="mark all as read"
+      @on-button-click="onClickButton"
+    />
   </div>
 </template>
 <style scoped>
@@ -47,5 +60,9 @@ const props = defineProps({
 
 .tags {
   display: flex;
+}
+
+.simple-button {
+  margin: 0.5rem 0;
 }
 </style>

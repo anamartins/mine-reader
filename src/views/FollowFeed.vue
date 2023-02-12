@@ -18,7 +18,7 @@ let timeout
 
 async function onAddButtonClick(url) {
   await feedsStore.followNewFeed(url)
-  feed.value = ''
+  // feed.value = ''
 }
 
 watch(feed, (newValue) => {

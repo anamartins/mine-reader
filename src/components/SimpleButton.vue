@@ -3,8 +3,11 @@ const props = defineProps({
   label: { type: String, required: false }
 })
 
+const emit = defineEmits(['onButtonClick'])
+
 function onClick() {
-  console.log('hello from simplebutton component')
+  console.log('hello from simplebutton component. emit!')
+  emit('onButtonClick')
 }
 </script>
 <template>

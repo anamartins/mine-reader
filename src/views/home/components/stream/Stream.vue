@@ -57,7 +57,13 @@ const icon = computed(() => {
   }
 })
 
-console.log('feed', selectedFeed.value)
+const feedId = computed(() => {
+  if (selectedFeed.value) {
+    return selectedFeed.value.feedId
+  } else {
+    return ''
+  }
+})
 
 const observer = new IntersectionObserver(onObserverChanges)
 
@@ -81,7 +87,7 @@ function onObserverChanges(entries) {
       :title="title"
       :icon="icon"
       :tags="tags"
-      :feedId="route.params.feed"
+      :feedId="feedId"
     />
     <div class="loading" v-if="!isReady"><Loading /></div>
     <div class="posts">
@@ -92,7 +98,7 @@ function onObserverChanges(entries) {
         :key="post.id"
       />
     </div>
-    <div class="posts more-posts" ref="showMoreElement" v-show="hasNext"></div>
+    <div class="more-posts" ref="showMoreElement" v-show="hasNext"></div>
   </main>
   <!-- </div> -->
 </template>

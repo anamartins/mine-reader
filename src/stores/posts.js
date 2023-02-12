@@ -71,6 +71,16 @@ export const usePostsStore = defineStore('posts', () => {
     }
   }
 
+  async function markAllPostsAsRead(feedId) {
+    try {
+      await postApi(`stream/mark-all-as-read`, { feedId })
+      getPosts({ feedId })
+    } catch (error) {
+      console.log(error)
+    } finally {
+    }
+  }
+
   async function readPostLater(id, isReadLater) {
     const post = getPostById(id)
     try {
@@ -94,6 +104,7 @@ export const usePostsStore = defineStore('posts', () => {
     getPosts,
     getMorePosts,
     markPostAsRead,
+    markAllPostsAsRead,
     readPostLater,
     //state (ref)
     posts,
