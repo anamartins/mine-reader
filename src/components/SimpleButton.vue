@@ -6,7 +6,6 @@ const props = defineProps({
 const emit = defineEmits(['onButtonClick'])
 
 function onClick() {
-  console.log('hello from simplebutton component. emit!')
   emit('onButtonClick')
 }
 </script>

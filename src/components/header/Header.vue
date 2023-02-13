@@ -29,7 +29,7 @@ header {
   width: 100%;
   max-width: 1200px;
   height: 3rem;
-  z-index: 1;
+  z-index: 3;
 }
 
 .menu {

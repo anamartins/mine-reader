@@ -5,6 +5,7 @@ import { usePostsStore } from '../../../../stores/posts'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
 import Button from '../../../../components/SimpleButton.vue'
+import { onMounted } from 'vue'
 
 const props = defineProps({
   title: { type: String, required: false },
@@ -16,9 +17,8 @@ const props = defineProps({
 // const tagsStore = useTagsStore()
 const postsStore = usePostsStore()
 
-function onClickButton() {
-  console.log('filterbar')
-  postsStore.markAllPostsAsRead(props.feedId)
+async function onClickButton() {
+  await postsStore.markAllPostsAsRead(props.feedId)
 }
 </script>
 <template>

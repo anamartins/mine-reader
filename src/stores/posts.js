@@ -74,10 +74,11 @@ export const usePostsStore = defineStore('posts', () => {
   async function markAllPostsAsRead(feedId) {
     try {
       await postApi(`stream/mark-all-as-read`, { feedId })
-      getPosts({ feedId })
+      posts.value = posts.value.map((e) => {
+        return { ...e, isRead: true }
+      })
     } catch (error) {
       console.log(error)
-    } finally {
     }
   }
 
