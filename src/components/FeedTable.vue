@@ -3,11 +3,12 @@ import { ref } from 'vue'
 import Checkbox from './Checkbox.vue'
 import SimpleButton from './SimpleButton.vue'
 const props = defineProps({
+  isCheckboxVisible: { type: Boolean, required: false, default: true },
   list: { type: Array, required: true },
-  buttonLabel: { type: String, required: false, default: true }
+  buttonLabel: { type: String, required: false }
 })
 
-const emit = defineEmits(['onChange'])
+const emit = defineEmits(['onChange', 'onButtonClick'])
 
 const selected = ref([])
 
@@ -15,9 +16,9 @@ function onCheckboxChange() {
   emit('onChange', selected.value)
 }
 
-function onButtonClick(id) {
-  console.log('button on feedtable', id)
-  emit('onButtonClick', id)
+function onButtonClick(params) {
+  console.log('button on feedtable', params)
+  emit('onButtonClick', params)
 }
 </script>
 
@@ -26,17 +27,21 @@ function onButtonClick(id) {
     <tr v-for="item in list" :key="item.id">
       <td class="feed-table__link">
         <Checkbox
+          v-if="isCheckboxVisible"
           :label="item.title"
           :value="item.feedId"
           v-model="selected"
           @change="onCheckboxChange"
         />
+        <a v-else="isCheckboxVisible" :src="item.website" target="_blank">{{
+          item.title
+        }}</a>
       </td>
       <td class="feed-table__button">
         <SimpleButton
           class="simple-button"
           :label="props.buttonLabel"
-          @click="onButtonClick(item.feedId)"
+          @click="onButtonClick({ feedId: item.feedId, url: item.url })"
         />
         <slot></slot>
       </td>
@@ -50,6 +55,9 @@ function onButtonClick(id) {
   padding: 0.5rem 0;
 }
 
+.feed-table__link {
+  cursor: pointer;
+}
 .feed-table__button {
   text-align: right;
 }

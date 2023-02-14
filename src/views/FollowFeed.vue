@@ -46,12 +46,18 @@ watch(feed, (newValue) => {
         :focus="true"
       />
       <Loading class="loading mark-read" v-if="isLoading" />
-      <FeedTable :list="searchList">
-        <Button
+
+      <FeedTable
+        :list="searchList"
+        :isCheckboxVisible="false"
+        @on-button-click="onAddButtonClick"
+        buttonLabel="+ add feed"
+      >
+        <!-- <Button
           class="simple-button"
           label="+ add feed"
           @click="onAddButtonClick(item.url)"
-        />
+        /> -->
       </FeedTable>
     </div>
   </PageWithSidebar>

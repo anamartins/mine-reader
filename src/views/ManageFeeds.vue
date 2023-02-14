@@ -39,8 +39,8 @@ async function onAddSingleTag() {
   isModalOpen.value = false
 }
 
-async function onRemoveButtonClick(id) {
-  await feedsStore.removeFeed(id)
+async function onRemoveButtonClick(params) {
+  await feedsStore.removeFeed(params.feedId)
 }
 
 function createNewTagClick() {
