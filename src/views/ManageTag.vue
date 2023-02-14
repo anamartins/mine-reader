@@ -27,7 +27,6 @@ async function onAddButtonClick() {
 }
 
 async function onRemoveButtonClick(params) {
-  console.log('params', params.tagId)
   await tagsStore.deleteTag(params.tagId)
 }
 

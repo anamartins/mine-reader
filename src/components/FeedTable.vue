@@ -17,8 +17,6 @@ function onCheckboxChange() {
 }
 
 function onButtonClick(params) {
-  console.log('props', props.list)
-  console.log('button on feedtable', params)
   emit('onButtonClick', params)
 }
 </script>
