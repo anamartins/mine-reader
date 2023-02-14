@@ -7,6 +7,7 @@ import Checkbox from '../components/Checkbox.vue'
 import SelectList from '../components/SelectList.vue'
 import InputText from '../components/InputText.vue'
 import SimpleButton from '../components/SimpleButton.vue'
+import FeedTable from '../components/FeedTable.vue'
 
 const tag = ref('')
 
@@ -53,6 +54,10 @@ function onExitClick() {
 function onSelectListChange(selected) {
   selectedTags.value = selected
 }
+
+function onCheckboxChange(listFromComponent) {
+  selected.value = listFromComponent
+}
 </script>
 <template>
   <PageWithSidebar>
@@ -80,8 +85,14 @@ function onSelectListChange(selected) {
       </div>
 
       <div class="feeds">
-        <h2>Select the feeds you want to add in this tag</h2>
-        <ul class="feed-list">
+        <FeedTable :list="feeds" @on-change="onCheckboxChange">
+          <SimpleButton
+            class="simple-button"
+            label="delete"
+            @click="onAddButtonClick(item.url)"
+          />
+        </FeedTable>
+        <!-- <ul class="feed-list">
           <li v-for="item in feeds" :key="item.id">
             <Checkbox
               :label="item.title"
@@ -89,7 +100,7 @@ function onSelectListChange(selected) {
               v-model="selected"
             />
           </li>
-        </ul>
+        </ul> -->
       </div>
       <div v-if="isModalOpen" class="modal">
         <h2>Add a tag</h2>
@@ -155,10 +166,13 @@ function onSelectListChange(selected) {
 
 .tool-bar {
   border: 1px solid #333;
-  width: 100%;
+  width: calc(100% - 2rem);
   padding: 1rem;
-  margin-bottom: 1rem;
   display: flex;
+}
+
+.simple-button {
+  margin: 0.1rem 0rem;
 }
 
 .disabled {

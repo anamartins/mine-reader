@@ -14,7 +14,6 @@ const props = defineProps({
   feedId: { type: String, required: false }
 })
 
-// const tagsStore = useTagsStore()
 const postsStore = usePostsStore()
 
 async function onClickButton() {

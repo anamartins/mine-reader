@@ -7,6 +7,7 @@ import Sidebar from '../components/sidebar/Sidebar.vue'
 import Input from '../components/InputText.vue'
 import Button from '../components/SimpleButton.vue'
 import Loading from '../components/Loading/Loading.vue'
+import FeedTable from '../components/FeedTable.vue'
 
 const feed = ref('')
 const feedsStore = useFeedsStore()
@@ -44,20 +45,13 @@ watch(feed, (newValue) => {
         :focus="true"
       />
       <Loading class="loading mark-read" v-if="isLoading" />
-      <table class="search-list">
-        <tr v-for="item in searchList" :key="item.id">
-          <td class="search-list__link">
-            <a :href="item.website" target="_blank">{{ item.title }}</a>
-          </td>
-          <td class="search-list__button">
-            <Button
-              class="simple-button"
-              label="+ add feed"
-              @click="onAddButtonClick(item.url)"
-            />
-          </td>
-        </tr>
-      </table>
+      <FeedTable :list="searchList">
+        <Button
+          class="simple-button"
+          label="+ add feed"
+          @click="onAddButtonClick(item.url)"
+        />
+      </FeedTable>
     </div>
   </PageWithSidebar>
 </template>
