@@ -40,7 +40,7 @@ async function onAddSingleTag() {
 }
 
 async function onRemoveButtonClick(id) {
-  await tagsStore.deleteTag(id)
+  await feedsStore.removeFeed(id)
 }
 
 function createNewTagClick() {
@@ -85,22 +85,13 @@ function onCheckboxChange(listFromComponent) {
       </div>
 
       <div class="feeds">
-        <FeedTable :list="feeds" @on-change="onCheckboxChange">
-          <SimpleButton
-            class="simple-button"
-            label="delete"
-            @click="onAddButtonClick(item.url)"
-          />
+        <FeedTable
+          :list="feeds"
+          @on-change="onCheckboxChange"
+          @on-button-click="onRemoveButtonClick"
+          buttonLabel="delete"
+        >
         </FeedTable>
-        <!-- <ul class="feed-list">
-          <li v-for="item in feeds" :key="item.id">
-            <Checkbox
-              :label="item.title"
-              :value="item.feedId"
-              v-model="selected"
-            />
-          </li>
-        </ul> -->
       </div>
       <div v-if="isModalOpen" class="modal">
         <h2>Add a tag</h2>
@@ -171,9 +162,9 @@ function onCheckboxChange(listFromComponent) {
   display: flex;
 }
 
-.simple-button {
+/* .simple-button {
   margin: 0.1rem 0rem;
-}
+} */
 
 .disabled {
   background-color: #ddd;

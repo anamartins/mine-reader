@@ -19,6 +19,7 @@ let timeout
 
 async function onAddButtonClick(url) {
   await feedsStore.followNewFeed(url)
+  console.log(url)
   // feed.value = ''
 }
 
