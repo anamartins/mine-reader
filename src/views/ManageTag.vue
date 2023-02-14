@@ -6,6 +6,8 @@ import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Checkbox from '../components/Checkbox.vue'
 import InputText from '../components/InputText.vue'
 import SimpleButton from '../components/SimpleButton.vue'
+import FeedTable from '../components/FeedTable.vue'
+import Loading from '../components/loading/Loading.vue'
 
 const tag = ref('')
 const selected = ref([])
@@ -16,6 +18,7 @@ const feeds = computed(() => feedsStore.feeds)
 
 const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
+const isLoading = computed(() => tags.isLoading)
 
 async function onAddButtonClick() {
   await tagsStore.addTag(selected.value, tag.value)
@@ -23,8 +26,9 @@ async function onAddButtonClick() {
   selected.value = []
 }
 
-async function onRemoveButtonClick(id) {
-  await tagsStore.deleteTag(id)
+async function onRemoveButtonClick(params) {
+  console.log('params', params.tagId)
+  await tagsStore.deleteTag(params.tagId)
 }
 
 function createNewTagClick() {
@@ -43,26 +47,27 @@ async function onAddSingleTag() {
 }
 </script>
 <template>
-  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <div class="manage-tag">
-      <h2>Manage Tags</h2>
-      <div class="actions">
-        <ul>
-          <li @click="createNewTagClick()" class="actions-item">
-            create a new tag
-          </li>
-        </ul>
+      <div class="tool-bar">
+        <div class="actions">
+          <ul>
+            <li @click="createNewTagClick()" class="actions-item">
+              create a new tag
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div class="remove-tag">
-        <ul class="alltags list">
-          <li v-for="tag in tags" :key="tag.id">
-            {{ tag.text }}
-            <button type="button" @click="onRemoveButtonClick(tag.id)">
-              remove tag
-            </button>
-          </li>
-        </ul>
+        <h2>Manage Tags</h2>
+        <Loading v-if="isLoading" class="loading" />
+        <FeedTable
+          :list="tags"
+          :isCheckboxVisible="false"
+          @on-button-click="onRemoveButtonClick"
+          buttonLabel="delete tag"
+        ></FeedTable>
       </div>
       <div v-if="isModalOpen" class="modal">
         <h2>Add a tag</h2>
@@ -80,15 +85,22 @@ async function onAddSingleTag() {
       </div>
     </div>
   </PageWithSidebar>
-  <!-- </div> -->
 </template>
 <style scoped>
+.manage-tag {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+  top: 25%;
+  left: 25%;
+}
 .actions {
   position: relative;
   border: 1px solid #333;
   cursor: pointer;
   font-size: 0.8rem;
-  margin: 0.5rem 0;
 }
 .actions-item {
   cursor: pointer;
@@ -113,6 +125,14 @@ async function onAddSingleTag() {
 }
 .modal__input {
   width: 100%;
+}
+
+.tool-bar {
+  border: 1px solid #333;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  display: flex;
+  margin-bottom: 1rem;
 }
 
 .exit-modal {

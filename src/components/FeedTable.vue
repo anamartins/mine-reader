@@ -17,6 +17,7 @@ function onCheckboxChange() {
 }
 
 function onButtonClick(params) {
+  console.log('props', props.list)
   console.log('button on feedtable', params)
   emit('onButtonClick', params)
 }
@@ -33,15 +34,21 @@ function onButtonClick(params) {
           v-model="selected"
           @change="onCheckboxChange"
         />
-        <a v-else="isCheckboxVisible" :src="item.website" target="_blank">{{
-          item.title
-        }}</a>
+        <div v-else="isCheckboxVisible" target="_blank">
+          {{ item.title || item.text }}
+        </div>
       </td>
       <td class="feed-table__button">
         <SimpleButton
-          class="simple-button"
+          class="button"
           :label="props.buttonLabel"
-          @click="onButtonClick({ feedId: item.feedId, url: item.url })"
+          @click="
+            onButtonClick({
+              tagId: item.id,
+              feedId: item.feedId,
+              url: item.url
+            })
+          "
         />
         <slot></slot>
       </td>
@@ -55,14 +62,11 @@ function onButtonClick(params) {
   padding: 0.5rem 0;
 }
 
-.feed-table__link {
-  cursor: pointer;
-}
 .feed-table__button {
   text-align: right;
 }
 
-.simple-button {
-  margin: 0.1rem 0rem;
+.button {
+  margin: 0.1rem 0rem !important;
 }
 </style>
