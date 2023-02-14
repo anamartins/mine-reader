@@ -17,9 +17,8 @@ const searchList = computed(() => feedsStore.searchList)
 
 let timeout
 
-async function onAddButtonClick(url) {
-  await feedsStore.followNewFeed(url)
-  console.log(url)
+async function onAddButtonClick(params) {
+  await feedsStore.followNewFeed(params.url)
   // feed.value = ''
 }
 
