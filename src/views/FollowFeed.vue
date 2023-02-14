@@ -2,16 +2,12 @@
 import { ref, computed, watch } from 'vue'
 import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
-import Header from '../components/header/Header.vue'
-import Sidebar from '../components/sidebar/Sidebar.vue'
 import Input from '../components/InputText.vue'
-import Button from '../components/SimpleButton.vue'
 import Loading from '../components/Loading/Loading.vue'
 import FeedTable from '../components/FeedTable.vue'
 
 const feed = ref('')
 const feedsStore = useFeedsStore()
-// const feeds = computed(() => feedsStore.feeds)
 const isLoading = computed(() => feedsStore.isLoading)
 const searchList = computed(() => feedsStore.searchList)
 
@@ -19,13 +15,10 @@ let timeout
 
 async function onAddButtonClick(params) {
   await feedsStore.followNewFeed(params.url)
-  // feed.value = ''
 }
 
 watch(feed, (newValue) => {
-  // if (isTimeoutSet) {
   clearTimeout(timeout)
-  // }
   timeout = setTimeout(() => {
     feedsStore.searchFeed(feed.value)
   }, 1000)
@@ -52,11 +45,6 @@ watch(feed, (newValue) => {
         @on-button-click="onAddButtonClick"
         buttonLabel="+ add feed"
       >
-        <!-- <Button
-          class="simple-button"
-          label="+ add feed"
-          @click="onAddButtonClick(item.url)"
-        /> -->
       </FeedTable>
     </div>
   </PageWithSidebar>
