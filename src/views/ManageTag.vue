@@ -27,7 +27,7 @@ async function onAddButtonClick() {
 }
 
 async function onRemoveButtonClick(params) {
-  await tagsStore.deleteTag(params.tagId)
+  await tagsStore.deleteTag(params.tag)
 }
 
 function createNewTagClick() {
@@ -171,5 +171,11 @@ ul li {
 
 h2 {
   font-size: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .remove-tag {
+    margin: 0 1rem;
+  }
 }
 </style>

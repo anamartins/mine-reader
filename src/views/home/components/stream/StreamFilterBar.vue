@@ -46,7 +46,7 @@ async function onClickButton() {
   position: sticky;
   top: 3rem;
   width: 96%;
-  padding: 1% 2%;
+  padding: 0.5rem 1rem;
   background-color: var(--surface-color);
   border-bottom: 1px solid #ccc;
   z-index: 1;

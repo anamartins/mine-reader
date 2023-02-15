@@ -82,4 +82,10 @@ watch(feed, (newValue) => {
 .simple-button {
   margin: 0.1rem 0rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .follow-feed {
+    margin: 0 1rem;
+  }
+}
 </style>

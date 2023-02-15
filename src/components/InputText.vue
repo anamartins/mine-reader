@@ -37,7 +37,8 @@ const darkTextColor = colors.darkTextColor
   border-color: v-bind('darkTextColor');
   /* padding: 3%; */
   padding: 0.8rem 1rem;
-  width: calc(94% - 2px);
+  /* width: calc(94% - 2px); */
+  width: calc(90% - 2px);
   height: 1.3rem;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;

@@ -42,7 +42,7 @@ function onButtonClick(params) {
           :label="props.buttonLabel"
           @click="
             onButtonClick({
-              tagId: item.id,
+              tag: item.text,
               feedId: item.feedId,
               url: item.url
             })
