@@ -11,10 +11,13 @@ function onMenuClick() {
 </script>
 <template>
   <div class="page">
-    <Header class="header" @on-menu-click="onMenuClick"></Header>
+    <Header
+      class="header"
+      @on-menu-click="onMenuClick"
+      :isMenuOpen="isMenuShown"
+    ></Header>
     <div class="content">
       <Sidebar
-        class="sidebar"
         :class="{ 'show-menu': isMenuShown }"
         @on-link-click="onMenuClick"
       />
@@ -46,6 +49,9 @@ function onMenuClick() {
   left: 0px;
 }
 
+/* .sidebar {
+  transition: all;
+} */
 /* @media only screen and (max-width: 300px) {
   .page {
     background-color: deeppink;
@@ -62,12 +68,12 @@ function onMenuClick() {
     /* background-color: yellow; */
     width: 100%;
   }
-  .sidebar {
-    /* background-color: blue; */
+  /* .sidebar {
+     background-color: blue; 
     position: absolute;
     left: -100%;
     top: 0;
-  }
+  } */
 
   .show-menu {
     left: 0px;
@@ -79,12 +85,6 @@ function onMenuClick() {
   .page {
     /* background-color: orange; */
     width: 100%;
-  }
-
-  .sidebar {
-    /* background-color: yellow; */
-    position: absolute;
-    left: -100%;
   }
 
   .show-menu {

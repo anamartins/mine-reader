@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="70" width="110" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <line x1="0" y1="5" x2="100" y2="5" style="stroke:rgb(0,0,0);stroke-width:5"/>
+  <line x1="0" y1="35" x2="100" y2="35" style="stroke:rgb(0,0,0);stroke-width:5"/>
+  <line x1="0" y1="65" x2="100" y2="65" style="stroke:rgb(0,0,0);stroke-width:5"/>
+  Sorry, your browser does not support inline SVG.
+</svg>

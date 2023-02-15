@@ -143,12 +143,19 @@ p a {
   margin: 1rem;
 }
 
-@media only screen and (min-width: 601px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   ::-webkit-scrollbar {
     width: 0px;
   }
   // .sidebar {
   //   border: 1px solid var(--border-color);
   // }
+  .sidebar {
+    /* background-color: blue; */
+    position: absolute;
+    left: -100%;
+    top: 0;
+    transition: all;
+  }
 }
 </style>

@@ -8,14 +8,30 @@ const backgroundColor = colors.backgroundColor
 
 const emit = defineEmits('onMenuClick')
 
+const props = defineProps({
+  isMenuOpen: { type: Boolean, required: true }
+})
+
 function onMenuClick() {
   emit('onMenuClick')
+  console.log('hey from header', props.isMenuOpen)
 }
 </script>
 <template>
   <header>
     <Logo font-size="1rem" :font-color="backgroundColor" has-animated-box />
-    <div class="menu" @click="onMenuClick"></div>
+    <div class="menu" @click="onMenuClick">
+      <img
+        v-if="props.isMenuOpen"
+        src="../../assets/img/close.svg"
+        class="menu__icon"
+      />
+      <img
+        v-else="props.isMenuOpen"
+        src="../../assets/img/menu.svg"
+        class="menu__icon"
+      />
+    </div>
   </header>
 </template>
 <style scoped lang="scss">
@@ -33,7 +49,6 @@ header {
 }
 
 .menu {
-  background-color: aqua;
   width: 4rem;
   height: 3rem;
   position: absolute;
@@ -41,6 +56,12 @@ header {
   left: 0px;
   display: none;
   cursor: pointer;
+}
+
+.menu__icon {
+  margin: 0;
+  padding: 0.5rem 0 0;
+  width: 100%;
 }
 
 @media only screen and (max-width: 300px) {
