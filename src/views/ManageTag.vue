@@ -76,7 +76,7 @@ async function onAddSingleTag() {
 </template>
 <style scoped>
 .manage-tag {
-  width: 100%;
+  width: 99%;
 }
 
 .loading {

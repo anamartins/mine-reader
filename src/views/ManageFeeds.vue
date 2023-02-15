@@ -110,6 +110,9 @@ function onCheckboxChange(listFromComponent) {
   </PageWithSidebar>
 </template>
 <style scoped>
+.manage-feeds {
+  width: 99%;
+}
 .modal {
   position: fixed;
   display: flex;

@@ -1,5 +1,7 @@
 <script setup>
+import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
+import { useFeedsStore } from '../../../../stores/feeds'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
 import Button from '../../../../components/SimpleButton.vue'
@@ -13,8 +15,14 @@ const props = defineProps({
 
 const postsStore = usePostsStore()
 
+const feedsStore = useFeedsStore()
+const feeds = computed(() => feedsStore.feeds)
+
 async function onClickButton() {
   await postsStore.markAllPostsAsRead(props.feedId)
+
+  const feed = feedsStore.getFeedById(props.feedId)
+  feed.unread = 0
 }
 </script>
 <template>
