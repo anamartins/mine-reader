@@ -32,6 +32,7 @@ export const useFeedsStore = defineStore('feeds', () => {
     const element = feeds.value.find((e) => e.feedId === id)
     const url = element.url
     await postApi(`feed/unfollow`, { url: url })
+    feeds.value = feeds.value.filter((e) => e.feedId !== id)
   }
 
   async function getFeeds() {
