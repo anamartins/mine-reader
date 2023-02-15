@@ -10,6 +10,18 @@ export const useFeedsStore = defineStore('feeds', () => {
   const isLoading = ref(false)
   const { getApi, postApi } = useApi()
 
+  function sortFeeds() {
+    console.log('store!', feeds.value)
+    // feeds.value = feeds.value.map((e) => console.log('map!', e))
+    feeds.value = feeds.value.sort(function (a, b) {
+      if (a.title < b.title) {
+        return -1
+      }
+      return 0
+    })
+    console.log('after', feeds.value)
+  }
+
   function getFeedById(id) {
     return feeds.value.find((e) => {
       return e.feedId === id
@@ -39,7 +51,9 @@ export const useFeedsStore = defineStore('feeds', () => {
     try {
       isLoading.value = true
       const returnAPI = await getApi(`user/feeds`, {})
+
       feeds.value = returnAPI.data.feeds
+      sortFeeds()
       total.value = returnAPI.data.total
       readLater.value = returnAPI.data.readLater
     } catch (error) {

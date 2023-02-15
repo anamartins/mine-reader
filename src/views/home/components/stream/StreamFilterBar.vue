@@ -16,7 +16,6 @@ const props = defineProps({
 const postsStore = usePostsStore()
 
 const feedsStore = useFeedsStore()
-const feeds = computed(() => feedsStore.feeds)
 
 async function onClickButton() {
   await postsStore.markAllPostsAsRead(props.feedId)
