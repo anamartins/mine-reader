@@ -14,7 +14,6 @@ const password = ref('')
 const usersStore = useUsersStore()
 const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
-// const token = computed(() => localStorage.getItem('mineToken'))
 
 const router = useRouter()
 
