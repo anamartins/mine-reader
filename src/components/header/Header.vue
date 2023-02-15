@@ -3,7 +3,6 @@ import { getColors } from '../../utils/colors'
 import Logo from '../logo/Logo.vue'
 const colors = getColors()
 
-const primaryColor = colors.primaryColor
 const backgroundColor = colors.backgroundColor
 
 const emit = defineEmits('onMenuClick')

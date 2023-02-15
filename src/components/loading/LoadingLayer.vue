@@ -8,11 +8,6 @@ const props = defineProps({
 
 const animationDuration = `${randomNumber(1, 5)}s`
 
-// const translate1 = `${randomNumber(-10, 10)}%`
-// const translate2 = `${randomNumber(-10, 10)}%`
-// const translate3 = `${randomNumber(-10, 10)}%`
-// const translate4 = `${randomNumber(-10, 10)}%`
-
 const rotation1 = `${randomNumber(-45, 45)}deg`
 const rotation2 = `${randomNumber(-45, 45)}deg`
 
@@ -49,7 +44,7 @@ const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${
   animation: animation infinite alternate ease-in-out
     v-bind('animationDuration');
   overflow: hidden;
-  background-color: v-bind('color');
+  background-color: v-bind('props.color');
   border: 2px solid v-bind('props.borderColor');
 }
 

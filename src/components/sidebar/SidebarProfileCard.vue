@@ -8,18 +8,15 @@ import ReadLaterIcon from '../../assets/img/read-later.svg'
 import UserIcon from '../../assets/img/user.svg'
 import AddFeedIcon from '../../assets/img/add-feed.svg'
 import SignOut from '../../assets/img/signout.svg'
-import Loading from '../Loading/Loading.vue'
 
 const router = useRouter()
 const usersStore = useUsersStore()
 usersStore.getUser()
-const user = usersStore.user
-const isLoading = computed(() => usersStore.isLoading)
 
 const feedsStore = useFeedsStore()
 const readLater = computed(() => feedsStore.readLater)
 
-function onSignOut(e) {
+function onSignOut() {
   localStorage.removeItem('mineToken')
   router.push({ name: 'signIn' })
 }
@@ -27,7 +24,6 @@ function onSignOut(e) {
 
 <template>
   <div class="profile-card-wrapper">
-    <!-- <div class="loading" v-if="isLoading"><Loading /></div> -->
     <div class="user-data">
       <Icon
         :image-source="AddFeedIcon"
@@ -63,7 +59,6 @@ function onSignOut(e) {
 .profile-card-wrapper {
   width: calc(100% - 0.4rem);
   padding: 1% 1% 3% 1%;
-  /* padding: 0.5rem 0.5rem 1rem 0.5rem; */
   margin: 0 0.2rem 0 0;
   background-color: var(--primary-color);
 }
@@ -91,13 +86,5 @@ function onSignOut(e) {
 
 .icon:hover {
   background-color: var(--primary-color-variation);
-}
-
-.svg-icon {
-  fill: #fff;
-}
-
-.svg-icon:hover {
-  fill: deeppink;
 }
 </style>

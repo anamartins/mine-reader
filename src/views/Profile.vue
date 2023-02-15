@@ -8,7 +8,6 @@ const user = usersStore.user
 </script>
 
 <template>
-  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <div class="profile">
       <h1>your profile</h1>
@@ -16,7 +15,6 @@ const user = usersStore.user
       <p>email: {{ user.email }}</p>
     </div>
   </PageWithSidebar>
-  <!-- </div> -->
 </template>
 
 <style scoped>

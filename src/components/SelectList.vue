@@ -47,8 +47,6 @@ ul {
 .select-list {
   position: relative;
   padding: 0 0.5rem 0 0;
-  /* width: 100%; */
-  /* margin-bottom: 1rem; */
 }
 
 .select-content {
@@ -58,7 +56,6 @@ ul {
   width: 250%;
 }
 .select-button {
-  /* width: calc(100% - 2rem); */
   padding: 0.5rem;
   border: 1px solid #333;
   cursor: pointer;

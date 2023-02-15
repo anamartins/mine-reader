@@ -1,6 +1,5 @@
 <script setup>
 import vFocus from '../directives/vFocus'
-import { getColors } from '../utils/colors'
 
 const props = defineProps({
   type: { type: String, requided: false, default: 'text' },
@@ -10,9 +9,6 @@ const props = defineProps({
   modelValue: { type: String },
   focus: { type: Boolean, default: false }
 })
-
-const colors = getColors()
-const darkTextColor = colors.darkTextColor
 </script>
 <template>
   <div class="input-text">
@@ -32,12 +28,9 @@ const darkTextColor = colors.darkTextColor
 </template>
 <style scoped>
 .input {
-  /* margin: 1% 0px 10% 0px; */
   margin: 1rem 0;
-  border-color: v-bind('darkTextColor');
-  /* padding: 3%; */
+  border-color: var(--dark-text);
   padding: 0.8rem 1rem;
-  /* width: calc(94% - 2px); */
   width: calc(90% - 2px);
   height: 1.3rem;
   border-radius: 5px;

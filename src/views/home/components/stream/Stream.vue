@@ -81,7 +81,6 @@ function onObserverChanges(entries) {
 }
 </script>
 <template>
-  <!-- <div class="stream"> -->
   <main class="stream">
     <StreamFilterBar
       :title="title"
@@ -100,7 +99,6 @@ function onObserverChanges(entries) {
     </div>
     <div class="more-posts" ref="showMoreElement" v-show="hasNext"></div>
   </main>
-  <!-- </div> -->
 </template>
 
 <style scoped>
@@ -143,15 +141,6 @@ function onObserverChanges(entries) {
   top: 8rem;
   left: 50%;
 }
-
-/* @media only screen and (max-width: 300px) {
-}
-@media only screen and (min-width: 301px) and (max-width: 600px) {
-}
-@media only screen and (min-width: 601px) and (max-width: 1000px) {
-}
-@media only screen and (min-width: 1001px) {
-} */
 
 @media only screen and (max-width: 1000px) {
   .posts {

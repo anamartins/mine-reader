@@ -10,7 +10,6 @@ export function useApi() {
     function (error) {
       if (error.response.status === 401) {
         router.push({ name: 'signIn' })
-        // return Promise.reject(error)
       }
     }
   )

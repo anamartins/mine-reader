@@ -8,7 +8,6 @@ export const usePostsStore = defineStore('posts', () => {
   const total = ref(0)
   const next = ref('')
   const isReady = ref(false)
-  // const isPostLoading = ref(false)
 
   const hasNext = computed(() => !!next.value)
   const { getApi, postApi, deleteApi } = useApi()

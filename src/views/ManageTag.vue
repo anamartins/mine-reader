@@ -1,9 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useTagsStore } from '../stores/tags'
-import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
-import Checkbox from '../components/Checkbox.vue'
 import InputText from '../components/InputText.vue'
 import SimpleButton from '../components/SimpleButton.vue'
 import FeedTable from '../components/FeedTable.vue'
@@ -13,18 +11,9 @@ const tag = ref('')
 const selected = ref([])
 const isModalOpen = ref(false)
 
-const feedsStore = useFeedsStore()
-const feeds = computed(() => feedsStore.feeds)
-
 const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
 const isLoading = computed(() => tags.isLoading)
-
-async function onAddButtonClick() {
-  await tagsStore.addTag(selected.value, tag.value)
-  tag.value = ''
-  selected.value = []
-}
 
 async function onRemoveButtonClick(params) {
   await tagsStore.deleteTag(params.tag)

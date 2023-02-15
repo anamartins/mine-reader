@@ -1,5 +1,5 @@
 <script setup>
-import { watch, computed } from 'vue'
+import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import { formatDate } from '../../../../utils/date'
@@ -184,14 +184,6 @@ async function onReadLaterChange() {
 }
 
 @media only screen and (max-width: 600px) {
-  /* .post-image {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    z-index: -1;
-    margin: 0;
-  } */
-
   .post-image {
     display: none;
   }

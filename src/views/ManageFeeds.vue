@@ -3,7 +3,6 @@ import { ref, computed, watch } from 'vue'
 import { useTagsStore } from '../stores/tags'
 import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
-import Checkbox from '../components/Checkbox.vue'
 import SelectList from '../components/SelectList.vue'
 import InputText from '../components/InputText.vue'
 import SimpleButton from '../components/SimpleButton.vue'
@@ -82,7 +81,6 @@ function onCheckboxChange(listFromComponent) {
             </li>
           </ul>
         </div>
-        <!-- <button type="button" @click="">remove feed</button> -->
       </div>
 
       <div class="feeds">
@@ -112,13 +110,6 @@ function onCheckboxChange(listFromComponent) {
   </PageWithSidebar>
 </template>
 <style scoped>
-/* .wrapper {
-  width: calc(100% - 2rem);
-  max-width: 2000px;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-} */
 .modal {
   position: fixed;
   display: flex;
@@ -162,10 +153,6 @@ function onCheckboxChange(listFromComponent) {
   padding: 1rem;
   display: flex;
 }
-
-/* .simple-button {
-  margin: 0.1rem 0rem;
-} */
 
 .disabled {
   background-color: #ddd;

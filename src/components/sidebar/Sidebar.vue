@@ -1,5 +1,4 @@
 <script setup>
-import { getColors } from '../../utils/colors'
 import { computed } from 'vue'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
@@ -14,18 +13,12 @@ const emit = defineEmits('onLinkClick')
 
 const feeds = computed(() => feedsStore.feeds)
 const totalFeeds = computed(() => feedsStore.total)
-const readLater = computed(() => feedsStore.readLater)
 const isLoadingFeeds = computed(() => feedsStore.isLoading)
 
 const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
 const isLoadingTags = computed(() => tagsStore.isLoading)
-
-const colors = computed(() => getColors())
-const primaryColor = colors.primaryColor
-const darkTextColor = colors.darkTextColor
-const secondaryColor = colors.secondaryColor
 
 function onClick() {
   emit('onLinkClick')
@@ -59,7 +52,6 @@ function onClick() {
 
       <section class="sidebar__item">
         <h2 class="sidebar__heading">tags</h2>
-        <!-- <p><router-link :to="{ name: 'addTag' }">add a new tag</router-link></p> -->
         <p>
           <router-link :to="{ name: 'manageTag' }">manage tags</router-link>
         </p>
@@ -130,10 +122,6 @@ p a {
   margin: 5% 5% 5% 0;
 }
 
-.loading {
-  background-color: deeppink;
-}
-
 .tag__item {
   line-height: 1.2rem;
 }
@@ -147,15 +135,10 @@ p a {
   ::-webkit-scrollbar {
     width: 0px;
   }
-  // .sidebar {
-  //   border: 1px solid var(--border-color);
-  // }
   .sidebar {
-    /* background-color: blue; */
     position: absolute;
     left: -100%;
     top: 0;
-    transition: all;
   }
 }
 </style>

@@ -36,19 +36,7 @@ watch(
 </script>
 
 <template>
-  <!-- <div class="wrapper"> -->
   <PageWithSidebar>
     <Stream class="stream" />
   </PageWithSidebar>
-  <!-- </div> -->
 </template>
-
-<style scoped>
-/* .wrapper {
-  width: calc(100% - 2rem);
-  max-width: 2000px;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-} */
-</style>

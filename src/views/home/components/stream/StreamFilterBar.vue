@@ -1,11 +1,8 @@
 <script setup>
-// import { useTagsStore } from '../../../../stores/tags'
-// import { computed } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
 import Button from '../../../../components/SimpleButton.vue'
-import { onMounted } from 'vue'
 
 const props = defineProps({
   title: { type: String, required: false },
