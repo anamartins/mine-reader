@@ -139,6 +139,7 @@ p a {
     position: absolute;
     left: -100%;
     top: 0;
+    padding: 0.1rem 0 0 0.5rem;
   }
 }
 </style>

@@ -27,9 +27,9 @@ function onError() {
     v-if="isIconShown"
     class="feed__icon"
     :src="IMG_BASE_URL + props.icon"
-    @error="onError"
+    @error="onError()"
   />
-  <img class="feed__icon" v-else src="../assets/img/pink.png" />
+  <img v-else class="feed__icon error" src="../assets/img/pink.png" />
 </template>
 
 <style scoped lang="scss">
@@ -37,5 +37,9 @@ function onError() {
   position: relative;
   width: 5%;
   margin: 0 0.5rem 0 0;
+}
+
+.error {
+  border-radius: 50%;
 }
 </style>

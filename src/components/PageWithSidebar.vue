@@ -59,7 +59,7 @@ function onMenuClick() {
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .page {
     width: 100%;
   }
@@ -68,6 +68,8 @@ function onMenuClick() {
     top: 0rem;
     left: 0px;
     z-index: 2;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3),
+      0 0.5rem 0.8rem rgba(0, 0, 0, 0.22);
   }
 }
 </style>

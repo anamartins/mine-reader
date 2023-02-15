@@ -13,7 +13,6 @@ const props = defineProps({
 
 function onMenuClick() {
   emit('onMenuClick')
-  console.log('hey from header', props.isMenuOpen)
 }
 </script>
 <template>
