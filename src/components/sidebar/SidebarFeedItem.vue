@@ -10,7 +10,7 @@ const props = defineProps({
   <li class="feed" :key="feed.id">
     <SidebarFeedItemIcon :icon="feed.icon" />
     <router-link
-      class="feed-name"
+      class="feed__name"
       :to="{
         name: 'feed',
         params: { feed: feed.feedId }

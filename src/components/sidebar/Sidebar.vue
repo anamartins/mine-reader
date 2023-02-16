@@ -27,7 +27,7 @@ function onClick() {
 
 <template>
   <aside class="sidebar">
-    <div class="sidebar__sections">
+    <div class="sidebar__section">
       <section class="sidebar__item">
         <h2 class="sidebar__heading">feeds</h2>
         <p>
@@ -102,10 +102,10 @@ p a {
 .sidebar__heading {
   font-weight: 400;
 }
-.sidebar__sections {
+.sidebar__section {
   overflow-y: scroll;
   flex: 1;
-  height: calc(100% - 4rem);
+  height: calc(100% - 3rem);
 }
 
 .sidebar__list {

@@ -12,11 +12,6 @@ export const useFeedsStore = defineStore('feeds', () => {
 
   function sortFeeds() {
     feeds.value.sort(function (a, b) {
-      // if (a.title.toLowerCase() < b.title.toLowerCase()) {
-      //   return -1
-      // }
-      // return 0
-
       return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     })
   }

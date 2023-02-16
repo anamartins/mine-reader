@@ -16,7 +16,7 @@ const props = defineProps({
 
 <template>
   <div class="logo">
-    <div class="background">
+    <div class="logo__background">
       <AnimatedBoxLayer
         color="#fa5788"
         max-width="500px"
@@ -48,7 +48,7 @@ const props = defineProps({
       />
     </div>
     <h1>
-      <router-link class="logo-link" :to="{ name: props.linkName }"
+      <router-link class="logo__link" :to="{ name: props.linkName }"
         >mine</router-link
       >
     </h1>
@@ -73,20 +73,20 @@ h1 {
   padding: 0;
   text-align: center;
 }
-.logo-link {
+.logo__link {
   color: v-bind('props.fontColor');
 }
-.logo-link:hover {
+.logo__link:hover {
   color: v-bind('darkTextColor');
   text-decoration: none;
 }
 
 @media only screen and (max-width: 300px) {
-  .background {
+  .logo__background {
     display: none;
     color: #fff;
   }
-  .logo-link {
+  .logo__link {
     color: var(--dark-text);
     background-color: #fff;
   }
@@ -98,10 +98,10 @@ h1 {
 }
 
 @media only screen and (min-width: 301px) and (max-width: 600px) {
-  .background {
+  .logo__background {
     display: none;
   }
-  .logo-link {
+  .logo__link {
     color: var(--dark-text);
     background-color: #fff;
   }
