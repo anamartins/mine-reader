@@ -1,10 +1,16 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
 import Loading from '../../components/Loading/Loading.vue'
+
+const route = useRoute()
+
+const currentFeed = computed(() => route.params.feed)
+const currentTag = computed(() => route.params.tag)
 
 const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
@@ -19,10 +25,6 @@ const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
 const isLoadingTags = computed(() => tagsStore.isLoading)
-
-function onClick() {
-  emit('onLinkClick')
-}
 </script>
 
 <template>
@@ -45,7 +47,7 @@ function onClick() {
           <SidebarFeedItem
             v-for="feed in feeds"
             :feed="feed"
-            @click="onClick"
+            :selected="feed.feedId === currentFeed"
           />
         </ul>
       </section>
@@ -61,8 +63,13 @@ function onClick() {
             <router-link
               v-if="tag.text"
               :to="{ name: 'tag', params: { tag: tag.text } }"
-              >{{ tag.text }} ({{ tag.unread }})</router-link
+              class="tag__link"
+              :class="{
+                'tag__link--selected': tag.id === currentTag
+              }"
             >
+              {{ tag.text }} ({{ tag.unread }})
+            </router-link>
           </li>
         </ul>
       </section>
@@ -124,6 +131,16 @@ p a {
 
 .tag__item {
   line-height: 1.2rem;
+}
+
+.tag__link {
+  color: var(--darkText);
+  padding: 0.2rem;
+}
+
+.tag__link--selected {
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 .loading {
