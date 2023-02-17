@@ -15,7 +15,7 @@ const currentTag = computed(() => route.params.tag)
 const feedsStore = useFeedsStore()
 feedsStore.getFeeds()
 
-const emit = defineEmits('onLinkClick')
+const emit = defineEmits(['onLinkClick'])
 
 const feeds = computed(() => feedsStore.feeds)
 const totalFeeds = computed(() => feedsStore.total)

@@ -5,7 +5,7 @@ const colors = getColors()
 
 const backgroundColor = colors.backgroundColor
 
-const emit = defineEmits('onMenuClick')
+const emit = defineEmits(['onMenuClick'])
 
 const props = defineProps({
   isMenuOpen: { type: Boolean, required: true }
