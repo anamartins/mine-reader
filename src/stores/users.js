@@ -33,7 +33,7 @@ export const useUsersStore = defineStore('users', () => {
       user.value.email = returnAPI.data.email
     } catch (error) {
       console.log(error)
-      hasError.value = true
+      // hasError.value = true
     } finally {
       isLoading.value = false
     }
