@@ -47,8 +47,7 @@ header {
 }
 
 .menu {
-  width: 4rem;
-  height: 3rem;
+  width: 2.5rem;
   position: absolute;
   top: 0px;
   left: 0px;

@@ -35,7 +35,6 @@ function onClick() {
   <aside class="sidebar">
     <div class="sidebar__section">
       <section class="sidebar__item">
-        <h2 class="sidebar__heading">feeds</h2>
         <p>
           <router-link :to="{ name: 'home' }">
             all feeds ({{ totalFeeds }})
@@ -159,9 +158,9 @@ p a {
     width: 0px;
   }
   .sidebar {
-    position: absolute;
+    position: fixed;
     left: -100%;
-    top: 0;
+    top: 2rem;
     padding: 0.1rem 0 0 0.5rem;
   }
 }
