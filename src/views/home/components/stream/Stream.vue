@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onBeforeUnmount, computed, ref } from 'vue'
+import { onMounted, onBeforeUnmount, computed, ref, watch } from 'vue'
 import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import Post from './StreamPost.vue'
@@ -16,6 +16,19 @@ const postsStore = usePostsStore()
 const posts = computed(() => postsStore.posts)
 const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
+const isEmpty = ref(false)
+
+console.log('posts', posts.value.length)
+
+watch(posts, () => {
+  console.log('changed!', posts.value.length)
+  if (posts.value.length === 0) {
+    console.log('EMPTY')
+    isEmpty.value = true
+  } else {
+    isEmpty.value = false
+  }
+})
 
 const feedsStore = useFeedsStore()
 
@@ -89,6 +102,7 @@ function onObserverChanges(entries) {
       :feedId="feedId"
     />
     <div class="loading" v-if="!isReady"><Loading /></div>
+    <div v-if="isEmpty" class="stream__empty">EMPTY</div>
     <div class="posts">
       <Post
         v-for="post in posts"
@@ -114,6 +128,10 @@ function onObserverChanges(entries) {
 .posts {
   animation: rise 2s ease-in-out;
   width: 99%;
+}
+
+.stream__empty {
+  background-color: deeppink;
 }
 
 @keyframes rise {
