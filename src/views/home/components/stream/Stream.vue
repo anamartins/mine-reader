@@ -21,9 +21,7 @@ const isEmpty = ref(false)
 console.log('posts', posts.value.length)
 
 watch(posts, () => {
-  console.log('changed!', posts.value.length)
   if (posts.value.length === 0) {
-    console.log('EMPTY')
     isEmpty.value = true
   } else {
     isEmpty.value = false
@@ -101,9 +99,10 @@ function onObserverChanges(entries) {
       :tags="tags"
       :feedId="feedId"
     />
-    <div class="loading" v-if="!isReady"><Loading /></div>
-    <div v-if="isEmpty" class="stream__empty">EMPTY</div>
+
     <div class="posts">
+      <div class="loading" v-if="!isReady"><Loading /></div>
+      <div v-if="isEmpty" class="stream__empty">There's no unread posts!</div>
       <Post
         v-for="post in posts"
         :post="post"
@@ -131,7 +130,13 @@ function onObserverChanges(entries) {
 }
 
 .stream__empty {
-  background-color: deeppink;
+  position: fixed;
+  background-color: var(--secondary-color);
+  padding: 0.5rem;
+  color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes rise {
@@ -155,9 +160,9 @@ function onObserverChanges(entries) {
 
 .loading {
   position: fixed;
-  width: 100%;
-  top: 8rem;
+  top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: 1000px) {
