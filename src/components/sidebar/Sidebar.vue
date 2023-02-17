@@ -25,6 +25,10 @@ const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
 const isLoadingTags = computed(() => tagsStore.isLoading)
+
+function onClick() {
+  emit('onLinkClick')
+}
 </script>
 
 <template>
@@ -48,6 +52,7 @@ const isLoadingTags = computed(() => tagsStore.isLoading)
             v-for="feed in feeds"
             :feed="feed"
             :selected="feed.feedId === currentFeed"
+            @click="onClick"
           />
         </ul>
       </section>
@@ -63,6 +68,7 @@ const isLoadingTags = computed(() => tagsStore.isLoading)
             <router-link
               v-if="tag.text"
               :to="{ name: 'tag', params: { tag: tag.text } }"
+              @click="onClick"
               class="tag__link"
               :class="{
                 'tag__link--selected': tag.id === currentTag
