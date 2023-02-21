@@ -18,8 +18,6 @@ const isReady = computed(() => postsStore.isReady)
 const hasNext = computed(() => postsStore.hasNext)
 const isEmpty = ref(false)
 
-console.log('posts', posts.value.length)
-
 watch(posts, () => {
   if (posts.value.length === 0) {
     isEmpty.value = true

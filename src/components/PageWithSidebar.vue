@@ -10,10 +10,10 @@ function onMenuClick() {
   isMenuShown.value = !isMenuShown.value
 }
 
-function onSidebarClickOutside() {
-  console.log('heeeeeey')
-  if (isMenuShown.value) isMenuShown.value = false
-}
+// function onSidebarClickOutside() {
+//   console.log('heeeeeey')
+//   if (isMenuShown.value) isMenuShown.value = false
+// }
 </script>
 <template>
   <div class="page">
