@@ -1,6 +1,7 @@
 <script setup>
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import vClickOutside from '../../directives/vClickOutside'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import { useFeedsStore } from '../../stores/feeds'
@@ -36,7 +37,7 @@ function onClick() {
     <div class="sidebar__section">
       <section class="sidebar__item">
         <p>
-          <router-link :to="{ name: 'home' }">
+          <router-link :to="{ name: 'home' }" @click="onClick">
             all feeds ({{ totalFeeds }})
           </router-link>
         </p>
@@ -96,6 +97,7 @@ function onClick() {
   display: flex;
   flex-flow: row wrap;
   top: 4rem;
+  left: 0;
   width: 15rem;
   height: 90vh;
   margin: 0;
@@ -153,6 +155,12 @@ p a {
   margin: 1rem;
 }
 
+.background {
+  background-color: deeppink;
+  width: 100vh;
+  height: 100vh;
+  position: fixed;
+}
 @media only screen and (max-width: 1000px) {
   ::-webkit-scrollbar {
     width: 0px;

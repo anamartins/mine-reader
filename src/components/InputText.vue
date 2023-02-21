@@ -21,7 +21,7 @@ const props = defineProps({
         :required="isRequired"
         @input="$emit('update:modelValue', $event.target.value)"
         v-focus="focus"
-        :placeholder="props.placeholder"
+        :placeholder="placeholder"
       />
     </label>
   </div>
