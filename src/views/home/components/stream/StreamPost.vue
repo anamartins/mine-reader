@@ -121,7 +121,7 @@ async function onReadLaterChange() {
 }
 
 .post-wrapper {
-  width: 78%;
+  flex: 1;
 }
 
 .post__info {
