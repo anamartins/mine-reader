@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Input from '../components/InputText.vue'
@@ -10,6 +10,7 @@ const feed = ref('')
 const feedsStore = useFeedsStore()
 const isLoading = computed(() => feedsStore.isLoading)
 const searchList = computed(() => feedsStore.searchList)
+const isEmpty = ref(true)
 
 let timeout
 
@@ -22,6 +23,13 @@ watch(feed, (newValue) => {
   timeout = setTimeout(() => {
     feedsStore.searchFeed(feed.value)
   }, 1000)
+
+  console.log('feed', feed.value, feed.value.length)
+})
+
+watch(searchList, () => {
+  console.log(searchList.value)
+  if (searchList.value.length > 0) isEmpty.value = false
 })
 </script>
 
@@ -38,6 +46,10 @@ watch(feed, (newValue) => {
         :focus="true"
       />
       <Loading class="loading mark-read" v-if="isLoading" />
+
+      <div v-if="isEmpty" class="feedtable__empty">
+        Type something up here to show options here.
+      </div>
 
       <FeedTable
         :list="searchList"
@@ -75,12 +87,24 @@ watch(feed, (newValue) => {
 
 .loading {
   position: relative;
-  top: 25%;
-  left: 25%;
+  top: 50%;
+  left: 50%;
 }
 
 .simple-button {
   margin: 0.1rem 0rem;
+}
+
+.feedtable__empty {
+  position: relative;
+  background-color: var(--secondary-color);
+  padding: 0.5rem;
+  color: white;
+  left: 50%;
+  top: 3rem;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 50%;
 }
 
 @media only screen and (max-width: 1000px) {
