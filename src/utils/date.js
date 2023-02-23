@@ -27,24 +27,25 @@ function diffDate(date) {
     diffDays,
     diffMonths,
     diffYears = 0
-  let time = `published ${diffMinutes} minutes ago`
+  // let time = `published ${diffMinutes} minutes ago`
+  let time = `${diffMinutes} minutes`
   if (diffMinutes > 60) {
     diffHours = Math.trunc(diffMinutes / 60)
-    time = `published ${diffHours} ` + setPlural(diffHours, 'hour')
+    time = `${diffHours} ` + setPlural(diffHours, 'hour')
   }
   if (diffHours > 24) {
     diffDays = Math.trunc(diffHours / 24)
-    time = `published ${diffDays} ` + setPlural(diffDays, 'day')
+    time = `${diffDays} ` + setPlural(diffDays, 'day')
   }
 
   if (diffDays > 30) {
     diffMonths = Math.trunc(diffDays / 30)
-    time = `published about ${diffMonths} ` + setPlural(diffMonths, 'month')
+    time = `${diffMonths} ` + setPlural(diffMonths, 'month')
   }
 
   if (diffMonths >= 12) {
     diffYears = Math.trunc(diffMonths / 12)
-    time = `published ${diffYears} ` + setPlural(diffYears, 'year')
+    time = `${diffYears} ` + setPlural(diffYears, 'year')
   }
 
   return time
@@ -52,9 +53,9 @@ function diffDate(date) {
 
 function setPlural(number, unit) {
   if (number === 1) {
-    return `${unit} ago`
+    return `${unit}`
   } else {
-    return `${unit}s ago`
+    return `${unit}s`
   }
 }
 

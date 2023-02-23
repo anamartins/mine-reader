@@ -69,11 +69,13 @@ async function onReadLaterChange() {
         }}</a>
       </div>
 
-      <div class="post-source" v-if="props.isHome">
-        <Icon :icon="feedIcon" class="post-source-icon" />
-        <div class="post-source-title">{{ post.feed.title }}</div>
+      <div class="post__info">
+        <div class="post-source" v-if="props.isHome">
+          <Icon :icon="feedIcon" class="post-source-icon" />
+          <div class="post-source-title">{{ post.feed.title }}</div>
+        </div>
+        <div class="post-date">{{ date.timeAgo }}</div>
       </div>
-      <div class="post-date">{{ date.timeAgo }}</div>
       <label class="check-label">
         <input
           class="check"
@@ -121,6 +123,10 @@ async function onReadLaterChange() {
 .post-wrapper {
   width: 78%;
 }
+
+.post__info {
+  display: flex;
+}
 .read {
   color: #666;
 }
@@ -143,6 +149,11 @@ async function onReadLaterChange() {
 
 .post-title {
   font-weight: 400;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
 }
 
 .post-source {
