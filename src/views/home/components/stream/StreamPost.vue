@@ -171,7 +171,7 @@ async function onReadLaterChange() {
 }
 
 .post-image {
-  width: 20%;
+  width: 10rem;
   min-width: 5rem;
   margin: 0 0 0 1%;
   border-radius: 10px;
