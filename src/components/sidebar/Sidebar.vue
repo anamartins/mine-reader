@@ -4,6 +4,8 @@ import { useRoute } from 'vue-router'
 import vClickOutside from '../../directives/vClickOutside'
 import SidebarProfileCard from './SidebarProfileCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
+import SidebarTagItem from './SidebarTagItem.vue'
+
 import { useFeedsStore } from '../../stores/feeds'
 import { useTagsStore } from '../../stores/tags'
 import Loading from '../../components/Loading/Loading.vue'
@@ -64,7 +66,13 @@ function onClick() {
         </p>
         <div class="loading" v-if="isLoadingTags"><Loading /></div>
         <ul class="sidebar__list">
-          <li v-for="tag in tags" :key="tag.id" class="tag__item">
+          <SidebarTagItem
+            v-for="tag in tags"
+            :tag="tag"
+            :selected="tag.id === currentTag"
+            @click="onClick"
+          />
+          <!-- <li v-for="tag in tags" :key="tag.id" class="tag__item">
             <router-link
               v-if="tag.text"
               :to="{ name: 'tag', params: { tag: tag.text } }"
@@ -77,7 +85,7 @@ function onClick() {
               {{ tag.text }}
             </router-link>
             <span class="tag__item__unread"> ({{ tag.unread }})</span>
-          </li>
+          </li> -->
         </ul>
       </section>
     </div>

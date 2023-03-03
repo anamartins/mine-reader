@@ -1,42 +1,39 @@
 <script setup>
-import SidebarFeedItemIcon from '../FeedIcon.vue'
-
 const props = defineProps({
-  feed: { type: Object, required: true },
+  tag: { type: Object, required: true },
   selected: { type: Boolean, default: false }
 })
 </script>
 
 <template>
-  <li class="feed" :key="feed.id" :class="{ 'feed--selected': selected }">
-    <SidebarFeedItemIcon :icon="feed.icon" />
+  <li class="tag" :key="tag.id" :class="{ 'tag--selected': selected }">
     <router-link
-      class="feed__name"
+      class="tag__name"
       :to="{
-        name: 'feed',
-        params: { feed: feed.feedId }
+        name: 'tag',
+        params: { tag: tag.id }
       }"
     >
-      {{ feed.title }}
+      {{ tag.text }}
     </router-link>
-    <span class="feed__unread">({{ feed.unread }})</span>
+    <span class="tag__unread">({{ tag.unread }})</span>
   </li>
 </template>
 
 <style scoped lang="scss">
-.feed {
+.tag {
   // margin: 0.1rem 0 0.1rem 0;
   display: flex;
   align-items: center;
-  padding: 0.3rem;
+  padding: 0.2rem 0;
   color: #333;
 }
-.feed--selected {
+.tag--selected {
   font-weight: 500;
   // color: white;
 }
 
-.feed__name {
+.tag__name {
   flex: 1;
   height: 1rem;
   overflow: hidden;
@@ -44,7 +41,7 @@ const props = defineProps({
   white-space: nowrap;
 }
 
-.feed__unread {
+.tag__unread {
   margin-left: 0.3rem;
 }
 </style>
