@@ -19,7 +19,7 @@ const hasNext = computed(() => postsStore.hasNext)
 const isEmpty = ref(false)
 
 watch(posts, () => {
-  if (posts.value.length === 0) {
+  if (posts.value.length == 0) {
     isEmpty.value = true
   } else {
     isEmpty.value = false

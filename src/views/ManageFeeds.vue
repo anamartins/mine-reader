@@ -40,7 +40,6 @@ async function onAddSingleTag() {
 
 async function onRemoveButtonClick(params) {
   await feedsStore.removeFeed(params.feedId)
-  feeds.value = feeds.value.filter((e) => e.feedId !== params.feedId)
 }
 
 function createNewTagClick() {

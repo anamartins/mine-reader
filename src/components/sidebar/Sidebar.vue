@@ -24,6 +24,9 @@ const feeds = computed(() => feedsStore.feeds)
 const totalFeeds = computed(() => feedsStore.total)
 const isLoadingFeeds = computed(() => feedsStore.isLoading)
 
+const hasNoFeed = computed(() => feeds.value.length === 0)
+const hasNoTag = computed(() => tags.value.length === 0)
+
 const tagsStore = useTagsStore()
 tagsStore.getTags()
 const tags = computed(() => tagsStore.tags)
@@ -50,6 +53,9 @@ function onClick() {
         </p>
         <div class="loading" v-if="isLoadingFeeds"><Loading /></div>
         <ul class="sidebar__list">
+          <p v-if="hasNoFeed" class="no-feed">
+            You have no feeds yet. Click in "add feed" in the bar below.
+          </p>
           <SidebarFeedItem
             v-for="feed in feeds"
             :feed="feed"
@@ -66,6 +72,10 @@ function onClick() {
         </p>
         <div class="loading" v-if="isLoadingTags"><Loading /></div>
         <ul class="sidebar__list">
+          <p v-if="hasNoTag" class="no-tag">
+            You have no tags yet. Click in "manage tags" up here and make your
+            first tag.
+          </p>
           <SidebarTagItem
             v-for="tag in tags"
             :tag="tag"
