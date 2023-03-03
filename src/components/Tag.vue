@@ -14,7 +14,14 @@ async function onCloseButtonClick(tag) {
 </script>
 <template>
   <div class="tag">
-    {{ props.tag }}
+    <router-link
+      :to="{
+        name: 'tag',
+        params: { tag: props.tag }
+      }"
+    >
+      {{ props.tag }}
+    </router-link>
     <button
       class="close"
       @click="onCloseButtonClick(tag)"
@@ -27,7 +34,7 @@ async function onCloseButtonClick(tag) {
 
 <style scoped>
 .tag {
-  margin: 0.3rem 1rem 0 0;
+  margin: 0.3rem 0.5rem 0 0;
   padding: 0.3rem;
   background-color: var(--secondary-color-variation);
   color: #fff;
@@ -38,6 +45,10 @@ async function onCloseButtonClick(tag) {
   position: relative;
 
   align-items: center;
+}
+
+.tag a {
+  color: #fff;
 }
 
 .close {

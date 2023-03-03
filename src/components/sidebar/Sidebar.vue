@@ -72,20 +72,6 @@ function onClick() {
             :selected="tag.id === currentTag"
             @click="onClick"
           />
-          <!-- <li v-for="tag in tags" :key="tag.id" class="tag__item">
-            <router-link
-              v-if="tag.text"
-              :to="{ name: 'tag', params: { tag: tag.text } }"
-              @click="onClick"
-              class="tag__link"
-              :class="{
-                'tag__link--selected': tag.id === currentTag
-              }"
-            >
-              {{ tag.text }}
-            </router-link>
-            <span class="tag__item__unread"> ({{ tag.unread }})</span>
-          </li> -->
         </ul>
       </section>
     </div>

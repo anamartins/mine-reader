@@ -17,7 +17,7 @@ const isLoading = computed(() => usersStore.isLoading)
 
 const router = useRouter()
 
-async function onButtonClick() {
+async function onFormSubmit() {
   await usersStore.newUser(username.value, email.value, password.value)
   router.push({ name: 'signIn' })
 }
@@ -32,7 +32,7 @@ onMounted(() => {})
         <div class="loading" v-if="isLoading"><Loading /></div>
 
         <Logo class="logo" linkName="signUp" />
-        <form class="signup-form">
+        <form class="signup-form" @submit.prevent="onFormSubmit">
           <InputText
             class="input-text"
             :is-required="true"
@@ -56,11 +56,7 @@ onMounted(() => {})
           <div class="fail" v-if="hasError">
             something weird happened. can you try again?
           </div>
-          <ConfirmButton
-            class="go-button"
-            label="Sign me up!"
-            @click="onButtonClick"
-          />
+          <ConfirmButton class="go-button" label="Sign me up!" />
         </form>
         <div class="link">
           <router-link :to="{ name: 'signIn' }">

@@ -21,7 +21,7 @@ const colors = getColors()
 const darkTextColor = colors.darkTextColor
 const primaryColor = colors.primaryColor
 
-async function onButtonClick() {
+async function onFormSubmit() {
   await usersStore.login(email.value, password.value)
   if (!hasError.value) router.push({ name: 'home' })
 }
@@ -32,7 +32,7 @@ async function onButtonClick() {
     <FormBackground>
       <div class="wrapper">
         <TheLogo class="logo" linkName="signIn" />
-        <form class="signin-form">
+        <form class="signin-form" @submit.prevent="onFormSubmit">
           <div class="loading" v-if="isLoading"><Loading /></div>
           <InputText
             class="input-text"
@@ -54,7 +54,6 @@ async function onButtonClick() {
           <ConfirmButton
             class="go-button"
             label="login"
-            @click="onButtonClick"
             :disabled="isLoading"
           />
         </form>
