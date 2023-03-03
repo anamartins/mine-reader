@@ -17,8 +17,9 @@ const props = defineProps({
         params: { feed: feed.feedId }
       }"
     >
-      {{ feed.title }} ({{ feed.unread }})
+      {{ feed.title }}
     </router-link>
+    <span class="feed__unread">({{ feed.unread }})</span>
   </li>
 </template>
 
@@ -30,9 +31,20 @@ const props = defineProps({
   padding: 0.3rem;
   color: #333;
 }
-
 .feed--selected {
   font-weight: 500;
   color: white;
+}
+
+.feed__name {
+  flex: 1;
+  height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed__unread {
+  margin-left: 0.3rem;
 }
 </style>

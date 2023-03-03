@@ -153,12 +153,12 @@ async function onReadLaterChange() {
 
 .post-date {
   font-size: 0.8rem;
-  margin-left: 0.3rem;
 }
 
 .post-source {
   display: flex;
   align-items: center;
+  margin-right: 0.3rem;
 }
 
 .post-source-title {

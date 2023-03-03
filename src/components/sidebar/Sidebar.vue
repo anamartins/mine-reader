@@ -74,8 +74,9 @@ function onClick() {
                 'tag__link--selected': tag.id === currentTag
               }"
             >
-              {{ tag.text }} ({{ tag.unread }})
+              {{ tag.text }}
             </router-link>
+            <span class="tag__item__unread"> ({{ tag.unread }})</span>
           </li>
         </ul>
       </section>
