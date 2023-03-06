@@ -31,6 +31,7 @@ export const useFeedsStore = defineStore('feeds', () => {
       console.log(error)
     } finally {
       isLoading.value = false
+      searchList.value = []
     }
   }
 
@@ -57,8 +58,16 @@ export const useFeedsStore = defineStore('feeds', () => {
   }
 
   async function searchFeed(query) {
-    const returnAPI = await getApi(`feed/search?query=${query}`)
-    searchList.value = returnAPI.data.feeds
+    if (!query) return
+    try {
+      isLoading.value = true
+      const returnAPI = await getApi(`feed/search?query=${query}`)
+      searchList.value = returnAPI.data.feeds
+    } catch {
+      console.log(error) //todo: handle errors in user level.
+    } finally {
+      isLoading.value = false
+    }
   }
 
   return {

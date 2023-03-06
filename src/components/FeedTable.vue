@@ -9,7 +9,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['onChange', 'onButtonClick'])
-
 const selected = ref([])
 
 function onCheckboxChange() {

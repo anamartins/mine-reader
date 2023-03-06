@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
 import Input from '../components/InputText.vue'
@@ -10,24 +10,25 @@ const feed = ref('')
 const feedsStore = useFeedsStore()
 const isLoading = computed(() => feedsStore.isLoading)
 const searchList = computed(() => feedsStore.searchList)
-const isEmpty = ref(true)
+const isEmpty = computed(() => searchList.value.length === 0)
 
 let timeout
 
 async function onAddButtonClick(params) {
   await feedsStore.followNewFeed(params.url)
+  feed.value = ''
 }
 
-watch(feed, (newValue) => {
+watch(feed, () => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     feedsStore.searchFeed(feed.value)
   }, 1000)
 })
 
-watch(searchList, () => {
-  if (searchList.value.length > 0) isEmpty.value = false
-})
+// watch(searchList, () => {
+//   if (searchList.value.length > 0) isEmpty.value = false
+// })
 </script>
 
 <template>
