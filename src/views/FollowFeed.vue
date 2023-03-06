@@ -23,12 +23,9 @@ watch(feed, (newValue) => {
   timeout = setTimeout(() => {
     feedsStore.searchFeed(feed.value)
   }, 1000)
-
-  console.log('feed', feed.value, feed.value.length)
 })
 
 watch(searchList, () => {
-  console.log(searchList.value)
   if (searchList.value.length > 0) isEmpty.value = false
 })
 </script>

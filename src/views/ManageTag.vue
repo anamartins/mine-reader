@@ -14,6 +14,7 @@ const isModalOpen = ref(false)
 const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
 const isLoading = computed(() => tags.isLoading)
+const hasNoTag = computed(() => tags.value.length === 0)
 
 async function onRemoveButtonClick(params) {
   await tagsStore.deleteTag(params.tag)
@@ -49,6 +50,10 @@ async function onAddSingleTag() {
 
       <div class="remove-tag">
         <h2>Manage Tags</h2>
+        <p v-if="hasNoTag" class="no-tag">
+          For adding a tag, click in the "create a new tag" button right up
+          here.
+        </p>
         <Loading v-if="isLoading" class="loading" />
         <FeedTable
           :list="tags"

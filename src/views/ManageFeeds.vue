@@ -20,6 +20,7 @@ const isAnyFeedSelected = computed(() => {
 
 const feedsStore = useFeedsStore()
 const feeds = computed(() => feedsStore.feeds)
+const hasNoFeed = computed(() => feeds.value.length === 0)
 
 const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
@@ -83,6 +84,11 @@ function onCheckboxChange(listFromComponent) {
       </div>
 
       <div class="feeds">
+        <p v-if="hasNoFeed" class="no-feed">
+          You have no feeds yet. For start adding feeds, click in "add feed" in
+          the bar below. If you want, you can add a tag. Just click in the
+          "create a new tag" button right up here.
+        </p>
         <FeedTable
           :list="feeds"
           @on-change="onCheckboxChange"
