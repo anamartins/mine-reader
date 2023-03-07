@@ -4,7 +4,8 @@ import { computed } from 'vue'
 const props = defineProps({
   label: { type: String },
   modelValue: { type: [Boolean, Array] },
-  value: { type: String }
+  value: { type: String },
+  link: { type: String, required: false }
 })
 const isChecked = computed(() => {
   if (props.modelValue instanceof Array) {
@@ -40,9 +41,13 @@ function onChange(event) {
         :checked="isChecked"
         @change="onChange"
       />
-      {{ label }}
+      <a :href="link" target="_blank">{{ label }}</a>
     </label>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+a {
+  padding: 0 0 0 0.3rem;
+}
+</style>

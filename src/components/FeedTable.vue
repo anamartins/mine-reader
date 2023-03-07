@@ -1,4 +1,5 @@
 <script setup>
+import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import Checkbox from './Checkbox.vue'
 import SimpleButton from './SimpleButton.vue'
@@ -7,6 +8,8 @@ const props = defineProps({
   list: { type: Array, required: true },
   buttonLabel: { type: String, required: false }
 })
+
+// const route = useRoute()
 
 const emit = defineEmits(['onChange', 'onButtonClick'])
 const selected = ref([])
@@ -28,11 +31,19 @@ function onButtonClick(params) {
           v-if="isCheckboxVisible"
           :label="item.title"
           :value="item.feedId"
+          :link="item.website"
           v-model="selected"
           @change="onCheckboxChange"
         />
         <div v-else="isCheckboxVisible" target="_blank">
-          {{ item.title || item.text }}
+          <router-link
+            :to="{
+              name: 'tag',
+              params: { tag: item.id }
+            }"
+          >
+            {{ item.title || item.text }}
+          </router-link>
         </div>
       </td>
       <td class="feed-table__button">
