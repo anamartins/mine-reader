@@ -37,7 +37,6 @@ const tags = computed(() => {
 })
 
 const selectedFeed = computed(() => {
-  console.log('feed', route.params)
   if (route.params.feed && feedsStore.feeds.length > 0) {
     return feedsStore.getFeedById(route.params.feed)
   }
