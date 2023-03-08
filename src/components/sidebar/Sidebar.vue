@@ -59,7 +59,7 @@ function onClick() {
           <SidebarFeedItem
             v-for="feed in feeds"
             :feed="feed"
-            :selected="feed.feedId === currentFeed"
+            :selected="feed.slug === currentFeed"
             @click="onClick"
           />
         </ul>
