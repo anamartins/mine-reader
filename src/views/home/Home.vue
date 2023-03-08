@@ -11,12 +11,14 @@ const route = useRoute()
 const postsStore = usePostsStore()
 
 function fetchPosts() {
-  const feedId = route.params.feed
+  // const feedId = route.params.feed
+  const feedSlug = route.params.feed
   const tag = route.params.tag
   const isRead = userPreferences.seeUnreadPosts.value
   const isReadLater = route.name === 'readLater'
 
-  const params = { feedId, tag, isReadLater }
+  // const params = { feedId, tag, isReadLater }
+  const params = { feedSlug, tag, isReadLater }
   if (isRead) {
     params.isRead = false
   }

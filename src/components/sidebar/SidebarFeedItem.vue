@@ -14,7 +14,7 @@ const props = defineProps({
       class="feed__name"
       :to="{
         name: 'feed',
-        params: { feed: feed.feedId }
+        params: { feed: feed.slug }
       }"
     >
       {{ feed.title }}
