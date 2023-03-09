@@ -26,14 +26,14 @@ const tagsStore = useTagsStore()
 const tags = computed(() => tagsStore.tags)
 
 async function onAddSelectedTags() {
-  await tagsStore.addMultipleTags(selected.value, selectedTags.value)
+  await tagsStore.associateTagToFeed(selected.value, selectedTags.value)
   selectedTags.value = ''
   selected.value = []
   isModalOpen.value = false
 }
 
 async function onAddSingleTag() {
-  await tagsStore.addSingleTag(selected.value, tag.value)
+  await tagsStore.createNewTag(selected.value, tag.value)
   tag.value = ''
   selected.value = []
   isModalOpen.value = false

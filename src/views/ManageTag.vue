@@ -29,7 +29,7 @@ function onExitClick() {
 }
 
 async function onAddSingleTag() {
-  await tagsStore.addSingleTag(selected.value, tag.value)
+  await tagsStore.createNewTag(selected.value, tag.value)
   tag.value = ''
   selected.value = []
   isModalOpen.value = false
