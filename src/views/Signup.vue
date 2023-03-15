@@ -1,28 +1,41 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue'
-import { useUsersStore } from '../stores/users'
 import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useUsersStore } from '../stores/users'
 import Logo from '../components/logo/Logo.vue'
+import Loading from '../components/Loading/Loading.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
+import SimpleButton from '../components/SimpleButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
+
+const router = useRouter()
 
 const username = ref('')
 const email = ref('')
 const password = ref('')
+const isModalOpen = ref(false)
 
 const usersStore = useUsersStore()
 const hasError = computed(() => usersStore.hasError)
 const isLoading = computed(() => usersStore.isLoading)
 
-const router = useRouter()
-
 async function onFormSubmit() {
   await usersStore.newUser(username.value, email.value, password.value)
-  router.push({ name: 'signIn' })
+  username.value = ''
+  email.value = ''
+  password.value = ''
+  isModalOpen.value = true
 }
 
-onMounted(() => {})
+function onExitClick() {
+  isModalOpen.value = false
+}
+
+function onButtonClick() {
+  isModalOpen.value = false
+  router.push({ name: 'signIn' })
+}
 </script>
 
 <template>
@@ -54,8 +67,9 @@ onMounted(() => {})
             v-model="password"
           />
           <div class="fail" v-if="hasError">
-            something weird happened. can you try again?
+            something weird happened. could you try again?
           </div>
+
           <ConfirmButton class="go-button" label="Sign me up!" />
         </form>
         <div class="link">
@@ -63,6 +77,15 @@ onMounted(() => {})
             -> i already have an account!
           </router-link>
         </div>
+      </div>
+      <div class="sucess-modal" v-if="isModalOpen">
+        <div class="exit" @click="onExitClick">X</div>
+        Nice! Now check your email; and confirm you email.
+        <SimpleButton
+          @click="onButtonClick"
+          label="go to signin page"
+          class="modal__button"
+        />
       </div>
     </FormBackground>
   </div>
@@ -126,6 +149,26 @@ onMounted(() => {})
   position: relative;
   width: 100%;
   text-align: center;
+}
+
+.sucess-modal {
+  background-color: var(--background-color);
+  position: absolute;
+  width: 50%;
+  top: 30%;
+  padding: 5rem 2rem;
+  border: 1px solid #333;
+}
+
+.exit {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #333;
+  font-size: 1.5rem;
 }
 
 .link {
