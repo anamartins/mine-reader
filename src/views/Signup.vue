@@ -97,7 +97,7 @@ function onButtonClick() {
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
-  width: 25%;
+  width: 40%;
 }
 .signup {
   background-color: var(--background-color);
@@ -180,5 +180,23 @@ function onButtonClick() {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+@media only screen and (max-width: 300px) {
+  .background {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 301px) and (max-width: 600px) {
+  .background {
+    width: 75%;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  .background {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 1001px) {
 }
 </style>

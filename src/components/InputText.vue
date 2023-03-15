@@ -29,9 +29,9 @@ const props = defineProps({
 <style scoped>
 .input {
   margin: 1rem 0;
-  border-color: var(--dark-text);
+  border: 2px solid var(--dark-text);
   padding: 0.8rem 1rem;
-  width: calc(90% - 2px);
+  width: calc(90% - 4px);
   height: 1.3rem;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
@@ -42,5 +42,6 @@ const props = defineProps({
 .label-input {
   font-size: 1rem;
   font-weight: 100;
+  width: 100%;
 }
 </style>
