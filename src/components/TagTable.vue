@@ -1,7 +1,6 @@
 <script setup>
-import { useRoute } from 'vue-router'
-import { ref } from 'vue'
-import Checkbox from './Checkbox.vue'
+// import { useRoute } from 'vue-router'
+import { onUpdated, ref } from 'vue'
 import SimpleButton from './SimpleButton.vue'
 const props = defineProps({
   isCheckboxVisible: { type: Boolean, required: false, default: true },
@@ -10,11 +9,11 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['onChange', 'onButtonClick'])
-const selected = ref([])
+// const selected = ref([])
 
-function onCheckboxChange() {
-  emit('onChange', selected.value)
-}
+// function onCheckboxChange() {
+//   emit('onChange', selected.value)
+// }
 
 function onButtonClick(params) {
   emit('onButtonClick', params)
@@ -22,30 +21,21 @@ function onButtonClick(params) {
 </script>
 
 <template>
-  <table class="feed-table">
+  <table class="tag-table">
     <tr v-for="item in list" :key="item.id">
-      <td class="feed-table__link">
-        <Checkbox
-          v-if="isCheckboxVisible"
-          :label="item.title"
-          :value="item.feedId"
-          v-model="selected"
-          @change="onCheckboxChange"
-        />
-        <div v-else="isCheckboxVisible" target="_blank">
-          <a
-            target="_blank"
-            :href="item.website"
+      <td class="tag-table__link">
+        <div target="_blank">
+          <router-link
             :to="{
-              name: 'feed',
-              params: { feed: item.id }
+              name: 'tag',
+              params: { tag: item.id }
             }"
           >
             {{ item.title || item.text }}
-          </a>
+          </router-link>
         </div>
       </td>
-      <td class="feed-table__button">
+      <td class="tag-table__button">
         <SimpleButton
           class="button"
           :label="props.buttonLabel"
@@ -64,12 +54,12 @@ function onButtonClick(params) {
 </template>
 
 <style>
-.feed-table {
+.tag-table {
   width: 100%;
   padding: 0.5rem 0;
 }
 
-.feed-table__button {
+.tag-table__button {
   text-align: right;
 }
 

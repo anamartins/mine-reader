@@ -5,6 +5,7 @@ import PageWithSidebar from '../components/PageWithSidebar.vue'
 import InputText from '../components/InputText.vue'
 import SimpleButton from '../components/SimpleButton.vue'
 import FeedTable from '../components/FeedTable.vue'
+import TagTable from '../components/TagTable.vue'
 import Loading from '../components/loading/Loading.vue'
 
 const tag = ref('')
@@ -55,12 +56,18 @@ async function onAddSingleTag() {
           here.
         </p>
         <Loading v-if="isLoading" class="loading" />
-        <FeedTable
+        <!-- <FeedTable
           :list="tags"
           :isCheckboxVisible="false"
           @on-button-click="onRemoveButtonClick"
           buttonLabel="delete tag"
-        ></FeedTable>
+        ></FeedTable> -->
+        <TagTable
+          :list="tags"
+          :isCheckboxVisible="false"
+          @on-button-click="onRemoveButtonClick"
+          buttonLabel="delete tag"
+        ></TagTable>
       </div>
       <div v-if="isModalOpen" class="modal">
         <h2>Add a tag</h2>
