@@ -1,10 +1,9 @@
 <script setup>
 import { getColors } from '../../utils/colors'
 import Logo from '../logo/Logo.vue'
+
 const colors = getColors()
-
 const backgroundColor = colors.backgroundColor
-
 const emit = defineEmits(['onMenuClick'])
 
 const props = defineProps({
@@ -25,7 +24,7 @@ function onMenuClick() {
         class="menu__icon"
       />
       <img
-        v-else="props.isMenuOpen"
+        v-else="!props.isMenuOpen"
         src="../../assets/img/menu.svg"
         class="menu__icon"
       />

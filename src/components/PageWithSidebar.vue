@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import vClickOutside from '../directives/vClickOutside'
 import Sidebar from '../components/sidebar/Sidebar.vue'
-import Header from '../components/header/Header.vue'
+import Header from './app-header/AppHeader.vue'
 
 const isMenuShown = ref(false)
 

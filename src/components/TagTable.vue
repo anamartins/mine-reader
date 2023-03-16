@@ -1,5 +1,4 @@
 <script setup>
-// import { useRoute } from 'vue-router'
 import { onUpdated, ref } from 'vue'
 import SimpleButton from './SimpleButton.vue'
 const props = defineProps({
@@ -9,11 +8,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['onChange', 'onButtonClick'])
-// const selected = ref([])
-
-// function onCheckboxChange() {
-//   emit('onChange', selected.value)
-// }
 
 function onButtonClick(params) {
   emit('onButtonClick', params)
@@ -53,7 +47,7 @@ function onButtonClick(params) {
   </table>
 </template>
 
-<style>
+<style scoped>
 .tag-table {
   width: 100%;
   padding: 0.5rem 0;
