@@ -18,7 +18,6 @@ const props = defineProps({
   background-color: v-bind('props.backgroundColor');
   color: v-bind('props.fontColor');
   font-size: 0.6rem;
-  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   padding: 3px 4px;
   text-align: center;

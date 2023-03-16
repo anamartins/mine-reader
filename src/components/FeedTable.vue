@@ -62,7 +62,7 @@ function onButtonClick(params) {
   </table>
 </template>
 
-<style>
+<style scoped>
 .feed-table {
   width: 100%;
   padding: 0.5rem 0;
@@ -73,6 +73,6 @@ function onButtonClick(params) {
 }
 
 .button {
-  margin: 0.1rem 0rem !important;
+  margin: 0.1rem 0rem;
 }
 </style>

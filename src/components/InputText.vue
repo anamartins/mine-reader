@@ -34,7 +34,6 @@ const props = defineProps({
   width: calc(90% - 4px);
   height: 1.3rem;
   border-radius: 5px;
-  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 300;
 }

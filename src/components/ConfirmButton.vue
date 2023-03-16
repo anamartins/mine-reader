@@ -15,7 +15,6 @@ const props = defineProps({
   border: 0px;
   border-radius: 10px;
   background-color: var(--primary-color);
-  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
   color: #fff;
