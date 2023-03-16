@@ -2,14 +2,14 @@
 import { computed } from 'vue'
 import { randomNumber } from '../utils/number'
 const props = defineProps({
-  color: { type: String, requiqued: false },
-  borderColor: { type: String, requiqued: false },
-  opacity: { type: String, required: false, default: '0.7' },
-  minWidth: { type: String, required: false, default: '100px' },
-  maxWidth: { type: String, required: false, default: '100px' },
-  minHeight: { type: String, required: false, default: '100px' },
-  maxHeight: { type: String, required: false, default: '100px' },
-  isPaused: { type: Boolean, required: false, default: false }
+  color: { type: String },
+  borderColor: { type: String },
+  opacity: { type: String, default: '0.7' },
+  minWidth: { type: String, default: '100px' },
+  maxWidth: { type: String, default: '100px' },
+  minHeight: { type: String, default: '100px' },
+  maxHeight: { type: String, default: '100px' },
+  isPaused: { type: Boolean, default: false }
 })
 
 const animationDuration = `${randomNumber(5, 20)}s`

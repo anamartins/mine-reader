@@ -3,7 +3,7 @@ import { useTagsStore } from '../stores/tags'
 const props = defineProps({
   tag: { type: String, required: true },
   feedId: { type: String, required: true },
-  isCloseButtonVisible: { type: Boolean, required: false, default: false }
+  isCloseButtonVisible: { type: Boolean, default: false }
 })
 
 const tagsStore = useTagsStore()

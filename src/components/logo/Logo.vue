@@ -7,10 +7,10 @@ const colors = getColors()
 const darkTextColor = colors.darkTextColor
 
 const props = defineProps({
-  linkName: { type: String, required: false, default: 'home' },
-  fontSize: { type: String, required: false, default: '3rem' },
-  fontColor: { type: String, required: false, default: '#333333' },
-  hasAnimatedBox: { type: Boolean, required: false, default: false }
+  linkName: { type: String, default: 'home' },
+  fontSize: { type: String, default: '3rem' },
+  fontColor: { type: String, default: '#333333' },
+  hasAnimatedBox: { type: Boolean, default: false }
 })
 </script>
 

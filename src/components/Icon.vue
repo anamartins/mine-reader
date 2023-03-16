@@ -3,9 +3,9 @@ import Count from './Count.vue'
 import { getColors } from '../utils/colors'
 const props = defineProps({
   imageSource: { type: String, required: true },
-  linkName: { type: String, required: false },
-  number: { type: Number, required: false },
-  tooltip: { type: String, required: false }
+  linkName: { type: String },
+  number: { type: Number },
+  tooltip: { type: String }
 })
 
 const colors = getColors()

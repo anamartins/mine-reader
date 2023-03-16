@@ -2,8 +2,8 @@
 import { randomNumber } from '../../utils/number'
 
 const props = defineProps({
-  color: { type: String, required: false },
-  borderColor: { type: String, requiqued: false }
+  color: { type: String },
+  borderColor: { type: String }
 })
 
 const animationDuration = `${randomNumber(1, 5)}s`

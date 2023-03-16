@@ -9,7 +9,7 @@ import Tag from '../../../../components/Tag.vue'
 
 const props = defineProps({
   post: { type: Object, required: true },
-  isHome: { type: Boolean, required: false, default: false }
+  isHome: { type: Boolean, default: false }
 })
 
 const postsStore = usePostsStore()

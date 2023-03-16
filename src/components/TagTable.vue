@@ -3,9 +3,9 @@
 import { onUpdated, ref } from 'vue'
 import SimpleButton from './SimpleButton.vue'
 const props = defineProps({
-  isCheckboxVisible: { type: Boolean, required: false, default: true },
+  isCheckboxVisible: { type: Boolean, default: true },
   list: { type: Array, required: true },
-  buttonLabel: { type: String, required: false }
+  buttonLabel: { type: String }
 })
 
 const emit = defineEmits(['onChange', 'onButtonClick'])

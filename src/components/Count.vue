@@ -1,8 +1,8 @@
 <script setup>
 const props = defineProps({
   number: { type: Number, required: true },
-  backgroundColor: { type: String, required: false, default: 'transparent' },
-  fontColor: { type: String, required: false, default: '#FFF' }
+  backgroundColor: { type: String, default: 'transparent' },
+  fontColor: { type: String, default: '#FFF' }
 })
 </script>
 

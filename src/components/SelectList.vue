@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import Checkbox from './Checkbox.vue'
 
 const props = defineProps({
-  title: { type: String, required: false, default: '' },
+  title: { type: String, default: '' },
   items: { type: Array, required: true }
 })
 

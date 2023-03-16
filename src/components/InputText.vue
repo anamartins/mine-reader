@@ -2,10 +2,10 @@
 import vFocus from '../directives/vFocus'
 
 const props = defineProps({
-  type: { type: String, requided: false, default: 'text' },
-  isRequired: { type: Boolean, requided: false },
-  label: { type: String, requided: false },
-  placeholder: { type: String, required: false, default: '' },
+  type: { type: String, default: 'text' },
+  isRequired: { type: Boolean },
+  label: { type: String },
+  placeholder: { type: String, default: '' },
   modelValue: { type: String },
   focus: { type: Boolean, default: false }
 })

@@ -7,10 +7,10 @@ import Tag from '../../../../components/Tag.vue'
 import Button from '../../../../components/SimpleButton.vue'
 
 const props = defineProps({
-  title: { type: String, required: false },
-  icon: { typs: String, required: false },
-  tags: { type: Array, required: false },
-  feedId: { type: String, required: false }
+  title: { type: String },
+  icon: { typs: String },
+  tags: { type: Array },
+  feedId: { type: String }
 })
 
 const postsStore = usePostsStore()

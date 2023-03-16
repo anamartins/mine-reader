@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  label: { type: String, required: false }
+  label: { type: String }
 })
 
 const emit = defineEmits(['onButtonClick'])
