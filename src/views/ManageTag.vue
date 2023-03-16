@@ -42,7 +42,7 @@ async function onAddSingleTag() {
       <div class="tool-bar">
         <div class="actions">
           <ul>
-            <li @click="createNewTagClick()" class="actions-item">
+            <li class="actions-item" @click="createNewTagClick()">
               create a new tag
             </li>
           </ul>
@@ -56,17 +56,11 @@ async function onAddSingleTag() {
           here.
         </p>
         <Loading v-if="isLoading" class="loading" />
-        <!-- <FeedTable
-          :list="tags"
-          :isCheckboxVisible="false"
-          @on-button-click="onRemoveButtonClick"
-          buttonLabel="delete tag"
-        ></FeedTable> -->
         <TagTable
           :list="tags"
           :isCheckboxVisible="false"
-          @on-button-click="onRemoveButtonClick"
           buttonLabel="delete tag"
+          @on-button-click="onRemoveButtonClick"
         ></TagTable>
       </div>
       <div v-if="isModalOpen" class="modal">
@@ -78,9 +72,9 @@ async function onAddSingleTag() {
           class="modal__input"
         />
         <SimpleButton
-          @click="onAddSingleTag"
           label="+ add tag"
           class="modal__button"
+          @click="onAddSingleTag"
         />
       </div>
     </div>

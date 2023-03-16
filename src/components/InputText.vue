@@ -19,9 +19,9 @@ const props = defineProps({
         :type="type"
         :value="modelValue"
         :required="isRequired"
-        @input="$emit('update:modelValue', $event.target.value)"
         v-focus="focus"
         :placeholder="placeholder"
+        @input="$emit('update:modelValue', $event.target.value)"
       />
     </label>
   </div>

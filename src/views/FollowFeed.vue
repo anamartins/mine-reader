@@ -52,8 +52,8 @@ watch(feed, () => {
       <FeedTable
         :list="searchList"
         :isCheckboxVisible="false"
-        @on-button-click="onAddButtonClick"
         buttonLabel="+ add feed"
+        @on-button-click="onAddButtonClick"
       >
       </FeedTable>
     </div>

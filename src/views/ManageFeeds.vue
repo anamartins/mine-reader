@@ -66,8 +66,8 @@ function onCheckboxChange(listFromComponent) {
         <SelectList
           title="Select a tag"
           :items="tags"
-          @on-item-change="onSelectListChange"
           :class="{ disabled: !isAnyFeedSelected }"
+          @on-item-change="onSelectListChange"
         >
           <SimpleButton
             label="+ add feeds in this tags"
@@ -76,7 +76,7 @@ function onCheckboxChange(listFromComponent) {
         </SelectList>
         <div class="actions">
           <ul>
-            <li @click="createNewTagClick()" class="actions-item">
+            <li class="actions-item" @click="createNewTagClick()">
               create a new tag
             </li>
           </ul>

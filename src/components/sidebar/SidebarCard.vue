@@ -47,9 +47,9 @@ function onSignOut() {
       />
       <icon
         :image-source="SignOut"
-        @click="onSignOut"
         class="icon"
         tooltip="sign out"
+        @click="onSignOut"
       />
     </div>
   </div>

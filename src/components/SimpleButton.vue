@@ -10,7 +10,7 @@ function onClick() {
 }
 </script>
 <template>
-  <button type="button" @click="onClick" class="simple-button">
+  <button type="button" class="simple-button" @click="onClick">
     {{ props.label }}
   </button>
 </template>

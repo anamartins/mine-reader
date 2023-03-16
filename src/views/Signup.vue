@@ -82,9 +82,9 @@ function onButtonClick() {
         <div class="exit" @click="onExitClick">X</div>
         Nice! Now check your email; and confirm you email.
         <SimpleButton
-          @click="onButtonClick"
           label="go to signin page"
           class="modal__button"
+          @click="onButtonClick"
         />
       </div>
     </FormBackground>
