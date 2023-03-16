@@ -12,30 +12,27 @@ const props = defineProps({
   isPaused: { type: Boolean, default: false }
 })
 
+function getRandomBorderRadius(min, max) {
+  const top = randomNumber(min, max)
+  const right = randomNumber(min, max)
+  const left = randomNumber(min, max)
+  const bottom = randomNumber(min, max)
+
+  return `${top}px ${right}px ${bottom}px ${left}px`
+}
+
 const animationDuration = `${randomNumber(5, 20)}s`
 
 const animationState = computed(() => {
-  if (props.isPaused) {
-    return 'paused'
-  } else {
-    return 'running'
-  }
+  if (props.isPaused) return 'paused'
+  return 'running'
 })
 
 const rotation1 = `${randomNumber(-45, 45)}deg`
 const rotation2 = `${randomNumber(-45, 45)}deg`
 
-const minTopBorder = randomNumber(500, 2000)
-const minRightBorder = randomNumber(500, 2000)
-const minBottomBorder = randomNumber(500, 2000)
-const minLeftBorder = randomNumber(500, 2000)
-const minBorder = `${minTopBorder}px ${minRightBorder}px ${minBottomBorder}px ${minLeftBorder}px`
-
-const maxTopBorder = randomNumber(2500, 5000)
-const maxRightBorder = randomNumber(2500, 5000)
-const maxBottomBorder = randomNumber(2500, 5000)
-const maxLeftBorder = randomNumber(2500, 5000)
-const maxBorder = `${maxTopBorder}px ${maxRightBorder}px ${maxBottomBorder}px ${maxLeftBorder}px`
+const minBorder = getRandomBorderRadius(500, 2000)
+const maxBorder = getRandomBorderRadius(2500, 5000)
 </script>
 <template>
   <div class="box"></div>
