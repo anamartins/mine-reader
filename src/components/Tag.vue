@@ -8,8 +8,8 @@ const props = defineProps({
 
 const tagsStore = useTagsStore()
 
-async function onCloseButtonClick(tag) {
-  await tagsStore.removeTagFromFeed(props.feedId, tag)
+function onCloseButtonClick(tag) {
+  tagsStore.removeTagFromFeed(props.feedId, tag)
 }
 </script>
 <template>
@@ -43,7 +43,6 @@ async function onCloseButtonClick(tag) {
   display: flex;
   flex-flow: row;
   position: relative;
-
   align-items: center;
 }
 
