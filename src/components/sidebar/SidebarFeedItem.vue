@@ -1,6 +1,5 @@
 <script setup>
 import SidebarFeedItemIcon from '../FeedIcon.vue'
-
 const props = defineProps({
   feed: { type: Object, required: true },
   selected: { type: Boolean, default: false }
@@ -25,7 +24,6 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .feed {
-  // margin: 0.1rem 0 0.1rem 0;
   display: flex;
   align-items: center;
   padding: 0.3rem;
@@ -33,7 +31,6 @@ const props = defineProps({
 }
 .feed--selected {
   font-weight: 500;
-  // color: white;
 }
 
 .feed__name {

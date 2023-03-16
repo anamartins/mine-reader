@@ -1,5 +1,4 @@
 <script setup>
-import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import Checkbox from './Checkbox.vue'
 import SimpleButton from './SimpleButton.vue'
