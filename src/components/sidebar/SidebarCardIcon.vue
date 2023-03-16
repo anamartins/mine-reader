@@ -1,6 +1,6 @@
 <script setup>
-import Count from './Count.vue'
-import { getColors } from '../utils/colors'
+import Count from '../Count.vue'
+import { getColors } from '../../utils/colors'
 const props = defineProps({
   imageSource: { type: String, required: true },
   linkName: { type: String },

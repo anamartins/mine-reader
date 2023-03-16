@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import vClickOutside from '../../directives/vClickOutside'
-import SidebarProfileCard from './SidebarProfileCard.vue'
+import SidebarCard from './SidebarCard.vue'
 import SidebarFeedItem from './SidebarFeedItem.vue'
 import SidebarTagItem from './SidebarTagItem.vue'
 
@@ -85,7 +85,7 @@ function onClick() {
         </ul>
       </section>
     </div>
-    <SidebarProfileCard class="profile-card" />
+    <SidebarCard class="profile-card" />
   </aside>
 </template>
 
