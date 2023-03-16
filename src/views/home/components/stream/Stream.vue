@@ -99,7 +99,7 @@ function onObserverChanges(entries) {
     />
 
     <div class="posts">
-      <div class="loading" v-if="!isReady"><Loading /></div>
+      <div v-if="!isReady" class="loading"><Loading /></div>
       <div v-if="isEmpty" class="stream__empty">There's no unread posts!</div>
       <Post
         v-for="post in posts"

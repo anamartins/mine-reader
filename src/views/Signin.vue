@@ -33,7 +33,7 @@ async function onFormSubmit() {
       <div class="wrapper">
         <TheLogo class="logo" linkName="signIn" />
         <form class="signin-form" @submit.prevent="onFormSubmit">
-          <div class="loading" v-if="isLoading"><Loading /></div>
+          <div v-if="isLoading" class="loading"><Loading /></div>
           <InputText
             class="input-text"
             :is-required="true"
@@ -48,7 +48,7 @@ async function onFormSubmit() {
             type="password"
             v-model="password"
           />
-          <div class="fail" v-if="hasError">
+          <div v-if="hasError" class="fail">
             email or password are incorrect
           </div>
           <ConfirmButton

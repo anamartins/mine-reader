@@ -23,9 +23,9 @@ async function onCloseButtonClick(tag) {
       {{ props.tag }}
     </router-link>
     <button
+      v-if="isCloseButtonVisible"
       class="close"
       @click="onCloseButtonClick(tag)"
-      v-if="isCloseButtonVisible"
     >
       X
     </button>

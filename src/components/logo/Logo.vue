@@ -18,33 +18,33 @@ const props = defineProps({
   <div class="logo">
     <div class="logo__background">
       <AnimatedBoxLayer
+        v-if="hasAnimatedBox"
         color="#fa5788"
         max-width="500px"
         max-height="500px"
         :is-paused="true"
-        v-if="hasAnimatedBox"
       />
 
       <AnimatedBoxLayer
+        v-if="hasAnimatedBox"
         color="#4a148c"
         max-width="500px"
         max-height="500px"
         :is-paused="true"
-        v-if="hasAnimatedBox"
       />
       <AnimatedBoxLayer
+        v-if="hasAnimatedBox"
         border-color="#333"
         max-width="500px"
         max-height="500px"
         :is-paused="true"
-        v-if="hasAnimatedBox"
       />
       <AnimatedBoxLayer
+        v-if="hasAnimatedBox"
         color="#c2185b"
         max-width="500px"
         max-height="500px"
         :is-paused="true"
-        v-if="hasAnimatedBox"
       />
     </div>
     <h1>

@@ -57,20 +57,20 @@ async function onReadLaterChange() {
 <template>
   <div class="post" :class="{ read: post.isRead }">
     <div class="post-wrapper">
-      <div class="loading mark-read" v-if="post.isMarkPostAsReadLoading">
+      <div v-if="post.isMarkPostAsReadLoading" class="loading mark-read">
         <Loading />
       </div>
-      <div class="loading read-later" v-if="post.isReadPostLaterLoading">
+      <div v-if="post.isReadPostLaterLoading" class="loading read-later">
         <Loading />
       </div>
       <div class="post-title">
-        <a :href="post.link" @click="onPostClick" target="_blank">{{
+        <a :href="post.link" target="_blank" @click="onPostClick">{{
           post.title
         }}</a>
       </div>
 
       <div class="post__info">
-        <div class="post-source" v-if="props.isHome">
+        <div v-if="props.isHome" class="post-source">
           <Icon :icon="feedIcon" class="post-source-icon" />
           <div class="post-source-title">{{ post.feed.title }}</div>
         </div>
@@ -94,11 +94,11 @@ async function onReadLaterChange() {
           @change="onReadLaterChange"
         />Read Later
       </label>
-      <div class="tags" v-if="props.isHome">
+      <div v-if="props.isHome" class="tags">
         <Tag v-for="tag in tags" :tag="tag" :feedId="props.post.feedId" />
       </div>
     </div>
-    <div class="post-image" v-if="image"><img :src="post.image" /></div>
+    <div v-if="image" class="post-image"><img :src="post.image" /></div>
   </div>
 </template>
 

@@ -19,7 +19,7 @@ onMounted(() => {
   <div class="confirmation">
     <FormBackground>
       <div class="wrapper">
-        <div class="message" v-if="!hasError">
+        <div v-if="!hasError" class="message">
           Yay, your email was activated!
           <div class="link">
             <router-link :to="{ name: 'signIn' }">

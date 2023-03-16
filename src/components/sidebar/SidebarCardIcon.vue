@@ -17,9 +17,9 @@ const colors = getColors()
         <img :src="props.imageSource" class="icon__img" />
       </router-link>
       <Count
+        v-if="props.number"
         class="number"
         :number="props.number"
-        v-if="props.number"
         :background-color="colors.primaryColorVariation"
       />
     </span>

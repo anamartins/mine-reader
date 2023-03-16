@@ -43,7 +43,7 @@ watch(feed, () => {
         v-model="feed"
         :focus="true"
       />
-      <Loading class="loading mark-read" v-if="isLoading" />
+      <Loading v-if="isLoading" class="loading mark-read" />
 
       <div v-if="isEmpty" class="feedtable__empty">
         Type something up here to show options here.

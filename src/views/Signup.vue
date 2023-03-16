@@ -42,7 +42,7 @@ function onButtonClick() {
   <div class="signup">
     <FormBackground>
       <div class="wrapper">
-        <div class="loading" v-if="isLoading"><Loading /></div>
+        <div v-if="isLoading" class="loading"><Loading /></div>
 
         <Logo class="logo" linkName="signUp" />
         <form class="signup-form" @submit.prevent="onFormSubmit">
@@ -66,7 +66,7 @@ function onButtonClick() {
             type="password"
             v-model="password"
           />
-          <div class="fail" v-if="hasError">
+          <div v-if="hasError" class="fail">
             something weird happened. could you try again?
           </div>
 
@@ -78,7 +78,7 @@ function onButtonClick() {
           </router-link>
         </div>
       </div>
-      <div class="sucess-modal" v-if="isModalOpen">
+      <div v-if="isModalOpen" class="sucess-modal">
         <div class="exit" @click="onExitClick">X</div>
         Nice! Now check your email; and confirm you email.
         <SimpleButton
