@@ -6,7 +6,7 @@ import Logo from '../components/logo/Logo.vue'
 import Loading from '../components/Loading/Loading.vue'
 import InputText from '../components/InputText.vue'
 import ConfirmButton from '../components/ConfirmButton.vue'
-import SimpleButton from '../components/SimpleButton.vue'
+import SimpleButton from '../components/simple-button/SimpleButton.vue'
 import FormBackground from '../components/form-background/FormBackground.vue'
 
 const router = useRouter()

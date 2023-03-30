@@ -30,3 +30,7 @@ coverage
 
 # Local Netlify folder
 .netlify
+
+#Storybook
+.npmrc
+stories

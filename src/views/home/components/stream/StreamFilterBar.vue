@@ -4,7 +4,7 @@ import { usePostsStore } from '../../../../stores/posts'
 import { useFeedsStore } from '../../../../stores/feeds'
 import StreamSeeUnread from './StreamSeeUnread.vue'
 import Tag from '../../../../components/Tag.vue'
-import Button from '../../../../components/SimpleButton.vue'
+import Button from '../../../../components/simple-button/SimpleButton.vue'
 
 const props = defineProps({
   title: { type: String },

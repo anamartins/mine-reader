@@ -5,7 +5,7 @@ import { useFeedsStore } from '../stores/feeds'
 import PageWithSidebar from '../components/PageWithSidebar.vue'
 import SelectList from '../components/SelectList.vue'
 import InputText from '../components/InputText.vue'
-import SimpleButton from '../components/SimpleButton.vue'
+import SimpleButton from '../components/simple-button/SimpleButton.vue'
 import FeedTable from '../components/FeedTable.vue'
 
 const tag = ref('')

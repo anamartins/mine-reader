@@ -1,6 +1,6 @@
 <script setup>
 import { onUpdated, ref } from 'vue'
-import SimpleButton from './SimpleButton.vue'
+import SimpleButton from './simple-button/SimpleButton.vue'
 const props = defineProps({
   isCheckboxVisible: { type: Boolean, default: true },
   list: { type: Array, required: true },
