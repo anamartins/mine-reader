@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, watch } from 'vue'
+import { watch } from 'vue'
 import Stream from './components/stream/Stream.vue'
 import PageWithSidebar from '../../components/PageWithSidebar.vue'
 import { useRoute } from 'vue-router'
@@ -25,15 +25,12 @@ function fetchPosts() {
   postsStore.getPosts(params)
 }
 
-onMounted(() => {
-  fetchPosts()
-})
-
 watch(
   () => route.params,
   () => {
     fetchPosts()
-  }
+  },
+  { immediate: true }
 )
 </script>
 
